@@ -1,0 +1,4 @@
+repository "horrorPuzzle/horrorPuzzle@5773980135037@cloud"
+  path "/"
+    br "/main"
+    co "/main"
