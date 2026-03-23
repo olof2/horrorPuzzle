@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 GetDirectionVector()
     {
         Vector3 vector = Vector3.zero;
-        float FrontBack = Input.GetAxis("Vertical");
-        float LeftRight = Input.GetAxis("Horizontal");
+        float FrontBack = Input.GetAxisRaw("Vertical");
+        float LeftRight = Input.GetAxisRaw("Horizontal");
         if(FrontBack != 0) vector.z = FrontBack;
         if(LeftRight != 0) vector.x = LeftRight;
         return vector.normalized;
