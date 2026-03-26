@@ -54,7 +54,7 @@ public class PlayerCameraLook : MonoBehaviour
 
             if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, interactDistance))
             {
-                I_Interactable interactable = hit.collider.GetComponent<I_Interactable>();
+                I_Interactable interactable = hit.collider.GetComponent<I_Interactable>() ?? hit.collider.GetComponentInParent<I_Interactable>();
 
                 if(interactable != null)
                 {
