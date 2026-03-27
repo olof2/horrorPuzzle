@@ -1,9 +1,12 @@
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     Transform playerTransform;
-    float speed;
+    public float speed;
+
+    [HideInInspector] public Vector3 currentInput;   
     void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -13,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        currentInput = GetDirectionVector();  
+
         Vector3 movement = GetDirectionVector().z * playerTransform.forward + GetDirectionVector().x * playerTransform.right; //WIP
         playerTransform.position += movement * speed * Time.deltaTime;
     }
