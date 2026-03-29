@@ -725,7 +725,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378259222}
-  - component: {fileID: 1378259221}
+  - component: {fileID: 1378259223}
+  - component: {fileID: 1378259224}
   m_Layer: 0
   m_Name: Placeholder Pivot Point
   m_TagString: Untagged
@@ -733,23 +734,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!111 &1378259221
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1378259220}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 11efdd1218a08be428bca4e64efaadf0, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 11efdd1218a08be428bca4e64efaadf0, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!4 &1378259222
 Transform:
   m_ObjectHideFlags: 0
@@ -766,6 +750,40 @@ Transform:
   - {fileID: 470126759}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378259223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378259220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5fc94a08175864bbe1d64be36b9225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1378259224
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378259220}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae5e850c3348fde41bed3aba475f2f30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1653308262
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,8 +909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf43fb9e9c56eb4c961486d311d0aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
-  speed: 0
 --- !u!114 &1653308268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,11 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b86de18038d494a87c7a2504024a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
   cameraTransform: {fileID: 1088772912}
-  LookSensitivity: 0
-  cameraRotation: 0
-  interactDistance: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
