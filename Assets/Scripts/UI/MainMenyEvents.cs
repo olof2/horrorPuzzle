@@ -6,6 +6,8 @@ public class MainMenyEvents : MonoBehaviour
 {
     private UIDocument document;
     private Button button;
+    private PlayerMovement playerMovement;
+    private PlayerCameraLook playerCameraLook;
 
     private VisualTreeAsset startMenu;
     private VisualTreeAsset pausMenu;
@@ -17,6 +19,10 @@ public class MainMenyEvents : MonoBehaviour
     private void Awake()
     {
         document = GetComponent<UIDocument>();
+        playerMovement = FindFirstObjectByType<PlayerMovement>();
+        playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
+        playerMovement.enabled = false;
+        playerCameraLook.enabled = false;
 
 
         button = document.rootVisualElement.Q("StartGameButton") as Button;
@@ -27,6 +33,8 @@ public class MainMenyEvents : MonoBehaviour
         {
             menuButtons[i].RegisterCallback<ClickEvent>(OnAllButtonsClick);
         }
+
+        
     }
 
 
@@ -43,11 +51,18 @@ public class MainMenyEvents : MonoBehaviour
     {
         Debug.Log("You pressed the Start Button");
 
-        document.visualTreeAsset = pausMenu;
-        
-        
-    
-        
+        playerMovement = FindFirstObjectByType<PlayerMovement>();
+        playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
+        playerMovement.enabled = true;
+        playerCameraLook.enabled = true;
+
+        document.enabled = false;
+
+
+
+
+
+
     }
 
     private void OnAllButtonsClick(ClickEvent clickEvent)
