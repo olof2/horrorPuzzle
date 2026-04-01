@@ -621,7 +621,6 @@ GameObject:
   - component: {fileID: 1653308263}
   - component: {fileID: 1653308267}
   - component: {fileID: 1653308268}
-  - component: {fileID: 1653308269}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -748,19 +747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 1088772912}
---- !u!114 &1653308269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653308262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5cd8ba967b39043a9e822932c66c36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  footStepSFX: {fileID: 8300000, guid: 541e483abd36667459aaedda6f007985, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
