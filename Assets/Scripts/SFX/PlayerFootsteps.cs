@@ -22,7 +22,7 @@ public class PlayerFootsteps : MonoBehaviour
             {
                 if(AudioManager.instance != null)
                 {
-                    AudioManager.instance.PlaySFX(footStepSFX, 0.1f);
+                    AudioManager.instance.PlaySFX(footStepSFX, 0.3f);
                 }
             }
 
