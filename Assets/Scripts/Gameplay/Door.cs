@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour, I_Interactable
 {
     public float openAngle = 90f;
-    public float openSpeed = 2f;
+    public float openSpeed = 1f;
     public bool isOpen = false;
 
     private Quaternion closedRot;
