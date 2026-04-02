@@ -1,0 +1,37 @@
+using Unity.Properties;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class SanityMeter : MonoBehaviour
+{
+    SanityMeterUI sanityMeterUI;
+
+    public float sanityLevel = 0f;
+    public float increaseRate = 0f; // Rate at which sanity decreases per second
+
+    void Start()
+    {
+        // Find the UIDocument in the scene and get the SanityMeterUI component
+        var uiDocument = FindFirstObjectByType<UIDocument>();
+        sanityMeterUI = uiDocument.rootVisualElement.Q<SanityMeterUI>();
+        
+
+        
+        sanityMeterUI.sanityLevel = sanityLevel; // Initialize the UI with the starting sanity level
+        
+
+        sanityLevel = Mathf.Clamp(sanityLevel, 0f, 100f); // Ensure sanity level starts within bounds
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        sanityLevel += Time.deltaTime + increaseRate; // Increase sanity level over time (adjust the rate as needed)
+        sanityLevel = Mathf.Clamp(sanityLevel, 0f, 100f); // Clamp sanity level between 0 and 100
+
+        if (sanityLevel == 100f)
+        {
+            Debug.Log("Sanity is at maximum!");
+        }
+    }
+}
