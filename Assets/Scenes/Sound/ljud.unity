@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b5cd8ba967b39043a9e822932c66c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footStepSFX: {fileID: 8300000, guid: 541e483abd36667459aaedda6f007985, type: 3}
+  footStepSFX: {fileID: 8300000, guid: 75d4e54cf94712d4e8de7ce385abceb2, type: 3}
 --- !u!1 &1913345807
 GameObject:
   m_ObjectHideFlags: 0
