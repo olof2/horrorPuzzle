@@ -5,34 +5,22 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class PlaceholderAnimationScript : MonoBehaviour, I_Interactable     //script för placeholder animation. När jag trycker "P" spelas animationen
+public class PlaceholderAnimationScript : MonoBehaviour    //script för placeholder animation. När jag trycker "P" spelas animationen
 {
     private Animator animator;
+
+    public TriggerZonePlaceholder zone;     //asign en "zone" till animation i inspect
 
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void Interact()
-    {
-        animator.SetTrigger("isFalling");
-    }
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && zone.PlayerInsideZone)       //animation kan bara hända om PlayerInsideZone bool = true
         {
             animator.SetTrigger("isFalling");
         }
     }
-
-    //public void OnTrigger(InputValue input)
-    //{
-    //    if (animator != null && !animator.GetCurrentAnimatorStateInfo(0).IsName("Fall"))
-    //    {
-    //        animator.SetTrigger("isFalling");
-    //    }
-    //}
-
 }
