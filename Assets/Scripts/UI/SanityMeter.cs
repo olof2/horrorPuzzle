@@ -7,7 +7,7 @@ public class SanityMeter : MonoBehaviour
     SanityMeterUI sanityMeterUI;
 
     public float sanityLevel = 0f;
-    public float increaseRate = 10f; // Rate at which sanity decreases per second
+    public float increaseRate = 0f; // Rate at which sanity decreases per second
 
     void Start()
     {

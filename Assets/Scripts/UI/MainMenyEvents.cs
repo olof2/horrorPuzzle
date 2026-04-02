@@ -24,7 +24,6 @@ public class MainMenyEvents : MonoBehaviour
     {
         //Hittar dokumentet och knapparna i main meny, disablar spelkontrollerna och sanity meter.
         document = GetComponent<UIDocument>();
-        sanityDocument = GetComponent<UIDocument>();
         
         //Stänker av spelkontrollerna och sanity meter så att de inte kan användas i main meny.
         playerMovement = FindFirstObjectByType<PlayerMovement>();
@@ -78,7 +77,6 @@ public class MainMenyEvents : MonoBehaviour
         
         //Disablar main meny dokumentet så att det inte syns längre.
         document.enabled = false;
-        sanityDocument.enabled = true;
 
 
 
