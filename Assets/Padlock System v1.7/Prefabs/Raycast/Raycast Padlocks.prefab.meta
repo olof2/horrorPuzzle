@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c3ec183910b418a4ba37c4a363dd4462
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Raycast/Raycast Padlocks.prefab
+  uploadId: 823080

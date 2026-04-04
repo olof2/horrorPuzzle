@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a9d1c5d0ca497fc46b176fd9c6a29067
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Spawnable Padlocks/Padlock - Spawnable
+    - Black Prefab.prefab
+  uploadId: 823080

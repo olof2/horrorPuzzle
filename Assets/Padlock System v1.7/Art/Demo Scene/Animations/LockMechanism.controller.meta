@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cba582a1131fc684e92072a08846728b
+timeCreated: 1483874558
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Art/Demo Scene/Animations/LockMechanism.controller
+  uploadId: 823080

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 64628a344a214bb4baa072b6c92c78b1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/ScriptableObjects/Sounds/SO Audio - Padlock
+    Interaction.asset
+  uploadId: 823080

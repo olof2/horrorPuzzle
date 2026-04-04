@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: bb10837666042384bac46c963207e8eb
+timeCreated: 1577917155
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Art/Demo Scene/Animations/DoorAnimation/LR_Door_LowV3.controller
+  uploadId: 823080

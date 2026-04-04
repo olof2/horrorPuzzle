@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5acbe82741c0a4441ae5c6af7cea1aa3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Managers/Audio Manager.prefab
+  uploadId: 823080
