@@ -15,7 +15,7 @@ public class PlayerCameraLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         cameraRotation = 0f;
 
-        interactDistance = 3f;
+        interactDistance = 30f;
     }
 
     void Update()
@@ -54,7 +54,8 @@ public class PlayerCameraLook : MonoBehaviour
 
             if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, interactDistance))
             {
-                I_Interactable interactable = hit.collider.GetComponent<I_Interactable>();
+                // Use GetComponentInParent so scripts on parent objects are also found.
+                I_Interactable interactable = hit.collider.GetComponentInParent<I_Interactable>();
 
                 if(interactable != null)
                 {
