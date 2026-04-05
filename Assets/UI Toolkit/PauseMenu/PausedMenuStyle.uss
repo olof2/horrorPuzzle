@@ -1,0 +1,18 @@
+.button:hover {
+    scale: 1.1 1.1;
+}
+
+.button {
+    transform-origin: center;
+    background-position-x: center 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    rotate: 0;
+    translate: 0 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}

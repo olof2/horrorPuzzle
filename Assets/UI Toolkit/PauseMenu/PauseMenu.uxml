@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/PauseMenu/PausedMenuStyle.uss?fileID=7433441132597879392&amp;guid=8f6c2d85a97c97446ad53a38297df620&amp;type=3#PausedMenuStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:Label text="Paused" name="Header" style="align-self: center; font-size: 100px; padding-top: 206px; -unity-font-style: italic; color: rgb(17, 16, 16);" />
+        <ui:Button text="Continue" name="ContinueButton" class="button" style="align-self: center; margin-top: 60px; padding-top: 10px; font-size: 50px; transition-duration: 0.35s; transition-delay: 0s;" />
+        <ui:Button text="Settings&#10;" name="SettingsButton" class="button" style="align-self: center; margin-top: 60px; font-size: 50px; transition-duration: 0.35s;" />
+        <ui:Button text="Exit Game&#10;" name="ExitButton" class="button" style="font-size: 50px; align-self: center; padding-top: 10px; margin-top: 60px; transition-duration: 0.35s;" />
+    </ui:VisualElement>
+</ui:UXML>
