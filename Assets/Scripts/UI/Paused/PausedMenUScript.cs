@@ -22,9 +22,6 @@ public class PausedMenUScript : MonoBehaviour
     {
         pausedDocument = GetComponent<UIDocument>();
         
-
-        
-
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
 
 
