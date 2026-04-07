@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8097371570433060964
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 665899023484807558, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Name
+      value: Padlock Door - Door Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 665899023484807558, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177165642018268174, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801603692249527959, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Name
+      value: Padlock Interactable - Door Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801603692249527959, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140879277383644207, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279812558083929947, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Name
+      value: Door Prefab - 1234 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279812558083929947, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420206201255677752, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946009681800665854, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Text
+      value: DP - 1234
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384776895489420352, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Name
+      value: Door Prefab - 1234- Raycast
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384776895489420352, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500854860008551984, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541487795058468724, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Name
+      value: Padlock Controller - Door Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541487795058468724, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710479423400903113, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5891586875114203207, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115298179163201123, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: yourCombination
+      value: 1234
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247497780571255922, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006799883117791852, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325383902567796714, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.143845
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.007508543
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386120972290092694, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600734540668725379, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8944453712731968423, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 665899023484807558, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3681044394714121632}
+  m_SourcePrefab: {fileID: 100100000, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+--- !u!1 &8746583287487863266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 665899023484807558, guid: 0a21426ce9b1f1e4484e2d7ecef4f9b0, type: 3}
+  m_PrefabInstance: {fileID: 8097371570433060964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &3681044394714121632
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746583287487863266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b4c5b1e00b3a8cc4bae2aacdfb562ede, type: 3}

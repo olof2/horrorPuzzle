@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f312c4fe5e7770e4497342c58a995ac6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Scripts/5- Samples/STDoorController.cs
+  uploadId: 823080

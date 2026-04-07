@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0bea22019705b5142a30ecb8d4753e5c
+timeCreated: 1471687861
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Scripts/1- Core/PadlockController.cs
+  uploadId: 823080

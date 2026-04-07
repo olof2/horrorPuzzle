@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b286cc7fe8cdbf14ea31586d6a75c39d
+timeCreated: 1483552211
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Art/Materials/M_Padlock_Black/M_Padlock_Spinner_Black.mat
+  uploadId: 823080

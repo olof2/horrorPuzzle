@@ -5,20 +5,19 @@ using UnityEngine.UIElements;
 public class MainMenyEvents : MonoBehaviour
 {
     private UIDocument document;
-    private UIDocument sanityDocument;
+    public UIDocument hudSanityMeter;
+   
     private Button button;
     private PlayerMovement playerMovement;
     private PlayerCameraLook playerCameraLook;
+    private PausedMenUScript pausedMenUScript;
 
     private SanityMeter sanityMeter;
-    private SanityMeterUI sanityMeterUI;
-
-    private VisualTreeAsset SanityMeterUI;
-    private VisualTreeAsset pausMenu;
-
+   
     
 
     private List<Button> menuButtons = new List<Button>();
+    private List<Button> pauseMenuButtons = new List<Button>();
 
     private void Awake()
     {
@@ -28,6 +27,10 @@ public class MainMenyEvents : MonoBehaviour
         //Stänker av spelkontrollerna och sanity meter så att de inte kan användas i main meny.
         playerMovement = FindFirstObjectByType<PlayerMovement>();
         playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
+
+        var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
+        sanityMeterElement.style.display = DisplayStyle.None;
+
         playerMovement.enabled = false;
         playerCameraLook.enabled = false;
         
@@ -35,9 +38,13 @@ public class MainMenyEvents : MonoBehaviour
         sanityMeter = FindFirstObjectByType<SanityMeter>();
         sanityMeter.enabled = false;
 
+        pausedMenUScript = FindAnyObjectByType<PausedMenUScript>();
+        if (pausedMenUScript != null)
+            pausedMenUScript.enabled = false;
+
         
 
-
+        
         button = document.rootVisualElement.Q("StartGameButton") as Button;
         button.RegisterCallback < ClickEvent>(OnPlayGameClick);
 
@@ -47,11 +54,14 @@ public class MainMenyEvents : MonoBehaviour
             menuButtons[i].RegisterCallback<ClickEvent>(OnAllButtonsClick);
         }
 
+
+
     }
 
 
     private void OnDisable()
     {
+        if(button  != null)
         button.UnregisterCallback < ClickEvent>(OnPlayGameClick);
         
         for (int i = 0; i < menuButtons.Count; i++)
@@ -69,12 +79,14 @@ public class MainMenyEvents : MonoBehaviour
         playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
         playerMovement.enabled = true;
         playerCameraLook.enabled = true;
+        pausedMenUScript.enabled = true;
 
         sanityMeter = FindFirstObjectByType<SanityMeter>();
         //Enables sanity meter så att den kan användas i spelet.
         sanityMeter.enabled = true;
         //Enable sanity metern UI
-        
+        SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
+        sanityMeterUI.style.display = DisplayStyle.Flex;
         //Disablar main meny dokumentet så att det inte syns längre.
         document.enabled = false;
 
@@ -84,6 +96,8 @@ public class MainMenyEvents : MonoBehaviour
 
 
     }
+
+   
 
     private void OnAllButtonsClick(ClickEvent clickEvent)
     {

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 468a4bd7f5928594f93ac9aa224145d1
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Art/Demo Scene/3DText/3DText.shader
+  uploadId: 823080

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6006f370076112d44b46dd56ebdb8ccf
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/ScriptableObjects/Sounds/SO Audio - Padlock
+    Unlock.asset
+  uploadId: 823080
