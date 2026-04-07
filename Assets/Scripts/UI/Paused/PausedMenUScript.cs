@@ -72,7 +72,7 @@ public class PausedMenUScript : MonoBehaviour
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         playerMovement.enabled = false;
         sanityMeter = FindAnyObjectByType<SanityMeter>();
-        sanityMeter.enabled = false;
+        sanityMeter.enabled = false; 
 
         // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
         UnityEngine.Cursor.lockState = CursorLockMode.None;
