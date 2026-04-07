@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b3e9a6f8c20cefa4db02763505afd58d
+timeCreated: 1577917155
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Art/Demo Scene/Animations/DoorAnimation/DoorOpen.anim
+  uploadId: 823080

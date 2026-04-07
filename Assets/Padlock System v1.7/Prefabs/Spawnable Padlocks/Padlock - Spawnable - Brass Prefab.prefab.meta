@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e231faf2b7eddb0469e769dc65a65c25
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Spawnable Padlocks/Padlock - Spawnable
+    - Brass Prefab.prefab
+  uploadId: 823080

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f24c4ce74b69d804391faf4b1925479b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Scripts/2- Managers/PLDisableManager.cs
+  uploadId: 823080
