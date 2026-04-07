@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 06ddf2884cd991746b4744344b597e4a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Trigger/Trigger Padlocks.prefab
+  uploadId: 823080

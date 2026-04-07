@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e594bdde8a8b25d4c863e3e252035cf1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Scripts/4- Player/STFPSController.cs
+  uploadId: 823080
