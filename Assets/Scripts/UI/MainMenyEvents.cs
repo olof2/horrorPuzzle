@@ -81,7 +81,7 @@ public class MainMenyEvents : MonoBehaviour
         //Enables spelkontrollerna och sanity meter efter man har startat spelet, disablar main meny dokumentet så att det inte syns längre.
         playerMovement = FindFirstObjectByType<PlayerMovement>();
         playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
-        gameOverScript.enabled = true;
+        //gameOverScript.enabled = true;
         playerMovement.enabled = true;
         playerCameraLook.enabled = true;
         pausedMenUScript.enabled = true;
