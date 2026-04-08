@@ -11,6 +11,7 @@ public class MainMenyEvents : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerCameraLook playerCameraLook;
     private PausedMenUScript pausedMenUScript;
+    //private GameOverScript gameOverScript;
 
     private SanityMeter sanityMeter;
    
@@ -41,10 +42,13 @@ public class MainMenyEvents : MonoBehaviour
         pausedMenUScript = FindAnyObjectByType<PausedMenUScript>();
         if (pausedMenUScript != null)
             pausedMenUScript.enabled = false;
+        //gameOverScript = FindAnyObjectByType<GameOverScript>();
+        //if (gameOverScript != null)
+        //    gameOverScript.enabled = false;
 
-        
 
-        
+
+
         button = document.rootVisualElement.Q("StartGameButton") as Button;
         button.RegisterCallback < ClickEvent>(OnPlayGameClick);
 
@@ -77,6 +81,7 @@ public class MainMenyEvents : MonoBehaviour
         //Enables spelkontrollerna och sanity meter efter man har startat spelet, disablar main meny dokumentet så att det inte syns längre.
         playerMovement = FindFirstObjectByType<PlayerMovement>();
         playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
+        //gameOverScript.enabled = true;
         playerMovement.enabled = true;
         playerCameraLook.enabled = true;
         pausedMenUScript.enabled = true;
