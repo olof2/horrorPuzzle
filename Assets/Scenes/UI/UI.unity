@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sanityLevel: 0
-  increaseRate: 1
+  increaseRate: 0
 --- !u!1 &1210959268
 GameObject:
   m_ObjectHideFlags: 0
