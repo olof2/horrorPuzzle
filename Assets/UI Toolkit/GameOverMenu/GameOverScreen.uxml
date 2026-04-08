@@ -1,3 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/GameOverMenu/GameOverScreenStyle.uss?fileID=7433441132597879392&amp;guid=8189ce620030a2843ab34592b90c8c84&amp;type=3#GameOverScreenStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; -unity-text-outline-color: rgba(0, 0, 0, 0); -unity-background-image-tint-color: rgba(255, 255, 255, 0.03); background-color: rgb(156, 0, 0); background-image: none;">
+        <ui:Label text="YOU DIED&#10;" name="Header" selectable="true" style="align-items: auto; align-self: center; margin-top: 243px; font-size: 50px; -unity-font-style: italic; background-image: url(&quot;project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&amp;guid=d7cf8fd201e40164dacbd09e6abfe9d9&amp;type=3#darkHorrorButtonTex&quot;); background-size: 137% 100%; padding-left: 20px; padding-right: 20px;" />
+        <ui:Button text="Restart" name="RestartButton" class="button" />
+        <ui:Button text="Exit Game&#10;" name="ExitButton" class="button" />
+    </ui:VisualElement>
 </ui:UXML>
