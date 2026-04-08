@@ -5,11 +5,11 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class PlaceholderAnimationScript : MonoBehaviour    //script för placeholder animation. När jag trycker "P" spelas animationen
+public class PlaceholderAnimationScript : MonoBehaviour                 //script för placeholder animation
 {
     private Animator animator;
 
-    public TriggerZonePlaceholder zone;     //asign en "zone" till animation i inspect
+    public TriggerZonePlaceholder zone;                                 //asign en "zone" till animation i inspect
 
     private void Start()
     {
