@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8b8d008b77b14c445a995d8c7c733158
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Managers/Disable Manager.prefab
+  uploadId: 823080

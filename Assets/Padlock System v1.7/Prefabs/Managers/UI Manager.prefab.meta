@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ddd60cdeb2fc7f247b767553625382f3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 160565
+  packageName: Padlock Puzzle System
+  packageVersion: 1.7
+  assetPath: Assets/Padlock System v1.7/Prefabs/Managers/UI Manager.prefab
+  uploadId: 823080
