@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class TextureFix : MonoBehaviour
 {
-    public Renderer renderer;
+    Renderer renderer;
+
+    public void Start()
+    {
+        renderer = GetComponent<MeshRenderer>();
+    }
 
     private void Update()
     {
