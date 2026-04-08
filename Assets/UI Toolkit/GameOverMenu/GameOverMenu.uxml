@@ -1,8 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/GameOverMenuStyle.uss?fileID=7433441132597879392&amp;guid=084cd2984bbd3bb4c80972975354ab49&amp;type=3#GameOverMenuStyle" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0);">
-        <ui:Label text="You Died&#10;" name="Header" style="justify-content: flex-start; align-items: auto; -unity-text-align: upper-center; margin-top: 181px;" />
-        <ui:Button text="Button" class="button" style="margin-top: 87px;" />
-        <ui:Button text="Button" class="button" style="margin-top: 68px;" />
-    </ui:VisualElement>
-</ui:UXML>

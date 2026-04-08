@@ -19,6 +19,7 @@
     background-color: rgba(0, 0, 0, 0);
     -unity-font-style: italic;
     background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    background-size: 100% 100%;
 }
 
 .button:hover {
