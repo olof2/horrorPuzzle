@@ -1,0 +1,67 @@
+using UnityEngine;
+using UnityEngine.UIElements;
+
+public class SettingsMenuEvents : MonoBehaviour
+{
+    private Button GameplayButton;
+    private Button AudioButton;
+    private Button GraphicsButton;
+    private Button BackButton;
+    private Button ControlsButton;
+
+    private UIDocument settingsDocument;
+    private PausedMenUScript pausedMenuScript;
+    private SanityMeter sanityMeter;
+    private MainMenyEvents mainMenyEvents;
+    private PlayerCameraLook playerCameraLook;
+    private PlayerMovement playerMovement;
+
+
+
+    private void Awake()
+    {
+        settingsDocument = GetComponent<UIDocument>();
+
+        settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
+    }
+    private void OnEnable()
+    {
+        var root = settingsDocument.rootVisualElement;
+        GameplayButton = root.Q("GameplayButton") as Button;
+        AudioButton = root.Q("AudioButton") as Button;
+        GraphicsButton = root.Q("GraphicsButton") as Button;
+        ControlsButton = root.Q("ControlsButton") as Button;
+        BackButton = root.Q("BackButton") as Button;
+
+        GameplayButton.RegisterCallback<ClickEvent>(OnClickGamePlay);
+        AudioButton.RegisterCallback<ClickEvent>(OnClickAudio);
+        GraphicsButton.RegisterCallback<ClickEvent>(OnClickGraphics);
+        ControlsButton.RegisterCallback<ClickEvent>(OnClickControls);
+        BackButton.RegisterCallback<ClickEvent>(OnClickBack);
+    }
+
+    private void OnClickGamePlay(ClickEvent evt)
+    {
+
+        Debug.Log("Gameplay Button Clicked");
+    }
+    private void OnClickAudio(ClickEvent evt)
+    {
+        Debug.Log("Audio Button Clicked");
+    }
+    private void OnClickGraphics(ClickEvent evt)
+    {
+        Debug.Log("Graphics Button Clicked");
+    }
+    private void OnClickControls(ClickEvent evt)
+    {
+        Debug.Log("Controls Button Clicked");
+    }
+    private void OnClickBack(ClickEvent evt)
+    {
+        Debug.Log("Back Button Clicked");
+    }
+
+
+
+}

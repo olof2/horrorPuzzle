@@ -12,6 +12,7 @@ public class MainMenyEvents : MonoBehaviour
     private PlayerCameraLook playerCameraLook;
     private PausedMenUScript pausedMenUScript;
     private GameOverScript gameOverScript;
+    private SettingsMenuEvents settingsMenuEvents;
 
     private SanityMeter sanityMeter;
    
@@ -45,6 +46,9 @@ public class MainMenyEvents : MonoBehaviour
         gameOverScript = FindAnyObjectByType<GameOverScript>();
         if (gameOverScript != null)
             gameOverScript.enabled = false;
+        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
+        if (settingsMenuEvents != null)
+            settingsMenuEvents.enabled = false;
 
 
 
@@ -85,6 +89,7 @@ public class MainMenyEvents : MonoBehaviour
         playerMovement.enabled = true;
         playerCameraLook.enabled = true;
         pausedMenUScript.enabled = true;
+        settingsMenuEvents.enabled = true;
 
         sanityMeter = FindFirstObjectByType<SanityMeter>();
         //Enables sanity meter så att den kan användas i spelet.

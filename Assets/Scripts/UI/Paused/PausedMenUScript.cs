@@ -11,11 +11,13 @@ public class PausedMenUScript : MonoBehaviour
     public UIDocument hudSanityMeter;
     private Button continueButton;
     private Button exitButton;
+    private Button settingsButton;
     private MainMenyEvents mainMenyEvents;
     private PlayerCameraLook playerCameraLook;
     private PlayerMovement playerMovement;
     private SanityMeter sanityMeter;
-    
+    private SettingsMenuEvents settingsMenuEvents;
+
 
 
     private void Awake()
@@ -33,10 +35,12 @@ public class PausedMenUScript : MonoBehaviour
         var root = pausedDocument.rootVisualElement;
         continueButton = root.Q("ContinueButton") as Button;
         exitButton = root.Q("ExitButton") as Button;
+        settingsButton = root.Q("SettingsButton") as Button;
 
         //Regristerar callbacks för knapparna i pausmenyn, UnPaused() och OnExitGameClick() metoderna kommer att köras när knapparna klickas på.
         continueButton.RegisterCallback<ClickEvent>(OnPlayGameClick);
         exitButton.RegisterCallback<ClickEvent>(OnExitGameClick);
+        settingsButton.RegisterCallback<ClickEvent>(OnSettingsClick);
         Debug.Log("ContinueButton: " + continueButton);
         Debug.Log("ExitButton: " + exitButton);
 
@@ -57,7 +61,6 @@ public class PausedMenUScript : MonoBehaviour
             Debug.Log("Tröck på P");
         }
 
-            
     }
 
     void Paused()
@@ -73,6 +76,8 @@ public class PausedMenUScript : MonoBehaviour
         playerMovement.enabled = false;
         sanityMeter = FindAnyObjectByType<SanityMeter>();
         sanityMeter.enabled = false; 
+        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
+        settingsMenuEvents.enabled = false;
 
         // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -96,11 +101,21 @@ public class PausedMenUScript : MonoBehaviour
         playerMovement.enabled = true;
         sanityMeter = FindAnyObjectByType<SanityMeter>();
         sanityMeter.enabled = true;
+        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
+        settingsMenuEvents.enabled = true;
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
     }
-    
+
+    void OnSettingsClick(ClickEvent clickEvent)
+    {
+        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
+        var root = pausedDocument.rootVisualElement;
+        root.style.display = DisplayStyle.Flex;
+        Debug.Log("Tröck på Settings");
+    }
+
     void OnExitGameClick(ClickEvent clickEvent)
     {
         Application.Quit();
