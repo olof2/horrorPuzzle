@@ -3,7 +3,8 @@ using UnityEngine.UIElements;
 
 public class GameOverScript : MonoBehaviour
 {
-    private UIDocument document;
+    private UIDocument gameoverDocument;
+    private UIDocument hudSanityMeter;
 
     private Button exitButton;
     private Button restartButton;
@@ -11,44 +12,60 @@ public class GameOverScript : MonoBehaviour
     private PlayerMovement playerMovement;
     private SanityMeter sanityMeter;
     private MainMenyEvents mainMenyEvents;
+    private PausedMenUScript pausedMenUScript;
 
     private void Awake()
     {
-        document = GetComponent<UIDocument>();
-        document.rootVisualElement.style.display = DisplayStyle.None;
+        gameoverDocument = GetComponent<UIDocument>();
+        gameoverDocument.rootVisualElement.style.display = DisplayStyle.None;
+        //hudSanityMeter = FindFirstObjectByType<UIDocument>();
     }
 
     private void OnEnable()
     {
-        var root = document.rootVisualElement;
+        var root = gameoverDocument.rootVisualElement;
         exitButton = root.Q("ExitButton") as Button;
         restartButton = root.Q("RestartButton") as Button;
+
         exitButton.RegisterCallback<ClickEvent>(OnExitGameClick);
-       // restartButton.RegisterCallback<ClickEvent>(OnRestartGameClick);
+        restartButton.RegisterCallback<ClickEvent>(OnRestartGameClick);
     }
 
     private void OnExitGameClick(ClickEvent evt)
     { 
-        UnityEngine.Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void GameOver()
     {
-        
+        //SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
+        //sanityMeterUI.style.display = DisplayStyle.None;
 
-        document.rootVisualElement.style.display = DisplayStyle.Flex;
+        gameoverDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         playerMovement = FindFirstObjectByType<PlayerMovement>();
         playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
         mainMenyEvents = FindFirstObjectByType<MainMenyEvents>();
+        pausedMenUScript = FindFirstObjectByType<PausedMenUScript>();
+        sanityMeter = FindFirstObjectByType<SanityMeter>();
+
+        pausedMenUScript.enabled = false;
         mainMenyEvents.enabled = false;
         playerMovement.enabled = false;
         playerCameraLook.enabled = false;
-        sanityMeter = FindFirstObjectByType<SanityMeter>();
         sanityMeter.enabled = false;
+
+         
+
+
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
 
+    }
+
+    private void OnRestartGameClick(ClickEvent evt)
+    {
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
      void Update()
