@@ -6,7 +6,7 @@ public class Door : MonoBehaviour, I_Interactable
 {
     public float openAngle = 90f;
     public float openSpeed = 1f;
-    public float speedMult = 4f;
+    public float speedMult = 6f;
     public bool isOpen = false;
 
     private Quaternion closedRot;
