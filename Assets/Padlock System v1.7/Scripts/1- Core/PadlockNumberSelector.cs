@@ -22,22 +22,27 @@ namespace PadlockSystem
             spinnerLimit = 9;
         }
 
+        // Called from PadlockController.SpawnPadlock to wire controller reference
         public void UpdatePadlockController(PadlockController newController)
         {
-            // Store reference to main padlock controller
             _padlockController = newController;
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            Debug.Log($"Clicked on {gameObject.name} - rotating dial and updating controller");
+
             // Rotate dial to next number
             RotateSpinner();
 
             // Update controller with new number
-            UpdatePadlockController();
+            ApplyValueToController();
 
-            // Ask controller to check if combination is now correct
-            _padlockController.CheckCombination();
+            // Ask controller to check if combination is now correct (guarded)
+            if (_padlockController != null)
+                _padlockController.CheckCombination();
+            else
+                Debug.LogWarning($"{nameof(PadlockNumberSelector)}: _padlockController is null on click for {gameObject.name}");
         }
 
         void RotateSpinner()
@@ -45,15 +50,24 @@ namespace PadlockSystem
             // Increment spinner and wrap after reaching limit
             spinnerNumber = (spinnerNumber % spinnerLimit) + 1;
 
-            // Rotate the visual dial
-            transform.Rotate(0, 0, transform.rotation.z + 40);
+            // Rotate the visual dial - rotate by a fixed amount around the local Z axis
+            transform.Rotate(Vector3.forward * 40f, Space.Self);
 
-            // Play dial spin audio
-            _padlockController.SpinSound();
+            // Play dial spin audio if controller is available
+            if (_padlockController != null)
+                _padlockController.SpinSound();
+            else
+                Debug.LogWarning($"{nameof(PadlockNumberSelector)}: attempted to play spin sound but _padlockController is null for {gameObject.name}");
         }
 
-        void UpdatePadlockController()
+        void ApplyValueToController()
         {
+            if (_padlockController == null)
+            {
+                Debug.LogWarning($"{nameof(PadlockNumberSelector)}: controller reference missing for {gameObject.name}");
+                return;
+            }
+
             // Cache updated value
             int updatedRowValue = spinnerNumber;
 
