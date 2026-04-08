@@ -283,6 +283,14 @@ PrefabInstance:
       propertyPath: OnPlayerDisabled.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 1642301506346495340, guid: 3d26757fb3e7ed0429c91ba50da08f6e, type: 3}
+    - target: {fileID: 4271989784777729248, guid: 8b8d008b77b14c445a995d8c7c733158, type: 3}
+      propertyPath: OnPlayerDisabled.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271989784777729248, guid: 8b8d008b77b14c445a995d8c7c733158, type: 3}
+      propertyPath: OnPlayerDisabled.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
