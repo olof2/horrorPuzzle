@@ -1,6 +1,8 @@
 .header {
     font-size: 40px;
     color: rgb(0, 0, 0);
+    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
 }
 
 .button {
@@ -13,15 +15,33 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     transition-duration: 0.35s;
-    -unity-background-image-tint-color: rgb(255, 0, 0);
+    -unity-background-image-tint-color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0);
     -unity-font-style: italic;
+    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
 }
 
 .button:hover {
     scale: 1.1 1.1;
-    -unity-background-image-tint-color: rgb(255, 5, 0);
-    background-color: rgba(0, 0, 0, 0);
-    background-image: url("project://database/Assets/UI%20Toolkit/UnityDefaultRuntimeTheme.tss?fileID=4456449167576933126&guid=1291d0f6d2c078c4d9ce0c7bb2498fc5&type=3#check-dash@2x");
-    cursor: url("project://database/Assets/UI%20Toolkit/UnityDefaultRuntimeTheme.tss?fileID=4154780841294389669&guid=1291d0f6d2c078c4d9ce0c7bb2498fc5&type=3#arrow-down");
+    -unity-background-image-tint-color: rgb(123, 0, 0);
+    background-color: rgb(255, 255, 255);
+    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    cursor: initial;
+    rotate: 8deg;
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    background-size: 100% 100%;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    align-items: stretch;
+    visibility: visible;
+    display: flex;
+    opacity: 1;
+    overflow: visible;
+    -unity-background-scale-mode: stretch-to-fill;
+    background-position-y: center 0;
+    background-position-x: center 0;
+    -unity-slice-scale: 0;
+    -unity-slice-left: 17;
+    -unity-slice-top: 17;
+    -unity-slice-right: 17;
+    -unity-slice-bottom: 17;
 }
