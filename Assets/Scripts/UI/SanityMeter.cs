@@ -2,9 +2,11 @@ using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class SanityMeter : MonoBehaviour
+
+public class SanityMeter : Singleton<SanityMeter>
 {
-    SanityMeterUI sanityMeterUI;
+    private SanityMeterUI sanityMeterUI;
+    private GameOverScript gameOverScript;
 
     public float sanityLevel = 0f;
     public float increaseRate = 0f; // Rate at which sanity decreases per second
@@ -16,7 +18,7 @@ public class SanityMeter : MonoBehaviour
         sanityMeterUI = uiDocument.rootVisualElement.Q<SanityMeterUI>();
         
 
-        
+        if (sanityMeterUI != null)
         sanityMeterUI.sanityLevel = sanityLevel; // Initialize the UI with the starting sanity level
         
 
@@ -29,9 +31,12 @@ public class SanityMeter : MonoBehaviour
         sanityLevel += Time.deltaTime + increaseRate; // Increase sanity level over time (adjust the rate as needed)
         sanityLevel = Mathf.Clamp(sanityLevel, 0f, 100f); // Clamp sanity level between 0 and 100
 
-        if (sanityLevel == 100f)
-        {
-            Debug.Log("Sanity is at maximum!");
-        }
+        //if (sanityLevel == 100f)
+        //{
+        //    gameOverScript.GameOver();  
+        //    Debug.Log("Sanity is at maximum!");
+        //}
     }
 }
+
+
