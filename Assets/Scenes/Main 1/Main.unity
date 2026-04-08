@@ -279,6 +279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Placeholder Pivot Point
       objectReference: {fileID: 0}
+    - target: {fileID: 8353184787286526013, guid: 586a66b4576d6c140848a5f4687a2832, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ec8cc910d2d8dbd4ea0b4cecdf397a8b, type: 2}
     - target: {fileID: 9046764967236146466, guid: 586a66b4576d6c140848a5f4687a2832, type: 3}
       propertyPath: zone
       value: 
@@ -4349,7 +4353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932369651944059254, guid: da9f7bab8f4d44f44ac5a54cd596b273, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.29
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 2932369651944059254, guid: da9f7bab8f4d44f44ac5a54cd596b273, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4357,7 +4361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2932369651944059254, guid: da9f7bab8f4d44f44ac5a54cd596b273, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.67
+      value: 7.93
       objectReference: {fileID: 0}
     - target: {fileID: 2932369651944059254, guid: da9f7bab8f4d44f44ac5a54cd596b273, type: 3}
       propertyPath: m_LocalRotation.w
