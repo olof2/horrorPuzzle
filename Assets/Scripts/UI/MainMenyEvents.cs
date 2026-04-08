@@ -96,7 +96,7 @@ public class MainMenyEvents : MonoBehaviour
         document.enabled = false;
 
 
-
+        MusicSystem.Instance.Play("Test");
 
 
 
