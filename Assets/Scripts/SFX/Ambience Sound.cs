@@ -4,6 +4,8 @@ using UnityEngine;
 public class AmbienceSound : MonoBehaviour
 {
     private AudioSource audioSource;
+    public Collider Area;
+    public GameObject Player;
 
     void Start()
     {
@@ -20,10 +22,10 @@ public class AmbienceSound : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Something entered:" + other.name);
-        if (other.CompareTag("Player"))
+       if(other.CompareTag("Player"))
         {
-            Debug.Log("Player entered");
-            audioSource.Play();
+            if(!audioSource.isPlaying)
+                audioSource.Play();
         }
     }
 

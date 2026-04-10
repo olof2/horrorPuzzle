@@ -10,7 +10,7 @@ public class PlayerFootsteps : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
 
-        StartCoroutine(PlayFootSteps()) ;
+        StartCoroutine(PlayFootSteps());
 
     }
 
@@ -18,23 +18,23 @@ public class PlayerFootsteps : MonoBehaviour
     {
         while (true)
         {
-            if(movement.currentInput.magnitude > 0.1f)
+            if (movement.currentInput.magnitude > 0.1f)
             {
-                if(AudioManager.instance != null)
+                if (AudioManager.instance != null)
                 {
-                    AudioManager.instance.PlaySFX(footStepSFX, 0.3f);
+                    AudioManager.instance.PlaySFX(footStepSFX, 0.2f);
                 }
 
-                yield return new WaitForSeconds(0.35f);
+                yield return new WaitForSeconds(0.45f);
 
             }
             else
-            {                 yield return null;
+            {
+                yield return null;
+
             }
 
 
         }
     }
-
-  
 }
