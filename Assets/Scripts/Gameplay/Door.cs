@@ -6,6 +6,7 @@ public class Door : MonoBehaviour, I_Interactable
 {
     public float openAngle = 90f;
     public float openSpeed = 1f;
+    public float speedMult = 6f;
     public bool isOpen = false;
 
     private Quaternion closedRot;
@@ -40,7 +41,10 @@ public class Door : MonoBehaviour, I_Interactable
 
         while(Quaternion.Angle(transform.rotation, targetRot) > 0.01f)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * openSpeed);
+            float speed = openSpeed;
+            if(!isOpen) speed *= speedMult;
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * speed);
             yield return null;
         }
 

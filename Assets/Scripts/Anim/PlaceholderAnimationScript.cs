@@ -5,11 +5,17 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class PlaceholderAnimationScript : MonoBehaviour    //script för placeholder animation. När jag trycker "P" spelas animationen
+public class PlaceholderAnimationScript : MonoBehaviour                 //script för placeholder animation
 {
     private Animator animator;
 
-    public TriggerZonePlaceholder zone;     //asign en "zone" till animation i inspect
+    public TriggerZonePlaceholder zone;                                 //asign en "zone" till animation i inspect
+
+    public float sanityMeterThreshold = 25f;                            //sanity meter level där animationer kan börja triggas
+
+    public float animationCooldownTimer = 0f;                           //cooldown timer för animationer + min och max cooldown time
+    public float minCooldownTime = 6f;
+    public float maxCooldownTime = 16f;
 
     private void Start()
     {
@@ -18,9 +24,21 @@ public class PlaceholderAnimationScript : MonoBehaviour    //script för placehol
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && zone.PlayerInsideZone)       //animation kan bara hända om PlayerInsideZone bool = true
-        {
+        if (SanityMeter.Instance == null) return;                       //failsafe, om singleton inte finns
+
+        float sanityLevel = SanityMeter.Instance.sanityLevel;
+
+        if (sanityLevel >= sanityMeterThreshold && zone.PlayerInsideZone && animationCooldownTimer <= 0f)   //animation händer om sanityLevel är större eller lika med 25, player är
+        {                                                                                                   //i trigger zone, och animation cooldown är mindre eller lika med 0
             animator.SetTrigger("isFalling");
+
+            animationCooldownTimer = Random.Range(minCooldownTime, maxCooldownTime);    //random cooldown time för animationer
+        }
+
+        if (animationCooldownTimer > 0f)                                //räkna ner animation cooldown (8 sec)
+        {
+            animationCooldownTimer -= Time.deltaTime;
         }
     }
 }
+
