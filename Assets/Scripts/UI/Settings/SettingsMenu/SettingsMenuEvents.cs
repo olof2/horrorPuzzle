@@ -9,7 +9,7 @@ public class SettingsMenuEvents : MonoBehaviour
     private Button BackButton;
     private Button ControlsButton;
 
-    private UIDocument settingsDocument;
+    public UIDocument settingsDocument;
     private PausedMenUScript pausedMenuScript;
     private SanityMeter sanityMeter;
     private MainMenyEvents mainMenyEvents;
@@ -18,7 +18,7 @@ public class SettingsMenuEvents : MonoBehaviour
 
 
 
-    private void Awake()
+    public void Awake()
     {
         settingsDocument = GetComponent<UIDocument>();
 

@@ -23,7 +23,7 @@ public class PausedMenUScript : MonoBehaviour
     private void Awake()
     {
         pausedDocument = GetComponent<UIDocument>();
-        
+
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
 
 
@@ -77,7 +77,8 @@ public class PausedMenUScript : MonoBehaviour
         sanityMeter = FindAnyObjectByType<SanityMeter>();
         sanityMeter.enabled = false; 
         settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
-        settingsMenuEvents.enabled = false;
+        if (settingsMenuEvents != null)
+            settingsMenuEvents.enabled = false;
 
         // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -100,7 +101,8 @@ public class PausedMenUScript : MonoBehaviour
         playerMovement = FindAnyObjectByType<PlayerMovement>();
         playerMovement.enabled = true;
         sanityMeter = FindAnyObjectByType<SanityMeter>();
-        sanityMeter.enabled = true;
+        if (sanityMeter != null)
+            sanityMeter.enabled = true;
         settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         settingsMenuEvents.enabled = true;
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
@@ -108,11 +110,41 @@ public class PausedMenUScript : MonoBehaviour
         UnityEngine.Cursor.visible = false;
     }
 
-    void OnSettingsClick(ClickEvent clickEvent)
+    public void OnSettingsClick(ClickEvent clickEvent)
     {
+        // Enablear inställningsmenyn och disablear allt annat
         settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
-        var root = pausedDocument.rootVisualElement;
+        if (settingsMenuEvents != null)
+        settingsMenuEvents.enabled = true;
+        var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
+        var root = settingsDocument.rootVisualElement;
+        if (root != null)
         root.style.display = DisplayStyle.Flex;
+
+        //Disablera alla andra script så
+        mainMenyEvents = FindAnyObjectByType<MainMenyEvents>();
+        if (mainMenyEvents != null)
+            mainMenyEvents.enabled = false;
+
+        playerCameraLook = FindAnyObjectByType<PlayerCameraLook>();
+        if (playerCameraLook != null)
+            playerCameraLook.enabled = false;
+
+        playerMovement = FindAnyObjectByType<PlayerMovement>();
+        if (playerMovement != null)
+        playerMovement.enabled = false;
+
+        sanityMeter = FindAnyObjectByType<SanityMeter>();
+        if (sanityMeter != null)
+            sanityMeter.enabled = false;
+
+        pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
+        
+
+
+        UnityEngine.Cursor.lockState = CursorLockMode.None; 
+        UnityEngine.Cursor.visible = true;
+
         Debug.Log("Tröck på Settings");
     }
 

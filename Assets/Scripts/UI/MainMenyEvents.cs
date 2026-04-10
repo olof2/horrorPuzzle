@@ -8,11 +8,13 @@ public class MainMenyEvents : MonoBehaviour
     public UIDocument hudSanityMeter;
    
     private Button button;
+    private Button settingsButton;
     private PlayerMovement playerMovement;
     private PlayerCameraLook playerCameraLook;
     private PausedMenUScript pausedMenUScript;
     private GameOverScript gameOverScript;
     private SettingsMenuEvents settingsMenuEvents;
+    private MusicSystem musicSystem;
 
     private SanityMeter sanityMeter;
    
@@ -55,6 +57,9 @@ public class MainMenyEvents : MonoBehaviour
 
         button = document.rootVisualElement.Q("StartGameButton") as Button;
         button.RegisterCallback < ClickEvent>(OnPlayGameClick);
+        settingsButton = document.rootVisualElement.Q("SettingsButton") as Button;
+        button.RegisterCallback<ClickEvent>(OnSettingsClick);
+
 
         menuButtons = document.rootVisualElement.Query<Button>().ToList();
         for (int i = 0; i < menuButtons.Count; i++)
@@ -85,29 +90,38 @@ public class MainMenyEvents : MonoBehaviour
         //Enables spelkontrollerna och sanity meter efter man har startat spelet, disablar main meny dokumentet så att det inte syns längre.
         playerMovement = FindFirstObjectByType<PlayerMovement>();
         playerCameraLook = FindFirstObjectByType<PlayerCameraLook>();
+        settingsMenuEvents = FindFirstObjectByType<SettingsMenuEvents>();
         gameOverScript.enabled = true;
         playerMovement.enabled = true;
         playerCameraLook.enabled = true;
         pausedMenUScript.enabled = true;
-        settingsMenuEvents.enabled = true;
+        if (settingsMenuEvents != null)
+            settingsMenuEvents.enabled = true;
 
         sanityMeter = FindFirstObjectByType<SanityMeter>();
         //Enables sanity meter så att den kan användas i spelet.
-        sanityMeter.enabled = true;
+        if (sanityMeter != null)
+            sanityMeter.enabled = true;
         //Enable sanity metern UI
         SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
         sanityMeterUI.style.display = DisplayStyle.Flex;
         //Disablar main meny dokumentet så att det inte syns längre.
         document.enabled = false;
 
-
-        MusicSystem.Instance.Play("Test");
+        if (MusicSystem.Instance != null)
+            MusicSystem.Instance.Play("Test");
 
 
 
     }
 
-   
+    private void OnSettingsClick(ClickEvent clickEvent)
+    {
+        pausedMenUScript = FindFirstObjectByType<PausedMenUScript>();
+        pausedMenUScript.OnSettingsClick(clickEvent);
+        Debug.Log("You pressed the Settings Button");
+
+    }
 
     private void OnAllButtonsClick(ClickEvent clickEvent)
     {
