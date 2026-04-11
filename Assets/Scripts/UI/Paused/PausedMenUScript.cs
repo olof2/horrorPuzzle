@@ -17,6 +17,8 @@ public class PausedMenUScript : MonoBehaviour
     private PlayerMovement playerMovement;
     private SanityMeter sanityMeter;
     private SettingsMenuEvents settingsMenuEvents;
+    private InteractableHud interactableHud;
+    
 
 
 
@@ -79,6 +81,12 @@ public class PausedMenUScript : MonoBehaviour
         settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         if (settingsMenuEvents != null)
             settingsMenuEvents.enabled = false;
+        interactableHud = FindAnyObjectByType<InteractableHud>();
+        if (interactableHud != null)
+            interactableHud.enabled = false;
+
+        var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
+        interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
 
         // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -105,6 +113,11 @@ public class PausedMenUScript : MonoBehaviour
             sanityMeter.enabled = true;
         settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         settingsMenuEvents.enabled = true;
+        interactableHud = FindAnyObjectByType<InteractableHud>();
+        if (interactableHud != null)
+            interactableHud.enabled = true;
+
+        
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;

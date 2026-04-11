@@ -10,17 +10,21 @@ public class SettingsMenuEvents : MonoBehaviour
     private Button ControlsButton;
 
     public UIDocument settingsDocument;
+
+
     private PausedMenUScript pausedMenuScript;
     private SanityMeter sanityMeter;
     private MainMenyEvents mainMenyEvents;
     private PlayerCameraLook playerCameraLook;
     private PlayerMovement playerMovement;
+    public VolumeSlider volumeSlider;
 
 
 
     public void Awake()
     {
         settingsDocument = GetComponent<UIDocument>();
+        
 
         settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
     }
@@ -47,6 +51,12 @@ public class SettingsMenuEvents : MonoBehaviour
     }
     private void OnClickAudio(ClickEvent evt)
     {
+        var root = volumeSlider.GetComponent<UIDocument>().rootVisualElement;
+        root.style.display = DisplayStyle.Flex;
+
+        
+            volumeSlider.enabled = true;
+
         Debug.Log("Audio Button Clicked");
     }
     private void OnClickGraphics(ClickEvent evt)

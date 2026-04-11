@@ -15,6 +15,8 @@ public class MainMenyEvents : MonoBehaviour
     private GameOverScript gameOverScript;
     private SettingsMenuEvents settingsMenuEvents;
     private MusicSystem musicSystem;
+    private InteractableHud interactableHud;
+    private VolumeSlider volumeSlider;
 
     private SanityMeter sanityMeter;
    
@@ -34,10 +36,13 @@ public class MainMenyEvents : MonoBehaviour
 
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
         sanityMeterElement.style.display = DisplayStyle.None;
+        //var interactableHudElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("E");
+        //interactableHudElement.style.display = DisplayStyle.None;
 
         playerMovement.enabled = false;
         playerCameraLook.enabled = false;
         
+
 
         sanityMeter = FindFirstObjectByType<SanityMeter>();
         sanityMeter.enabled = false;
@@ -51,6 +56,12 @@ public class MainMenyEvents : MonoBehaviour
         settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         if (settingsMenuEvents != null)
             settingsMenuEvents.enabled = false;
+        interactableHud = FindAnyObjectByType<InteractableHud>();
+        if (interactableHud != null)
+         interactableHud.enabled = false;
+        volumeSlider = FindAnyObjectByType<VolumeSlider>();
+        if (volumeSlider != null)
+            volumeSlider.enabled = false;
 
 
 
@@ -97,6 +108,9 @@ public class MainMenyEvents : MonoBehaviour
         pausedMenUScript.enabled = true;
         if (settingsMenuEvents != null)
             settingsMenuEvents.enabled = true;
+        interactableHud.enabled = true;
+        if (volumeSlider != null)
+            volumeSlider.enabled = true;
 
         sanityMeter = FindFirstObjectByType<SanityMeter>();
         //Enables sanity meter så att den kan användas i spelet.
@@ -106,7 +120,8 @@ public class MainMenyEvents : MonoBehaviour
         SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
         sanityMeterUI.style.display = DisplayStyle.Flex;
         //Disablar main meny dokumentet så att det inte syns längre.
-        document.enabled = false;
+        if (document != null)
+            document.enabled = false;
 
         if (MusicSystem.Instance != null)
             MusicSystem.Instance.Play("Test");
