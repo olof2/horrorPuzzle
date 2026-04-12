@@ -53,6 +53,7 @@ public class SettingsMenuEvents : MonoBehaviour
         //volumeSlider blir en Child till settingsDocument så att den visas som en pop-up ovanpå settings menyn
         
         var volumeSliderDocument = volumeSlider.GetComponent<UIDocument>();
+
         var settingsRoot = settingsDocument.rootVisualElement;
         var volumeSliderRoot = volumeSliderDocument.rootVisualElement;
         settingsRoot.Add(volumeSliderRoot);

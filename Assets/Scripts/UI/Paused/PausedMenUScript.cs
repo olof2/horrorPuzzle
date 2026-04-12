@@ -27,6 +27,12 @@ public class PausedMenUScript : MonoBehaviour
         pausedDocument = GetComponent<UIDocument>();
 
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
+        
+       // GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
+
+       
+
+
 
 
     }
@@ -40,7 +46,7 @@ public class PausedMenUScript : MonoBehaviour
         settingsButton = root.Q("SettingsButton") as Button;
 
         //Regristerar callbacks för knapparna i pausmenyn, UnPaused() och OnExitGameClick() metoderna kommer att köras när knapparna klickas på.
-        continueButton.RegisterCallback<ClickEvent>(OnPlayGameClick);
+        continueButton.RegisterCallback<ClickEvent>(OnContinueClick);
         exitButton.RegisterCallback<ClickEvent>(OnExitGameClick);
         settingsButton.RegisterCallback<ClickEvent>(OnSettingsClick);
         Debug.Log("ContinueButton: " + continueButton);
@@ -49,7 +55,7 @@ public class PausedMenUScript : MonoBehaviour
     }
 
 
-    private void OnPlayGameClick(ClickEvent clickEvent)
+    private void OnContinueClick(ClickEvent clickEvent)
     {
         UnPaused();
 
@@ -70,37 +76,39 @@ public class PausedMenUScript : MonoBehaviour
         // Enablear pausmenyn och disablea allt annat
         interactableHud.isPaused = true;
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
+
         settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
         pausedDocument.rootVisualElement.style.display = DisplayStyle.Flex;
-        
-        mainMenyEvents.enabled = false;
-        playerCameraLook.enabled = false;
-        playerMovement.enabled = false;
-        sanityMeter.enabled = false; 
-        if (settingsMenuEvents != null)
-            settingsMenuEvents.enabled = false;
-        //if (interactableHud != null)
-        //    interactableHud.enabled = false;
 
-        if (hudSanityMeter != null)
-        {
-            var sanityMeterDocument = hudSanityMeter.GetComponent<UIDocument>();
-            sanityMeterDocument.rootVisualElement.style.display = DisplayStyle.None;
+            mainMenyEvents.enabled = false;
+            playerCameraLook.enabled = false;
+            playerMovement.enabled = false;
+            sanityMeter.enabled = false;
+            if (settingsMenuEvents != null)
+                settingsMenuEvents.enabled = false;
+            //if (interactableHud != null)
+            //    interactableHud.enabled = false;
+
+            if (hudSanityMeter != null)
+            {
+                var sanityMeterDocument = hudSanityMeter.GetComponent<UIDocument>();
+                sanityMeterDocument.rootVisualElement.style.display = DisplayStyle.None;
+            }
+            var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
+            interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
+
+            // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
+
+
+
         }
-        var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
-        interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
-
-        // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-        UnityEngine.Cursor.visible = true;
-
-
-
-    }
-    void UnPaused()
+    
+    public void UnPaused()
     {
         // Disablear pausmenyn och enablear allt annat
-                interactableHud.isPaused = false;
+         interactableHud.isPaused = false;
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
         
 
@@ -124,12 +132,18 @@ public class PausedMenUScript : MonoBehaviour
     public void OnSettingsClick(ClickEvent clickEvent)
     {
         // Enablear inställningsmenyn och disablear allt annat
-        if (settingsMenuEvents != null)
-        settingsMenuEvents.enabled = true;
+
+        
+
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
+
+       
+
         var root = settingsDocument.rootVisualElement;
         if (root != null)
-        root.style.display = DisplayStyle.Flex;
+            root.style.display = DisplayStyle.Flex;
+
+        
 
         //Disablera alla andra script så
         if (mainMenyEvents != null)
@@ -145,6 +159,7 @@ public class PausedMenUScript : MonoBehaviour
             sanityMeter.enabled = false;
 
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
+        
         
 
 

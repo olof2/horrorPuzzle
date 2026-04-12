@@ -1,4 +1,4 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/AudioSlider/VolumeSliderStyle.uss?fileID=7433441132597879392&amp;guid=04a873fab4b703b4eb621ff13502cd06&amp;type=3#VolumeSliderStyle" />
-    <ui:Slider label="Slider" value="42" high-value="100" name="VolumSlider" style="padding-top: 38px; padding-right: 300px; padding-left: 300px;" />
+    <ui:Slider label="Slider" value="42" high-value="100" name="VolumSlider" data-source-type="MusicSystem, Assembly-CSharp" data-source-path="tracks" style="padding-top: 38px; padding-right: 300px; padding-left: 300px;" />
 </ui:UXML>

@@ -5,6 +5,8 @@ public class VolumeSlider : MonoBehaviour
 {
     private UIDocument volumeSliderDocument;
     private Slider volumeSlider;
+    private MusicSystem musicSystem;
+    private float volume;
 
     private void Awake()
     {
@@ -17,17 +19,13 @@ public class VolumeSlider : MonoBehaviour
         var root = volumeSliderDocument.rootVisualElement;
         
         
-            volumeSlider = root.Q("VolumeSlider") as Slider;
+        volumeSlider = root.Q("VolumeSlider") as Slider;
 
-            volumeSlider.RegisterValueChangedCallback(OnVolumeSliderChanged);
        
     }
 
-    private void OnVolumeSliderChanged(ChangeEvent<float> evt)
-    {
-        
-        // Handle volume change here
-    }
+  
+   
     public void ShowUI()
     {
         // Positioner för volymreglaget så att det visas på rätt plats i förhållande till inställningsmenyn.
