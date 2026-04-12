@@ -12,12 +12,12 @@ public class PausedMenUScript : MonoBehaviour
     private Button continueButton;
     private Button exitButton;
     private Button settingsButton;
-    private MainMenyEvents mainMenyEvents;
-    private PlayerCameraLook playerCameraLook;
-    private PlayerMovement playerMovement;
-    private SanityMeter sanityMeter;
-    private SettingsMenuEvents settingsMenuEvents;
-    private InteractableHud interactableHud;
+    public MainMenyEvents mainMenyEvents;
+    public PlayerCameraLook playerCameraLook;
+    public PlayerMovement playerMovement;
+    public SanityMeter sanityMeter;
+    public SettingsMenuEvents settingsMenuEvents;
+    public InteractableHud interactableHud;
     
 
 
@@ -65,26 +65,28 @@ public class PausedMenUScript : MonoBehaviour
 
     }
 
-    void Paused()
+    public void Paused()
     {
         // Enablear pausmenyn och disablea allt annat
-        
+        interactableHud.isPaused = true;
+        var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
+        settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
         pausedDocument.rootVisualElement.style.display = DisplayStyle.Flex;
-        mainMenyEvents = FindAnyObjectByType<MainMenyEvents>();
+        
         mainMenyEvents.enabled = false;
-        playerCameraLook = FindAnyObjectByType<PlayerCameraLook>();
         playerCameraLook.enabled = false;
-        playerMovement = FindAnyObjectByType<PlayerMovement>();
         playerMovement.enabled = false;
-        sanityMeter = FindAnyObjectByType<SanityMeter>();
         sanityMeter.enabled = false; 
-        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         if (settingsMenuEvents != null)
             settingsMenuEvents.enabled = false;
-        interactableHud = FindAnyObjectByType<InteractableHud>();
-        if (interactableHud != null)
-            interactableHud.enabled = false;
+        //if (interactableHud != null)
+        //    interactableHud.enabled = false;
 
+        if (hudSanityMeter != null)
+        {
+            var sanityMeterDocument = hudSanityMeter.GetComponent<UIDocument>();
+            sanityMeterDocument.rootVisualElement.style.display = DisplayStyle.None;
+        }
         var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
         interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
 
@@ -98,26 +100,22 @@ public class PausedMenUScript : MonoBehaviour
     void UnPaused()
     {
         // Disablear pausmenyn och enablear allt annat
-
+                interactableHud.isPaused = false;
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
         
 
-        mainMenyEvents = FindAnyObjectByType<MainMenyEvents>();
         mainMenyEvents.enabled = true;
-        playerCameraLook = FindAnyObjectByType<PlayerCameraLook>();
         playerCameraLook.enabled = true;
-        playerMovement = FindAnyObjectByType<PlayerMovement>();
         playerMovement.enabled = true;
-        sanityMeter = FindAnyObjectByType<SanityMeter>();
         if (sanityMeter != null)
             sanityMeter.enabled = true;
-        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         settingsMenuEvents.enabled = true;
-        interactableHud = FindAnyObjectByType<InteractableHud>();
-        if (interactableHud != null)
-            interactableHud.enabled = true;
+        //if (interactableHud != null)
+        //    interactableHud.enabled = true;
+        var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
+        interactableHudDocument.rootVisualElement.style.display = DisplayStyle.Flex;
 
-        
+
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
@@ -126,7 +124,6 @@ public class PausedMenUScript : MonoBehaviour
     public void OnSettingsClick(ClickEvent clickEvent)
     {
         // Enablear inställningsmenyn och disablear allt annat
-        settingsMenuEvents = FindAnyObjectByType<SettingsMenuEvents>();
         if (settingsMenuEvents != null)
         settingsMenuEvents.enabled = true;
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
@@ -135,19 +132,15 @@ public class PausedMenUScript : MonoBehaviour
         root.style.display = DisplayStyle.Flex;
 
         //Disablera alla andra script så
-        mainMenyEvents = FindAnyObjectByType<MainMenyEvents>();
         if (mainMenyEvents != null)
             mainMenyEvents.enabled = false;
 
-        playerCameraLook = FindAnyObjectByType<PlayerCameraLook>();
         if (playerCameraLook != null)
             playerCameraLook.enabled = false;
 
-        playerMovement = FindAnyObjectByType<PlayerMovement>();
         if (playerMovement != null)
         playerMovement.enabled = false;
 
-        sanityMeter = FindAnyObjectByType<SanityMeter>();
         if (sanityMeter != null)
             sanityMeter.enabled = false;
 
@@ -158,7 +151,6 @@ public class PausedMenUScript : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.None; 
         UnityEngine.Cursor.visible = true;
 
-        Debug.Log("Tröck på Settings");
     }
 
     void OnExitGameClick(ClickEvent clickEvent)

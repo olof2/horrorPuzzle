@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427150870}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -1656,6 +1656,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hudSanityMeter: {fileID: 0}
+  mainMenyEvents: {fileID: 2050248568}
+  playerCameraLook: {fileID: 909090098}
+  playerMovement: {fileID: 909090099}
+  sanityMeter: {fileID: 1158758980}
+  settingsMenuEvents: {fileID: 948592564}
+  interactableHud: {fileID: 1822541302}
 --- !u!1 &691182881 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7427839531138677809, guid: 0b317e4d4c2b9e04d84af646dc7b4bae, type: 3}
@@ -1999,6 +2005,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddf0aaafc1c8b448bcb50e88dd4d2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+--- !u!114 &909090098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7834673664347297285, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
+  m_PrefabInstance: {fileID: 1974761191}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909090086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b86de18038d494a87c7a2504024a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &909090099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4743268418522749690, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
+  m_PrefabInstance: {fileID: 1974761191}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909090086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf43fb9e9c56eb4c961486d311d0aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &913501920 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3762241679224914554, guid: 0b317e4d4c2b9e04d84af646dc7b4bae, type: 3}
@@ -2047,7 +2076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsDocument: {fileID: 0}
-  volumeSlider: {fileID: 0}
+  pausedMenuScript: {fileID: 689401402}
+  volumeSlider: {fileID: 427150873}
 --- !u!114 &948592565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,6 +2402,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sanityLevel: 0
   increaseRate: 0
+--- !u!114 &1170926950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+  m_PrefabInstance: {fileID: 154026062497495825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780d4d521510f084ba478a54e3a5d355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173340852 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4134121229996992002, guid: 0b317e4d4c2b9e04d84af646dc7b4bae, type: 3}
@@ -4636,6 +4677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ddf0aaafc1c8b448bcb50e88dd4d2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
 --- !u!1 &1890374293
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,6 +5600,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hudSanityMeter: {fileID: 1158758977}
+  playerMovement: {fileID: 909090099}
+  playerCameraLook: {fileID: 909090098}
+  pausedMenUScript: {fileID: 689401402}
+  gameOverScript: {fileID: 1170926950}
+  settingsMenuEvents: {fileID: 948592564}
+  musicSystem: {fileID: 0}
+  interactableHud: {fileID: 1822541302}
+  volumeSlider: {fileID: 427150873}
+  sanityMeter: {fileID: 1158758980}
 --- !u!1 &2060392456
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class InteractableHud : MonoBehaviour
     private MainMenyEvents mainMenyEvents;
 
     private float interactDistance;
+    public bool isPaused;
 
 
     //private void Start()
@@ -55,8 +56,16 @@ public class InteractableHud : MonoBehaviour
     //Denna metod kollar om spelaren tittar på ett interagerbart objekt inom en viss räckvidd, och visar eller döljer interaktions-HUD:en baserat på det.
     private void ToggleInteractableHud()
     {
-        
-            RaycastHit hit;
+        if (isPaused)
+        {
+                if (interactableHud != null)
+                    interactableHud.rootVisualElement.style.display = DisplayStyle.None;
+                return;
+        }
+
+
+
+        RaycastHit hit;
 
             
 
@@ -84,5 +93,18 @@ public class InteractableHud : MonoBehaviour
         }
 
 
+    }
+
+    public void HideUI()
+    {
+        if (interactableHud != null)
+            interactableHud.rootVisualElement.style.display = DisplayStyle.None;
+        interactableHud.enabled = false;
+    }
+    public void ShowUI()
+    {
+        if (interactableHud != null)
+            interactableHud.rootVisualElement.style.display = DisplayStyle.Flex;
+        interactableHud.enabled = true;
     }
 }
