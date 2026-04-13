@@ -1,7 +1,9 @@
 using UnityEngine;
+
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     public static T Instance { get; private set; }
+
     protected virtual void Awake()
     {
         if (Instance != null)
@@ -11,12 +13,14 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         Instance = this as T;
     }
+
     protected virtual void OnApplicationQuit()
     {
         Instance = null;
         Destroy(gameObject);
     }
 }
+
 public abstract class PersistentSingleton<T> : Singleton<T> where T : MonoBehaviour
 {
     protected override void Awake()
