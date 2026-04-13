@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 427150872}
   - component: {fileID: 427150871}
   - component: {fileID: 427150873}
+  - component: {fileID: 427150874}
   m_Layer: 5
   m_Name: AudioSlider
   m_TagString: Untagged
@@ -1091,6 +1092,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4163833320c794396dcf9cba16ed84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &427150874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427150870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562ec7046c11bf145b11a0661844cb66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 1941941593}
 --- !u!1 &453912999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4015412900822819786, guid: 0b317e4d4c2b9e04d84af646dc7b4bae, type: 3}
@@ -4906,6 +4920,7 @@ MonoBehaviour:
   - trackName: Test
     clip: {fileID: 8300000, guid: 68db7e507d525994b82c84af5d7e9311, type: 3}
     source: {fileID: 0}
+  volume: 0.141
 --- !u!4 &1941941594
 Transform:
   m_ObjectHideFlags: 0
