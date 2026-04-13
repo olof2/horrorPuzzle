@@ -11,6 +11,11 @@ public class SanityMeter : Singleton<SanityMeter>
     public float sanityLevel = 0f;
     public float increaseRate = 0f; // Rate at which sanity decreases per second
 
+    private AudioSource audioSource;
+    public AudioClip sanitySound;
+
+    private bool hasPlayed50 = false; // Så det bara spelas en gång
+
     void Start()
     {
         // Find the UIDocument in the scene and get the SanityMeterUI component
@@ -23,6 +28,8 @@ public class SanityMeter : Singleton<SanityMeter>
         
 
         sanityLevel = Mathf.Clamp(sanityLevel, 0f, 100f); // Ensure sanity level starts within bounds
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,6 +43,12 @@ public class SanityMeter : Singleton<SanityMeter>
         //    gameOverScript.GameOver();  
         //    Debug.Log("Sanity is at maximum!");
         //}
+
+        if(sanityLevel >= 50f && !hasPlayed50)
+        {
+            audioSource.PlayOneShot(sanitySound);
+            hasPlayed50 = true; 
+        }
     }
 }
 
