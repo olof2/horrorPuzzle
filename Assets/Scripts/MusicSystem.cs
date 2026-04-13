@@ -16,6 +16,16 @@ public class MusicSystem : Singleton<MusicSystem>
     [SerializeField] private MusicTrack[] tracks;
     [SerializeField, Range(0f, 1f)] private float volume;
 
+    public float Volume
+    {
+        get => volume;
+        set
+        {
+            volume = value;
+            SetVolume(value);
+        }
+    }
+
     protected override void Awake()
     {
         base.Awake();
