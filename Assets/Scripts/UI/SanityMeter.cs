@@ -12,9 +12,15 @@ public class SanityMeter : Singleton<SanityMeter>
     public float increaseRate = 0f; // Rate at which sanity decreases per second
 
     private AudioSource audioSource;
-    public AudioClip sanitySound;
+    public AudioClip sanitySound25;
+    public AudioClip sanitySound50;
+    public AudioClip sanitySound75;
+    public AudioClip increaseSound100;
 
-    private bool hasPlayed50 = false; // Så det bara spelas en gång
+    private bool hasPlayed25 = false; // Så det bara spelas en gång
+    private bool hasPlayed50 = false;
+    private bool hasPlayed75 = false;
+    private bool hasPlayed100 = false;
 
     void Start()
     {
@@ -43,11 +49,25 @@ public class SanityMeter : Singleton<SanityMeter>
         //    gameOverScript.GameOver();  
         //    Debug.Log("Sanity is at maximum!");
         //}
-
+        if(sanityLevel >= 25f && !hasPlayed25)
+        {
+            audioSource.PlayOneShot(sanitySound25);
+            hasPlayed25 = true; // Mark as played to prevent replaying
+        }
         if(sanityLevel >= 50f && !hasPlayed50)
         {
-            audioSource.PlayOneShot(sanitySound);
+            audioSource.PlayOneShot(sanitySound50);
             hasPlayed50 = true; 
+        }
+        if (sanityLevel >= 75f && !hasPlayed75)
+        {
+            audioSource.PlayOneShot(sanitySound75);
+            hasPlayed75 = true; 
+        }
+        if(sanityLevel >= 100f && !hasPlayed100)
+        {
+            audioSource.PlayOneShot(increaseSound100);
+            hasPlayed100 = true; 
         }
     }
 }
