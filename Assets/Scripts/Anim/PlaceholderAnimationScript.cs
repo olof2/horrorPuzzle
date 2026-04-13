@@ -13,7 +13,7 @@ public class PlaceholderAnimationScript : MonoBehaviour                 //script
 
     public float sanityMeterThreshold = 25f;                            //sanity meter level där animationer kan börja triggas
 
-    public float animationCooldownTimer = 0f;                           //cooldown timer för animationer + min och max cooldown time
+    private float animationCooldownTimer = 0f;                          //cooldown timer för animationer + min och max cooldown time
     public float minCooldownTime = 6f;
     public float maxCooldownTime = 16f;
 
