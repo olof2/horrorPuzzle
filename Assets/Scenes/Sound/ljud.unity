@@ -1522,8 +1522,24 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: d3a7b37f033dd9344ae16a066d9dc541, type: 3}
     - target: {fileID: 7768352715801857141, guid: 66ff766ac2a6109409870900dfa1d763, type: 3}
       propertyPath: increaseRate
-      value: 0.05
+      value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 7768352715801857141, guid: 66ff766ac2a6109409870900dfa1d763, type: 3}
+      propertyPath: increaseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ea9d3fce63f0dce47b57557bdd774ef0, type: 3}
+    - target: {fileID: 7768352715801857141, guid: 66ff766ac2a6109409870900dfa1d763, type: 3}
+      propertyPath: sanitySound50
+      value: 
+      objectReference: {fileID: 8300000, guid: d3a7b37f033dd9344ae16a066d9dc541, type: 3}
+    - target: {fileID: 7768352715801857141, guid: 66ff766ac2a6109409870900dfa1d763, type: 3}
+      propertyPath: increaseSound75
+      value: 
+      objectReference: {fileID: 8300000, guid: ea9d3fce63f0dce47b57557bdd774ef0, type: 3}
+    - target: {fileID: 7768352715801857141, guid: 66ff766ac2a6109409870900dfa1d763, type: 3}
+      propertyPath: increaseSound100
+      value: 
+      objectReference: {fileID: 8300000, guid: ea9d3fce63f0dce47b57557bdd774ef0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1887,7 +1903,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.092
   m_Pitch: 1
   Loop: 0
   Mute: 0
