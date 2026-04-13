@@ -25609,6 +25609,22 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6076426996029014482, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076426996029014482, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076426996029014482, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076426996029014482, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6683485624185959021, guid: 3b51f47a041d1b741b1026444edf821e, type: 3}
       propertyPath: m_Name
       value: Player
