@@ -27859,6 +27859,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMeny
       objectReference: {fileID: 0}
+    - target: {fileID: 2819286641414930160, guid: 6c3fd55c79a41d04a83a7705a93a2fd1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32576,6 +32580,7 @@ MonoBehaviour:
   - trackName: Test
     clip: {fileID: 8300000, guid: 68db7e507d525994b82c84af5d7e9311, type: 3}
     source: {fileID: 0}
+  volume: 0
 --- !u!4 &2122477580
 Transform:
   m_ObjectHideFlags: 0

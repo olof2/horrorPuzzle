@@ -4,25 +4,21 @@ public class ImpactSound : MonoBehaviour
 {
 
     private AudioSource audioSource;
-    private float minVelocity = 2f;
-    void Start()
+
+    public void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        
+                audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void PlayImpact()
     {
-        if (collision.relativeVelocity.magnitude > minVelocity)
-        {
-            if(!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-                
-        }
-
+        Debug.Log("Playing impact sound");
+        audioSource.Play(); 
     }
+   
+
+
+ 
 
 
 }
