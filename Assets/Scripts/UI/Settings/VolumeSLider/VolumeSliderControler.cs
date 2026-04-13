@@ -1,16 +1,12 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class VolumeSliderControler : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    public MusicSystem music;
+    private void OnEnable()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       
     }
 }
