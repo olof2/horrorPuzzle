@@ -12,6 +12,9 @@ public class VolumeSlider : MonoBehaviour
     {
         volumeSliderDocument = GetComponent<UIDocument>();
         volumeSliderDocument.rootVisualElement.style.display = DisplayStyle.None;
+
+        //volumeSlider.value = MusicSystem.Instance.GetVolume();
+        
     }
 
     private void OnEnable()
@@ -39,6 +42,28 @@ public class VolumeSlider : MonoBehaviour
         root.style.display = DisplayStyle.Flex;
 
     }
+
+    void Update()
+    {
+        if (volumeSlider != null)
+        {
+            volume = volumeSlider.value;
+            // Här kan du implementera logiken för att uppdatera volymen i ditt ljud
+        }
+    }
+
+    private void ChangeVolume()
+    {
+        
+        
+    }
+
+    private void OnBeforeTransformParentChanged()
+    {
+        // När inställningsmenyn stängs, döljer vi volymreglaget
+        HideUI();
+    }
+
     public void HideUI()
     {
         volumeSliderDocument.rootVisualElement.style.display = DisplayStyle.None;

@@ -88,5 +88,6 @@ public partial class SanityMeterUI : VisualElement
     public void hideUI()
     {
         this.style.display = DisplayStyle.None;
+        
     }
 }

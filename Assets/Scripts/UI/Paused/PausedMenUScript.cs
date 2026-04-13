@@ -18,7 +18,8 @@ public class PausedMenUScript : MonoBehaviour
     public SanityMeter sanityMeter;
     public SettingsMenuEvents settingsMenuEvents;
     public InteractableHud interactableHud;
-    
+    public SanityMeterUI sanityMeterUI;
+
 
 
 
@@ -27,14 +28,7 @@ public class PausedMenUScript : MonoBehaviour
         pausedDocument = GetComponent<UIDocument>();
 
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
-        
-       // GetComponent<UIDocument>().rootVisualElement.style.display = DisplayStyle.None;
-
-       
-
-
-
-
+      
     }
 
     private void OnEnable()
@@ -73,27 +67,29 @@ public class PausedMenUScript : MonoBehaviour
 
     public void Paused()
     {
-        // Enablear pausmenyn och disablea allt annat
+        //
         interactableHud.isPaused = true;
-        var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
 
+        //Visa pausmenyn UI och gömmer setttings UI
+        var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
         settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
         pausedDocument.rootVisualElement.style.display = DisplayStyle.Flex;
 
-            mainMenyEvents.enabled = false;
+        //Disablear alla andra script så att spelaren inte kan röra sig eller titta runt när pausmenyn är uppe,
+        //och gömmer sanity metern och diaktiverar mätareninteraktions-HUD:en.
+        mainMenyEvents.enabled = false;
             playerCameraLook.enabled = false;
             playerMovement.enabled = false;
             sanityMeter.enabled = false;
             if (settingsMenuEvents != null)
                 settingsMenuEvents.enabled = false;
-            //if (interactableHud != null)
-            //    interactableHud.enabled = false;
 
-            if (hudSanityMeter != null)
-            {
-                var sanityMeterDocument = hudSanityMeter.GetComponent<UIDocument>();
-                sanityMeterDocument.rootVisualElement.style.display = DisplayStyle.None;
-            }
+           var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
+           sanityMeterElement.style.display = DisplayStyle.None;
+           //if (sanityMeterUI != null)
+           // {
+           //      sanityMeterUI.hideUI();
+           //  }
             var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
             interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
 
@@ -123,6 +119,9 @@ public class PausedMenUScript : MonoBehaviour
         var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
         interactableHudDocument.rootVisualElement.style.display = DisplayStyle.Flex;
 
+        var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
+        sanityMeterElement.style.display = DisplayStyle.Flex;
+
 
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
@@ -131,14 +130,11 @@ public class PausedMenUScript : MonoBehaviour
 
     public void OnSettingsClick(ClickEvent clickEvent)
     {
-        // Enablear inställningsmenyn och disablear allt annat
 
-        
+        // Talar om att settings öppnades från pausmenyn.
+        settingsMenuEvents.Open(SettingsMenuEvents.Source.pausedMenu);
 
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
-
-       
-
         var root = settingsDocument.rootVisualElement;
         if (root != null)
             root.style.display = DisplayStyle.Flex;
@@ -159,9 +155,11 @@ public class PausedMenUScript : MonoBehaviour
             sanityMeter.enabled = false;
 
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
-        
-        
 
+        var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
+        sanityMeterElement.style.display = DisplayStyle.None;
+
+        //sanityMeterUI.hideUI();
 
         UnityEngine.Cursor.lockState = CursorLockMode.None; 
         UnityEngine.Cursor.visible = true;

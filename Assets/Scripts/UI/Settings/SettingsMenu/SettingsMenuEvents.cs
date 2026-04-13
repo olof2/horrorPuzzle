@@ -13,13 +13,29 @@ public class SettingsMenuEvents : MonoBehaviour
 
 
     public PausedMenUScript pausedMenuScript;
-    private SanityMeter sanityMeter;
-    private MainMenyEvents mainMenyEvents;
-    private PlayerCameraLook playerCameraLook;
-    private PlayerMovement playerMovement;
+    public SanityMeter sanityMeter;
+    public MainMenyEvents mainMenyEvents;
+    public PlayerCameraLook playerCameraLook;
+    public PlayerMovement playerMovement;
     public VolumeSlider volumeSlider;
+    public SettingsMenuEvents settingsMenuEvents;
 
+    public enum Source
+    {
+        pausedMenu,
+        mainMenu,
+        None
 
+    }
+
+    public Source currentSource;
+
+    //Denna metod öppnar inställningsmenyn och tar emot en parameter som indikerar varifrån den öppnades,
+    //så att den kan hantera "Back" knappen på rätt sätt.
+    public void Open(Source source)
+    {
+        currentSource = source;
+    }
 
     public void Awake()
     {
@@ -71,7 +87,13 @@ public class SettingsMenuEvents : MonoBehaviour
     }
     private void OnClickBack(ClickEvent evt)
     {
-        pausedMenuScript.Paused();
+        if (currentSource == Source.pausedMenu)
+        {
+            pausedMenuScript.Paused();
+        }
+        if (currentSource == Source.mainMenu)
+            mainMenyEvents.OpenMainMenu();
+
         Debug.Log("Back Button Clicked");
     }
 

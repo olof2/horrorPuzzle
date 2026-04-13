@@ -52,17 +52,26 @@ public class MainMenyEvents : MonoBehaviour
         var root = document.rootVisualElement;
 
         startButton = root.Q<Button>("StartGameButton");
-        settingsButton = document.rootVisualElement.Q("SettingsButton") as Button;
+        settingsButton = root.Q<Button>("Settings");
         exitButton = root.Q<Button>("Exit");
         
-        startButton.RegisterCallback<ClickEvent>(OnPlayGameClick);
-        exitButton.RegisterCallback<ClickEvent>(OnExitClick);
-
+      
 
 
     }
-    
 
+    private void OnEnable()
+    {
+        var root = document.rootVisualElement;
+
+      
+
+        startButton.RegisterCallback<ClickEvent>(OnPlayGameClick);
+        settingsButton.RegisterCallback<ClickEvent>(OnSettingsClick);
+        exitButton.RegisterCallback<ClickEvent>(OnExitClick);
+
+
+    }
 
 
 
@@ -70,7 +79,16 @@ public class MainMenyEvents : MonoBehaviour
     {
         if(startButton  != null)
         startButton.UnregisterCallback < ClickEvent>(OnPlayGameClick);
-       
+        if (settingsButton != null)
+            settingsButton.UnregisterCallback<ClickEvent>(OnSettingsClick);
+        if (exitButton != null)
+            exitButton.UnregisterCallback<ClickEvent>(OnExitClick);
+
+
+
+
+
+
 
 
 
@@ -105,8 +123,12 @@ public class MainMenyEvents : MonoBehaviour
         SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
         sanityMeterUI.style.display = DisplayStyle.Flex;
 
-        if (document != null)
-            document.enabled = false;
+
+        //if (document != null)
+        //    document.enabled = false;
+            document.rootVisualElement.style.display = DisplayStyle.None;
+    
+           
 
         if (MusicSystem.Instance != null)
             MusicSystem.Instance.Play("Test");
@@ -115,18 +137,56 @@ public class MainMenyEvents : MonoBehaviour
 
     }
 
+   public void OpenMainMenu()
+    {
+        var root = document.rootVisualElement;
+        root.style.display = DisplayStyle.Flex;
+
+        //gameObject.SetActive(false);
+        //gameObject.SetActive(true);
+
+
+        var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
+        sanityMeterElement.style.display = DisplayStyle.None;
+
+        var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
+        settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
+
+        playerMovement.enabled = false;
+        playerCameraLook.enabled = false;
+        sanityMeter.enabled = false;
+
+        if (pausedMenUScript != null)
+            pausedMenUScript.enabled = false;
+        if (gameOverScript != null)
+            gameOverScript.enabled = false;
+        if (settingsMenuEvents != null) 
+            settingsMenuEvents.enabled = false;
+
+        if (interactableHud != null)
+            interactableHud.enabled = false;
+        if (volumeSlider != null)
+            volumeSlider.enabled = false;
+ 
+
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
+    }
+
     private void OnSettingsClick(ClickEvent clickEvent)
     {
         // Enablear inställningsmenyn och disablear allt annat
-      
+        settingsMenuEvents.Open(SettingsMenuEvents.Source.mainMenu);
+
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
-        settingsDocument.enabled = true;
+       // settingsDocument.enabled = true;
         var root = settingsDocument.rootVisualElement;
         if (root != null)
             root.style.display = DisplayStyle.Flex;
 
-       // document.rootVisualElement.style.display = DisplayStyle.None;
-       document.enabled = false;
+        document.rootVisualElement.style.display = DisplayStyle.None;
+      // document.enabled = false;
         
 
         if (playerCameraLook != null)
@@ -138,6 +198,7 @@ public class MainMenyEvents : MonoBehaviour
         if (sanityMeter != null)
             sanityMeter.enabled = false;
 
+        
 
 
 
