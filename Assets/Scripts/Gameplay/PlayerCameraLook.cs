@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerCameraLook : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class PlayerCameraLook : MonoBehaviour
     private int LayerNumber; //Layer index där objekt vi håller i renderas
 
     private bool canLookAround = true;
+
+    //Flashlight under
+    [SerializeField] private Light flash;
+
     void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -43,6 +48,8 @@ public class PlayerCameraLook : MonoBehaviour
         }
         SendInteractRay();
         if (heldObject != null) HoldingObject();
+
+        FlashLight();
     }
 
     void MouseLookLeftnRight()
@@ -52,6 +59,7 @@ public class PlayerCameraLook : MonoBehaviour
         //rört sig mot förra frame'en
 
         playerTransform.Rotate(Vector3.up * mouse);
+        flash.transform.rotation = playerTransform.rotation;
     }
 
     void MouseLookUpnDown()
@@ -60,6 +68,7 @@ public class PlayerCameraLook : MonoBehaviour
         cameraRotation -= mouse; //måste flippa värdet
         cameraRotation = Mathf.Clamp(cameraRotation, -90, 90);
         cameraTransform.localRotation = Quaternion.Euler(cameraRotation, 0, 0); //Local transform eftersom vi vill rotera
+        flash.transform.localRotation = cameraTransform.localRotation;
         //kameran med hänsyn till "parent" Player
     }
 
@@ -172,5 +181,10 @@ public class PlayerCameraLook : MonoBehaviour
         {
             heldObject.transform.position = transform.position + new Vector3(0f, -0.5f, 0f); //undvik droppa över spelaren
         }
+    }
+
+    void FlashLight()
+    {
+        flash.enabled = 50 < SanityMeter.Instance.sanityLevel; //50 ska vara hälften av sanitylevel
     }
 }
