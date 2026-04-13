@@ -14,6 +14,7 @@ public class MusicTrack
 public class MusicSystem : Singleton<MusicSystem>
 {
     [SerializeField] private MusicTrack[] tracks;
+    [SerializeField, Range(0f, 1f)] private float volume;
 
     protected override void Awake()
     {
@@ -25,7 +26,7 @@ public class MusicSystem : Singleton<MusicSystem>
             newSource.clip = tracks[i].clip;
             newSource.loop = true;
             newSource.playOnAwake = false;
-            newSource.volume = 1f;
+            newSource.volume = volume;
 
             tracks[i].source = newSource;
         }
@@ -36,6 +37,8 @@ public class MusicSystem : Singleton<MusicSystem>
         MusicTrack track = GetTrack(name);
 
         if (track == null) return;
+
+        track.source.volume = volume;
 
         if (track.source.time > 0f && !track.source.isPlaying)
             track.source.UnPause();
@@ -59,6 +62,17 @@ public class MusicSystem : Singleton<MusicSystem>
         if (track == null) return;
 
         track.source.Stop();
+    }
+
+    public void SetVolume (float newVolume)
+    {
+        volume = Mathf.Clamp01(newVolume);
+
+        for (int i = 0; i < tracks.Length; i++)
+        {
+            if (tracks[i].source != null)
+                tracks[i].source.volume = volume;
+        }
     }
 
     public void FadeIn(string name, float fadeTime)
@@ -115,7 +129,7 @@ public class MusicSystem : Singleton<MusicSystem>
         while (timer < fadeTime)
         {
             timer += Time.deltaTime;
-            track.source.volume = Mathf.Lerp(0f, 1f, timer / fadeTime);
+            track.source.volume = Mathf.Lerp(0f, volume, timer / fadeTime);
             yield return null;
         }
 
@@ -136,6 +150,6 @@ public class MusicSystem : Singleton<MusicSystem>
 
         track.source.volume = 0f;
         track.source.Stop();
-        track.source.volume = 1f;
+        track.source.volume = volume;
     }
 }
