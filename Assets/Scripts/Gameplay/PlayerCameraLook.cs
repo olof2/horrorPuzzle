@@ -185,6 +185,6 @@ public class PlayerCameraLook : MonoBehaviour
 
     void FlashLight()
     {
-        flash.enabled = 50 < SanityMeter.Instance.sanityLevel; //50 ska vara hälften av sanitylevel
+        flash.enabled = 0 < SanityMeter.Instance.sanityLevel; //0 ska vara hälften av sanitylevel
     }
 }

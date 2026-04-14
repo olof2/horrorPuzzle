@@ -9,7 +9,7 @@ namespace PadlockSystem
         [SerializeField] private float rayDistance = 5; //Distance for interaction
 
         [Header("Raycast Pickup Input")]
-        [SerializeField] private KeyCode interactKey = KeyCode.Mouse0;
+        private KeyCode interactKey = KeyCode.E;
 
         private PadlockItem padlockItem;      // Currently targeted padlock
         private Camera _camera;               // Cached camera reference
@@ -25,6 +25,7 @@ namespace PadlockSystem
 
         void Update()
         {
+
             // Raycast from centre of screen forward
             if (Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f)), transform.forward, out RaycastHit hit, rayDistance))
             {
@@ -36,6 +37,7 @@ namespace PadlockSystem
                 {
                     padlockItem = padlock;
                     HighlightCrosshair(true);
+                    
                 }
                 else
                 {
@@ -70,7 +72,8 @@ namespace PadlockSystem
         void HighlightCrosshair(bool on)
         {
             // Update UI crosshair highlight
-            PLUIManager.instance.HighlightCrosshair(on);
+            //PLUIManager.instance.HighlightCrosshair(on);
+            InteractableHud.Instance.ShowUI();
         }
     }
 }

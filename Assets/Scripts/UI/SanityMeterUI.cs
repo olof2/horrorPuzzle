@@ -15,7 +15,7 @@ public partial class SanityMeterUI : VisualElement
         get => sanityLevel;
         set
         {
-            sanityLevel = Mathf.Clamp(value, 0.01f, 100f);
+            sanityLevel = Mathf.Clamp(value, 0.01f, 600f);
             MarkDirtyRepaint();
         }
     }
@@ -71,7 +71,7 @@ public partial class SanityMeterUI : VisualElement
 
 
         // Fill
-        float amount = width * (sanityLevel / 100f);
+        float amount = width * (sanityLevel / 600f);
 
         painter.BeginPath();
         painter.MoveTo(new Vector2(x, y));
