@@ -71,7 +71,7 @@ public class GameOverScript : MonoBehaviour
      void Update()
     {
         sanityMeter = FindFirstObjectByType<SanityMeter>();
-        if ( sanityMeter.sanityLevel >= 100f)
+        if ( sanityMeter.sanityLevel >= 600f)
         {
             GameOver();
             Debug.Log("Game Over! Sanity is at maximum!");
