@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UIElements;
 
 public class VolumeSlider : MonoBehaviour
@@ -7,6 +8,8 @@ public class VolumeSlider : MonoBehaviour
     private Slider volumeSlider;
     private MusicSystem musicSystem;
     private float volume;
+
+    public AudioMixer SFXmixer;
 
     private void Awake()
     {
@@ -21,10 +24,19 @@ public class VolumeSlider : MonoBehaviour
     {
         var root = volumeSliderDocument.rootVisualElement;
         
-        
         volumeSlider = root.Q("VolumeSlider") as Slider;
 
-       
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = 1f;
+            volumeSlider.RegisterValueChangedCallback(evt => {SetVolume(evt.newValue);});
+
+        }
+    }
+
+    private void SetVolume(float value)
+    {
+        SFXmixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20); // Omvandlar volymen till en logaritmisk skala
     }
 
   
