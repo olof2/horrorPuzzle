@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
+
+    public AudioMixerGroup sfxGroup;
     private void Awake()
     {
         instance = this;
@@ -22,6 +25,10 @@ public class AudioManager : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = audioClip;
         audioSource.volume = volume;
+
+        audioSource.outputAudioMixerGroup = sfxGroup;
+
+
         audioSource.Play();
 
         yield return  new WaitForSeconds(audioSource.clip.length * 2);
