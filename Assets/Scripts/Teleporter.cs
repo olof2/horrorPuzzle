@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TeleporterScript : MonoBehaviour
@@ -6,7 +5,7 @@ public class TeleporterScript : MonoBehaviour
     [SerializeField] private Transform launchZone;      //fält för att sätta en launchzone i inspektorn, tar dess positon
     [SerializeField] private Transform destinationZone;     ////fält för att sätta en destinationzone i inspektorn, tar dess positon
 
-    private Vector3 teleportDestination = new Vector3(0f,0f,0f);
+    private Vector3 teleportDestination = new Vector3(0f, 0f, 0f);
 
 
     void Awake()
@@ -18,17 +17,22 @@ public class TeleporterScript : MonoBehaviour
             {
                 teleportDestination = destinationZone.position - launchZone.position;
                 //beräknar teleportDestination så det går att använda modulärt
+
+                //Debug.Log("launchZone.position set to: " + launchZone.position);
+                //Debug.Log("destinationZone.position set to: " + destinationZone.position);
+                Debug.Log("teleportDestination set to: " + teleportDestination);
             }
         }
-        Debug.Log("launchZone.position set to: " + launchZone.position);
-        Debug.Log("destinationZone.position set to: " + destinationZone.position);
-        Debug.Log("teleportDestination set to: " + teleportDestination);
+        else
+        {
+            Debug.LogError("Launch Zone is not assigned in the inspector.");
+        }
 
     }
 
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,8 +41,8 @@ public class TeleporterScript : MonoBehaviour
         {
             // Teleport the player to a new location, other = player som går in i triggerzone
             other.transform.position += teleportDestination;
-            
-            Debug.Log("Player teleported to: " + teleportDestination);
+
+            Debug.Log("Player teleported to: " + other.transform.position);
         }
     }
 }
