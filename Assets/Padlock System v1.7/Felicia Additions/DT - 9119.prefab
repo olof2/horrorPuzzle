@@ -730,7 +730,7 @@ MonoBehaviour:
   padlockPrefab: {fileID: 7896799911302215051, guid: e231faf2b7eddb0469e769dc65a65c25, type: 3}
   distanceFromCamera: 0.3
   lockOpen: LockOpen
-  closeKey: 324
+  closeKey: 101
   padlockInteractSound: {fileID: 11400000, guid: 64628a344a214bb4baa072b6c92c78b1, type: 2}
   padlockSpinSound: {fileID: 11400000, guid: bb0feec2724998941a9e0e30643c0ee8, type: 2}
   padlockUnlockSound: {fileID: 11400000, guid: 6006f370076112d44b46dd56ebdb8ccf, type: 2}

@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class InteractableHud : MonoBehaviour
+public class InteractableHud : Singleton<InteractableHud>
 {
     private UIDocument interactableHud;
     private Button ButtonE;
     private PlayerCameraLook playerCameraLook;
-    private MainMenyEvents mainMenyEvents;
 
     private float interactDistance;
     public bool isPaused;
@@ -21,8 +20,9 @@ public class InteractableHud : MonoBehaviour
 
     //}
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         interactableHud = GetComponent<UIDocument>();
         playerCameraLook = FindAnyObjectByType<PlayerCameraLook>();
 
@@ -47,14 +47,11 @@ public class InteractableHud : MonoBehaviour
        
             ToggleInteractableHud();
 
-        
-
-      
-
+  
     }
 
     //Denna metod kollar om spelaren tittar på ett interagerbart objekt inom en viss räckvidd, och visar eller döljer interaktions-HUD:en baserat på det.
-    private void ToggleInteractableHud()
+    public void ToggleInteractableHud()
     {
         if (isPaused)
         {
@@ -66,8 +63,6 @@ public class InteractableHud : MonoBehaviour
 
 
         RaycastHit hit;
-
-            
 
             if (Physics.Raycast(playerCameraLook.cameraTransform.position, playerCameraLook.cameraTransform.TransformDirection(Vector3.forward), out hit, interactDistance))
             {

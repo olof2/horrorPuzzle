@@ -9,7 +9,8 @@ public class SanityMeter : Singleton<SanityMeter>
     private GameOverScript gameOverScript;
 
     public float sanityLevel = 0f;
-    public float increaseRate = 0f; // Rate at which sanity decreases per second
+    [SerializeField] public float maxSanityLevel = 100f;
+    [SerializeField] public float increaseRate = 0f; // Rate at which sanity decreases per second
 
     private AudioSource audioSource;
     public AudioClip sanitySound25;
@@ -33,7 +34,7 @@ public class SanityMeter : Singleton<SanityMeter>
         sanityMeterUI.sanityLevel = sanityLevel; // Initialize the UI with the starting sanity level
         
 
-        sanityLevel = Mathf.Clamp(sanityLevel, 0f, 100f); // Ensure sanity level starts within bounds
+        sanityLevel = Mathf.Clamp(sanityLevel, 0f, maxSanityLevel); // Ensure sanity level starts within bounds
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -41,8 +42,8 @@ public class SanityMeter : Singleton<SanityMeter>
     // Update is called once per frame
     void Update()
     {
-        sanityLevel += Time.deltaTime + increaseRate; // Increase sanity level over time (adjust the rate as needed)
-        sanityLevel = Mathf.Clamp(sanityLevel, 0f, 100f); // Clamp sanity level between 0 and 100
+        sanityLevel += Time.deltaTime * increaseRate; // Increase sanity level over time (adjust the rate as needed)
+        sanityLevel = Mathf.Clamp(sanityLevel, 0f, maxSanityLevel); // Clamp sanity level between 0 and max
 
         //if (sanityLevel == 100f)
         //{

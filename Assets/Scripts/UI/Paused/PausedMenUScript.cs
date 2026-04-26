@@ -19,7 +19,7 @@ public class PausedMenUScript : MonoBehaviour
     public SettingsMenuEvents settingsMenuEvents;
     public InteractableHud interactableHud;
     public SanityMeterUI sanityMeterUI;
-
+    public MusicSystem musicSystem;
 
 
 
@@ -78,24 +78,23 @@ public class PausedMenUScript : MonoBehaviour
         //Disablear alla andra script så att spelaren inte kan röra sig eller titta runt när pausmenyn är uppe,
         //och gömmer sanity metern och diaktiverar mätareninteraktions-HUD:en.
         mainMenyEvents.enabled = false;
-            playerCameraLook.enabled = false;
-            playerMovement.enabled = false;
-            sanityMeter.enabled = false;
-            if (settingsMenuEvents != null)
-                settingsMenuEvents.enabled = false;
+        playerCameraLook.enabled = false;
+        playerMovement.enabled = false;
+        sanityMeter.enabled = false;
+        if (settingsMenuEvents != null)
+        settingsMenuEvents.enabled = false;
 
-           var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
-           sanityMeterElement.style.display = DisplayStyle.None;
-           //if (sanityMeterUI != null)
-           // {
-           //      sanityMeterUI.hideUI();
-           //  }
-            var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
-            interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
+        var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
+        sanityMeterElement.style.display = DisplayStyle.None;
+         
+        var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
+        interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
 
-            // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
-            UnityEngine.Cursor.visible = true;
+        MusicSystem.Instance.Pause("Test");
+
+        // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
 
 
 
@@ -114,14 +113,14 @@ public class PausedMenUScript : MonoBehaviour
         if (sanityMeter != null)
             sanityMeter.enabled = true;
         settingsMenuEvents.enabled = true;
-        //if (interactableHud != null)
-        //    interactableHud.enabled = true;
+       
         var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
         interactableHudDocument.rootVisualElement.style.display = DisplayStyle.Flex;
 
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
         sanityMeterElement.style.display = DisplayStyle.Flex;
 
+        MusicSystem.Instance.Play("Test");
 
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
@@ -159,7 +158,6 @@ public class PausedMenUScript : MonoBehaviour
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
         sanityMeterElement.style.display = DisplayStyle.None;
 
-        //sanityMeterUI.hideUI();
 
         UnityEngine.Cursor.lockState = CursorLockMode.None; 
         UnityEngine.Cursor.visible = true;
