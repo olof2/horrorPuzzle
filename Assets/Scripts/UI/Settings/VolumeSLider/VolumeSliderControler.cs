@@ -11,7 +11,7 @@ public class VolumeSliderControler : MonoBehaviour
         var root = GetComponent<UIDocument>().rootVisualElement;
         root.dataSource = music;
 
-        var slider = root.Q<Slider>("VolumSlider");
+        var slider = root.Q<Slider>("VolumeSlider");
         slider.value = music.Volume;
         slider.RegisterValueChangedCallback(evt => music.Volume = evt.newValue);
     }
