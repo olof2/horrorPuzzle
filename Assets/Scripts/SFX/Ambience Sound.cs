@@ -7,7 +7,7 @@ public class AmbienceSound : MonoBehaviour
   
 
     public float stopRainAtSanity = 50f;
-    public float fadeSpeed = 0.5f;
+    public float fadeSpeed = 0.05f;
 
     private bool shouldFadeOut = false;
 
