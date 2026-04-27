@@ -4,8 +4,12 @@ using UnityEngine;
 public class AmbienceSound : MonoBehaviour
 {
     private AudioSource audioSource;
-    public Collider Area;
-    public GameObject Player;
+  
+
+    public float stopRainAtSanity = 50f;
+    public float fadeSpeed = 0.5f;
+
+    private bool shouldFadeOut = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,29 +20,39 @@ public class AmbienceSound : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.loop = true;
 
-        //audioSource.Play();
+        audioSource.Play();
 
     }
 
 
-   
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Something entered:" + other.name);
-       if(other.CompareTag("Player"))
-        {
-            if(!audioSource.isPlaying)
-                audioSource.Play();
-        }
-    }
 
-    private void OnTriggerExit(Collider other)
+     void Update()
     {
-        if(other.CompareTag("Player"))
+        if(SanityMeter.Instance != null &&
+            SanityMeter.Instance.sanityLevel >= stopRainAtSanity)
         {
-            audioSource.Stop();
+            shouldFadeOut = true;
         }
 
+        if(shouldFadeOut)
+        {
+            if(audioSource.volume > 0)
+            {
+                audioSource.volume -=Time.deltaTime * fadeSpeed;
+            }
+            else
+            {
+                audioSource.Stop();
+                shouldFadeOut =false;
+            }
+            
+        }
+     
+        
     }
+
+
+
+
 
 }
