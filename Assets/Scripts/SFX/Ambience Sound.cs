@@ -9,7 +9,7 @@ public class AmbienceSound : MonoBehaviour
     public float stopRainAtSanity = 50f;
     public float fadeSpeed = 0.05f;
 
-    private bool shouldFadeOut = false;
+    private bool fadeOut = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,10 @@ public class AmbienceSound : MonoBehaviour
         if(SanityMeter.Instance != null &&
             SanityMeter.Instance.sanityLevel >= stopRainAtSanity)
         {
-            shouldFadeOut = true;
+            fadeOut = true;
         }
 
-        if(shouldFadeOut)
+        if(fadeOut)
         {
             if(audioSource.volume > 0)
             {
@@ -43,7 +43,7 @@ public class AmbienceSound : MonoBehaviour
             else
             {
                 audioSource.Stop();
-                shouldFadeOut =false;
+                fadeOut =false;
             }
             
         }
