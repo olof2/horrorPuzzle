@@ -7,7 +7,7 @@ public class ImpactSound : MonoBehaviour
 
     public void Start()
     {
-                audioSource = GetComponent<AudioSource>();
+         audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayImpact()

@@ -7,6 +7,7 @@ public class AmbienceSound : MonoBehaviour
     public Collider Area;
     public GameObject Player;
 
+    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -19,6 +20,8 @@ public class AmbienceSound : MonoBehaviour
 
     }
 
+
+   
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Something entered:" + other.name);
