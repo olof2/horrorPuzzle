@@ -33,10 +33,6 @@ public class VolumeSlider : MonoBehaviour
         }
     }
 
-  
-
-  
-   
     public void ShowUI()
     {
         // Positioner för volymreglaget så att det visas på rätt plats i förhållande till inställningsmenyn.
