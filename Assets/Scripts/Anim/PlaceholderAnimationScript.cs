@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class PlaceholderAnimationScript : MonoBehaviour                 //script för placeholder animation
 {
@@ -30,9 +25,13 @@ public class PlaceholderAnimationScript : MonoBehaviour                 //script
 
         if (sanityLevel >= sanityMeterThreshold && zone.PlayerInsideZone && animationCooldownTimer <= 0f)   //animation händer om sanityLevel är större eller lika med 25, player är
         {                                                                                                   //i trigger zone, och animation cooldown är mindre eller lika med 0
-            animator.SetTrigger("isFalling");
+            if (animator != null)
+            {
+                animator.SetTrigger("isFalling");
 
-            animationCooldownTimer = Random.Range(minCooldownTime, maxCooldownTime);    //random cooldown time för animationer
+                animationCooldownTimer = Random.Range(minCooldownTime, maxCooldownTime);    //random cooldown time för animationer
+            }
+            else { System.Diagnostics.Debug.WriteLine("Animator is null"); }
         }
 
         if (animationCooldownTimer > 0f)                                //räkna ner animation cooldown (8 sec)
