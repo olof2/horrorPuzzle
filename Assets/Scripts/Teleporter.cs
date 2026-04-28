@@ -39,9 +39,11 @@ public class TeleporterScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponentInChildren<CharacterController>().enabled = false;
             // Teleport the player to a new location, other = player som går in i triggerzone
             other.transform.position += teleportDestination;
 
+            other.GetComponentInChildren<CharacterController>().enabled = true;
             Debug.Log("Player teleported to: " + other.transform.position);
         }
     }
