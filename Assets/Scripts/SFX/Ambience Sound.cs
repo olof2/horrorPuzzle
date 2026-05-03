@@ -6,7 +6,6 @@ public class AmbienceSound : MonoBehaviour
     private AudioSource audioSource;
   
 
-    public float stopRainAtSanity = 50f;
     public float fadeSpeed = 0.05f;
 
     private bool fadeOut = false;
@@ -24,14 +23,18 @@ public class AmbienceSound : MonoBehaviour
 
     }
 
-
-
      void Update()
     {
-        if(SanityMeter.Instance != null &&
-            SanityMeter.Instance.sanityLevel >= stopRainAtSanity)
+
+        if(SanityMeter.Instance != null)
         {
-            fadeOut = true;
+            float current = SanityMeter.Instance.sanityLevel;
+            float max = SanityMeter.Instance.maxSanityLevel;
+
+            if (current >= max * 0.5f) //50%
+            {
+                fadeOut = true;
+            }
         }
 
         if(fadeOut)

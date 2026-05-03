@@ -9,6 +9,8 @@ public class VolumeSlider : MonoBehaviour
     private MusicSystem musicSystem;
     private float volume;
 
+    public float CurrentSFXVolume { get; private set; } = 1f;
+
     public AudioMixer SFXmixer;
 
     private void Awake()
@@ -17,6 +19,14 @@ public class VolumeSlider : MonoBehaviour
         volumeSliderDocument.rootVisualElement.style.display = DisplayStyle.None;
 
         //volumeSlider.value = MusicSystem.Instance.GetVolume();
+        
+    }
+
+    private void SetVolume(float value)
+    {
+        CurrentSFXVolume = value;
+
+        SFXmixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20);
         
     }
 
@@ -30,6 +40,7 @@ public class VolumeSlider : MonoBehaviour
         {
             volumeSlider.value = 1f;
 
+            volumeSlider.RegisterValueChangedCallback(evt => SetVolume(evt.newValue));
         }
     }
 

@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2829793063336670060, guid: 54605f0f0b4f51c4fb97f4d00ef7d20f, type: 3}
       propertyPath: increaseRate
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2829793063336670060, guid: 54605f0f0b4f51c4fb97f4d00ef7d20f, type: 3}
       propertyPath: sanitySound25
