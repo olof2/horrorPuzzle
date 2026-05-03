@@ -29,18 +29,10 @@ public class VolumeSlider : MonoBehaviour
         if (volumeSlider != null)
         {
             volumeSlider.value = 1f;
-            volumeSlider.RegisterValueChangedCallback(evt => {SetVolume(evt.newValue);});
 
         }
     }
 
-    private void SetVolume(float value)
-    {
-        SFXmixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20); // Omvandlar volymen till en logaritmisk skala
-    }
-
-  
-   
     public void ShowUI()
     {
         // Positioner för volymreglaget så att det visas på rätt plats i förhållande till inställningsmenyn.
