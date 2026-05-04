@@ -69,16 +69,16 @@ public class SettingsMenuEvents : MonoBehaviour
     {
         //volumeSlider blir en Child till settingsDocument så att den visas som en pop-up ovanpå settings menyn
         
-       var volumeSliderDocument = volumeSlider.GetComponent<UIDocument>();
-       var sfxSliderDoc = sfxSlider.GetComponent<UIDocument>();
+      var volumeSliderDocument = volumeSlider.GetComponent<UIDocument>();
+       //var sfxSliderDoc = sfxSlider.GetComponent<UIDocument>();
 
        var settingsRoot = settingsDocument.rootVisualElement;
        var volumeSliderRoot = volumeSliderDocument.rootVisualElement;
-       var sfxSliderRoot = sfxSliderDoc.rootVisualElement;
+       //var sfxSliderRoot = sfxSliderDoc.rootVisualElement;
        settingsRoot.Add(volumeSliderRoot);
-       settingsRoot.Add(sfxSliderRoot);
+       //settingsRoot.Add(sfxSliderRoot);
         volumeSlider.ShowUI();
-        sfxSlider.ShowSfxSliderUI();
+        //sfxSlider.ShowSfxSliderUI();
 
         Debug.Log("Audio Button Clicked");
     }
@@ -102,7 +102,7 @@ public class SettingsMenuEvents : MonoBehaviour
       
 
         volumeSlider.HideUI();
-        sfxSlider.HideSfxUI();
+        //sfxSlider.HideSfxUI();
 
         Debug.Log("Back Button Clicked");
     }

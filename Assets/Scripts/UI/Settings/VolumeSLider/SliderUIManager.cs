@@ -15,10 +15,10 @@ public class SliderUIManager : MonoBehaviour
 
     private void Awake()
     {
-        //volumeSliderDocument = GetComponent<UIDocument>();
+        volumeSliderDocument = GetComponent<UIDocument>();
         volumeSliderDocument.rootVisualElement.style.display = DisplayStyle.None;
 
-       // sfxSliderDoc = GetComponent<UIDocument>();
+        sfxSliderDoc = GetComponent<UIDocument>();
         sfxSliderDoc.rootVisualElement.style.display = DisplayStyle.None;
 
         //volumeSlider.value = MusicSystem.Instance.GetVolume();
@@ -28,7 +28,7 @@ public class SliderUIManager : MonoBehaviour
     private void OnEnable()
     {
         var root = volumeSliderDocument.rootVisualElement;
-        volumeSlider = root.Q("VolumeSlider") as Slider;
+        volumeSlider = root.Q("VolumSlider") as Slider;
 
         if (volumeSlider != null)
         {
@@ -36,8 +36,8 @@ public class SliderUIManager : MonoBehaviour
 
         }
 
-        var sftRoot = sfxSliderDoc.rootVisualElement;
-        sfxSlider = sftRoot.Q("SfxSlider") as Slider;
+        //var sftRoot = sfxSliderDoc.rootVisualElement;
+       // sfxSlider = sftRoot.Q("SfxSlider") as Slider;
     }
 
     public void ShowUI()
