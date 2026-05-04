@@ -14,6 +14,8 @@ public class GameOverScript : MonoBehaviour
     private MainMenyEvents mainMenyEvents;
     private PausedMenUScript pausedMenUScript;
 
+
+
     private void Awake()
     {
         gameoverDocument = GetComponent<UIDocument>();
@@ -55,7 +57,7 @@ public class GameOverScript : MonoBehaviour
         sanityMeter.enabled = false;
 
          
-
+        InteractableHud.Instance.enabled = false;
 
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -71,7 +73,7 @@ public class GameOverScript : MonoBehaviour
      void Update()
     {
         sanityMeter = FindFirstObjectByType<SanityMeter>();
-        if ( sanityMeter.sanityLevel >= 600f)
+        if ( sanityMeter.sanityLevel >= sanityMeter.maxSanityLevel)
         {
             GameOver();
             Debug.Log("Game Over! Sanity is at maximum!");

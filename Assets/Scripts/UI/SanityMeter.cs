@@ -1,3 +1,4 @@
+using System;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -18,10 +19,23 @@ public class SanityMeter : Singleton<SanityMeter>
     public AudioClip sanitySound75;
     public AudioClip increaseSound100;
 
+    //Event Action för varje threashold (25 -> 50 -> 75 -> 100)
+    public event Action OnReached25;
+    public event Action OnReached50;
+    public event Action OnReached75;
+    public event Action OnReached100;
+
+    
     private bool hasPlayed25 = false; // Så det bara spelas en gång
     private bool hasPlayed50 = false;
     private bool hasPlayed75 = false;
     private bool hasPlayed100 = false;
+
+    // bool för om event Action är skickat än eller inte
+    private bool sent25;
+    private bool sent50;
+    private bool sent75;
+    private bool sent100;
 
     void Start()
     {
@@ -73,6 +87,36 @@ public class SanityMeter : Singleton<SanityMeter>
             audioSource.PlayOneShot(increaseSound100);
             hasPlayed100 = true; 
         }
+
+        if (!sent25 && sanityLevel >= maxSanityLevel * 0.25f)
+        {
+            sent25 = true;
+            OnReached25?.Invoke();
+
+            Debug.Log("OnRechead25 succes");
+        }
+        if (!sent50 && sanityLevel >= maxSanityLevel * 0.50f)
+        {
+            sent50 = true;
+            OnReached50?.Invoke();
+
+            Debug.Log("OnRechead50 succes");
+        }
+        if (!sent75 && sanityLevel >= maxSanityLevel * 0.75f)
+        {
+            sent75 = true;
+            OnReached75?.Invoke();
+
+            Debug.Log("OnRechead75 succes");
+        }
+        if (!sent100 && sanityLevel >= maxSanityLevel)
+        {
+            sent100 = true;
+            OnReached100?.Invoke();
+
+            Debug.Log("OnRechead100 succes");
+        }
+
     }
 }
 

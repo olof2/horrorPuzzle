@@ -13,9 +13,7 @@ public class Door : MonoBehaviour, I_Interactable
     private Quaternion openRot;
     private Coroutine coroutine;
 
-    //lock system
-    [SerializeField] private string requiredKeyId;
-    public bool isLocked = false;
+   // public Transform UIAnchor { get; set; }
 
     void Start()
     {
@@ -23,27 +21,14 @@ public class Door : MonoBehaviour, I_Interactable
         openRot = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
     }
 
-    private void OnEnable()
+    // Update is called once per frame
+    void Update()
     {
-        KeyPickup.OnKeyPickup += TryUnlock;
+        
     }
 
-    private void OnDisable()
-    {
-        KeyPickup.OnKeyPickup -= TryUnlock;
-    }
-
-    private void TryUnlock(string keyId)
-    {
-        if (keyId == requiredKeyId)
-        {
-            isLocked = false;
-        }
-    }
     public void Interact()
     {
-        if (isLocked) return;
-
         if(coroutine != null)
         {
             StopCoroutine(coroutine);
