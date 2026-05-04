@@ -26,6 +26,7 @@ public class PlayerCameraLook : MonoBehaviour
     //Flashlight under
     [SerializeField] private Light flash;
 
+
     void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -37,6 +38,7 @@ public class PlayerCameraLook : MonoBehaviour
 
         //Interact inspect grejer under
         LayerNumber = LayerMask.NameToLayer("HoldLayer");
+
     }
 
     void Update()
