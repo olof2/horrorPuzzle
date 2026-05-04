@@ -1563,6 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   canMove: 1
+  gravity: -9.81
   currentInput: {x: 0, y: 0, z: 0}
 --- !u!114 &1653308268
 MonoBehaviour:
@@ -1580,6 +1581,7 @@ MonoBehaviour:
   player: {fileID: 0}
   holdPos: {fileID: 0}
   throwForce: 100
+  flash: {fileID: 0}
 --- !u!54 &1653308269
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1988,6 +1990,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be007e58b9527bc4582ed93bb1e12369, type: 3}
+--- !u!114 &869745134314567330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6207355196895158942, guid: be007e58b9527bc4582ed93bb1e12369, type: 3}
+  m_PrefabInstance: {fileID: 869745134314567329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00f50b71ddb81b468f27dc4f7f4501a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2515357822540043859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1996,6 +2009,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1043797781327294236, guid: 4d5c58be93259ca459f303f55e8b31c9, type: 3}
+      propertyPath: animsInZone.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1043797781327294236, guid: 4d5c58be93259ca459f303f55e8b31c9, type: 3}
+      propertyPath: 'animsInZone.Array.data[0]'
+      value: 
+      objectReference: {fileID: 869745134314567330}
     - target: {fileID: 1979512040944558333, guid: 4d5c58be93259ca459f303f55e8b31c9, type: 3}
       propertyPath: m_Name
       value: TriggerZone
