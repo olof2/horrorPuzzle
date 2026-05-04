@@ -93,9 +93,30 @@ public class SanityMeter : Singleton<SanityMeter>
             sent25 = true;
             OnReached25?.Invoke();
 
-            Debug.Log("OnRechead succes");
+            Debug.Log("OnRechead25 succes");
         }
-       
+        if (!sent50 && sanityLevel >= maxSanityLevel * 0.50f)
+        {
+            sent50 = true;
+            OnReached50?.Invoke();
+
+            Debug.Log("OnRechead50 succes");
+        }
+        if (!sent75 && sanityLevel >= maxSanityLevel * 0.75f)
+        {
+            sent75 = true;
+            OnReached75?.Invoke();
+
+            Debug.Log("OnRechead75 succes");
+        }
+        if (!sent100 && sanityLevel >= maxSanityLevel)
+        {
+            sent100 = true;
+            OnReached100?.Invoke();
+
+            Debug.Log("OnRechead100 succes");
+        }
+
     }
 }
 
