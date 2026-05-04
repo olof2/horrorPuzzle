@@ -17,7 +17,8 @@ public class SettingsMenuEvents : MonoBehaviour
     public MainMenyEvents mainMenyEvents;
     public PlayerCameraLook playerCameraLook;
     public PlayerMovement playerMovement;
-    public VolumeSlider volumeSlider;
+    public SliderUIManager volumeSlider;
+    public SliderUIManager sfxSlider;
     public SettingsMenuEvents settingsMenuEvents;
 
     public enum Source
@@ -68,12 +69,16 @@ public class SettingsMenuEvents : MonoBehaviour
     {
         //volumeSlider blir en Child till settingsDocument så att den visas som en pop-up ovanpå settings menyn
         
-        var volumeSliderDocument = volumeSlider.GetComponent<UIDocument>();
+      var volumeSliderDocument = volumeSlider.GetComponent<UIDocument>();
+       //var sfxSliderDoc = sfxSlider.GetComponent<UIDocument>();
 
-        var settingsRoot = settingsDocument.rootVisualElement;
-        var volumeSliderRoot = volumeSliderDocument.rootVisualElement;
-        settingsRoot.Add(volumeSliderRoot);
+       var settingsRoot = settingsDocument.rootVisualElement;
+       var volumeSliderRoot = volumeSliderDocument.rootVisualElement;
+       //var sfxSliderRoot = sfxSliderDoc.rootVisualElement;
+       settingsRoot.Add(volumeSliderRoot);
+       //settingsRoot.Add(sfxSliderRoot);
         volumeSlider.ShowUI();
+        //sfxSlider.ShowSfxSliderUI();
 
         Debug.Log("Audio Button Clicked");
     }
@@ -93,6 +98,11 @@ public class SettingsMenuEvents : MonoBehaviour
         }
         if (currentSource == Source.mainMenu)
             mainMenyEvents.OpenMainMenu();
+
+      
+
+        volumeSlider.HideUI();
+        //sfxSlider.HideSfxUI();
 
         Debug.Log("Back Button Clicked");
     }

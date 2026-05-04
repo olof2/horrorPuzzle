@@ -1,6 +1,6 @@
 .button:hover {
     scale: 1.1 1.1;
-    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    background-image: none;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     -unity-slice-scale: 0;
     -unity-slice-left: 17;
@@ -17,13 +17,17 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-    rotate: 8deg;
+    rotate: 0;
     transition-property: all;
     transition-duration: 0s;
     transition-timing-function: ease;
     transition-delay: 0s;
-    cursor: initial;
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
     width: auto;
+    font-size: 14px;
+    -unity-font-style: bold;
+    color: rgb(231, 231, 231);
+    translate: 40px 0;
 }
 
 .button {
@@ -40,9 +44,9 @@
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     font-size: 30px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0);
     -unity-font-style: italic;
     cursor: initial;
-    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    background-image: none;
 }

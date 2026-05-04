@@ -16,8 +16,8 @@ public class MainMenyEvents : MonoBehaviour
     public GameOverScript gameOverScript;
     public SettingsMenuEvents settingsMenuEvents;
     public MusicSystem musicSystem;
-    public InteractableHud interactableHud;
-    public VolumeSlider volumeSlider;
+   // public InteractableHud interactableHud;
+    public SliderUIManager volumeSlider;
 
     public SanityMeter sanityMeter;
    
@@ -44,8 +44,15 @@ public class MainMenyEvents : MonoBehaviour
             gameOverScript.enabled = false;
         if (settingsMenuEvents != null) settingsMenuEvents.enabled = false;
         
-        if (interactableHud != null)
-         interactableHud.enabled = false;
+        //if (interactableHud != null)
+        // interactableHud.enabled = false;
+        if (InteractableHud.Instance != null)
+        {
+            InteractableHud.Instance.enabled = false;
+
+            //InteractableHud.Instance.HideUI();
+        }
+           
         if (volumeSlider != null)
             volumeSlider.enabled = false;
 
@@ -105,14 +112,24 @@ public class MainMenyEvents : MonoBehaviour
        
       
         gameOverScript.enabled = true;
+        if (playerMovement != null)
         playerMovement.enabled = true;
+        if (playerCameraLook != null)
         playerCameraLook.enabled = true;
         if (pausedMenUScript  != null)
         pausedMenUScript.enabled = true;
 
         if (settingsMenuEvents != null)
             settingsMenuEvents.enabled = true;
-        interactableHud.enabled = true;
+        //if (interactableHud != null)
+        //    interactableHud.enabled = true;
+        if (InteractableHud.Instance != null)
+        {
+            InteractableHud.Instance.enabled = true;
+            //InteractableHud.Instance.HideUI();
+        }
+           
+        // InteractableHud.Instance.ShowUI();
         if (volumeSlider != null)
             volumeSlider.enabled = true;
 
@@ -122,11 +139,11 @@ public class MainMenyEvents : MonoBehaviour
         //Enable sanity metern UI
         SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
         sanityMeterUI.style.display = DisplayStyle.Flex;
-
+       
 
         //if (document != null)
         //    document.enabled = false;
-            document.rootVisualElement.style.display = DisplayStyle.None;
+        document.rootVisualElement.style.display = DisplayStyle.None;
     
            
 
@@ -163,8 +180,10 @@ public class MainMenyEvents : MonoBehaviour
         if (settingsMenuEvents != null) 
             settingsMenuEvents.enabled = false;
 
-        if (interactableHud != null)
-            interactableHud.enabled = false;
+        //if (interactableHud != null)
+        //    interactableHud.enabled = false;
+
+        //InteractableHud.Instance.HideUI();  
         if (volumeSlider != null)
             volumeSlider.enabled = false;
  
