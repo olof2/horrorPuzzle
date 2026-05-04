@@ -67,7 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInsideZone: 0
-  animsInZone: []
+  animsInZone:
+  - {fileID: 0}
   sanityMeterThreshold: 25
   minCooldownTime: 6
   maxCooldownTime: 16
