@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class SanityMeterUI : VisualElement
 {
-
+    SanityMeter sanityMeter;
     [SerializeField, DontCreateProperty]
     public float sanityLevel;
 
@@ -15,13 +15,14 @@ public partial class SanityMeterUI : VisualElement
         get => sanityLevel;
         set
         {
-            sanityLevel = Mathf.Clamp(value, 0.01f, 600f);
+            sanityLevel = Mathf.Clamp(value, 0.01f, sanityMeter.maxSanityLevel);
             MarkDirtyRepaint();
         }
     }
     public SanityMeterUI()
     {
         generateVisualContent += GenerateUI;
+        sanityMeter = new SanityMeter();
     }
 
     public void GenerateUI(MeshGenerationContext context)

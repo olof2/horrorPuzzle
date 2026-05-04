@@ -13,6 +13,8 @@ public class Door : MonoBehaviour, I_Interactable
     private Quaternion openRot;
     private Coroutine coroutine;
 
+   // public Transform UIAnchor { get; set; }
+
     void Start()
     {
         closedRot = transform.rotation;

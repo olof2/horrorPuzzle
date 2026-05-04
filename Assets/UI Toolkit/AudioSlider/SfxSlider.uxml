@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/AudioSlider/SfxSliderStyle.uss?fileID=7433441132597879392&amp;guid=5686a4c8036b5334187683846e8bb918&amp;type=3#SfxSliderStyle" />
+    <ui:Slider label="Slider" value="42" high-value="100" name="SfxSlider" />
+</ui:UXML>
