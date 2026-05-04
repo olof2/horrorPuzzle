@@ -147,6 +147,7 @@ public class TriggerZonePlaceholder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInsideZone = true;
+            Debug.Log("Player Entered Zone");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -154,6 +155,7 @@ public class TriggerZonePlaceholder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInsideZone = false;
+            Debug.Log("Player Left Zone");
         }
     }
 

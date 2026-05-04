@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1979512040944558333}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.519994, y: 1.14, z: -7.568819}
+  m_LocalPosition: {x: 7.42, y: 1.14, z: -8.32}
   m_LocalScale: {x: 4.258392, y: 2.078838, z: 4.1915708}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInsideZone: 0
-  animsInZone:
-  - {fileID: 0}
-  sanityMeterThreshold: 25
+  minorEvents: []
+  moderateEvents: []
+  majorEvents: []
   minCooldownTime: 6
   maxCooldownTime: 16

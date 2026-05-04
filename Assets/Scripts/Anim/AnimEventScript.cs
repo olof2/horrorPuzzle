@@ -14,12 +14,24 @@ public class AnimEventScript : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+
+        Debug.Log($"{gameObject.name} Animator found? {anim != null}");
     }
 
     //När "TriggerEvent" anropas så startar metoden SetTrigger
     //med triggerName stringen som skrivs i Inspect
     public void TriggerEvent()
     {
+        Debug.Log($"TriggerEvent on: {gameObject.name} | ID: {GetInstanceID()}");
+
+        if (anim == null)
+        {
+            Debug.LogError($"NO ANIMATOR on {gameObject.name}");
+            return;
+        }
+
         anim.SetTrigger(triggerName);
+
+        Debug.Log($"Trigger sent to Animator");
     }
 }
