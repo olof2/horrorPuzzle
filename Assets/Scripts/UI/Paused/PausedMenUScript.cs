@@ -130,6 +130,9 @@ public class PausedMenUScript : MonoBehaviour
 
         MusicSystem.Instance.Play("Test");
 
+        FindFirstObjectByType<AmbienceSound>()?.StartAmbience();   //SFX RainSound 
+        
+
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
