@@ -49,7 +49,7 @@ public class InteractableHud : Singleton<InteractableHud>
        
         //var root = interactableHud.rootVisualElement;
         //ButtonE = root.Q<Button>("E");
-        //TryInitUI();
+        TryInitUI();
 
         //Regristerar callbacks för knapparna i pausmenyn, UnPaused() och OnExitGameClick() metoderna kommer att köras när knapparna klickas på.
     }
