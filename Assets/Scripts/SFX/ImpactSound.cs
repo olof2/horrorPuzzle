@@ -13,7 +13,10 @@ public class ImpactSound : MonoBehaviour
     public void PlayImpact()
     {
         Debug.Log("Playing impact sound");
-        audioSource.Play(); 
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
    
 
