@@ -8,14 +8,15 @@ public class PlayerFootsteps : MonoBehaviour
     private PlayerMovement movement;
     void Start()
     {
-        movement = GetComponent<PlayerMovement>();
+        movement = GetComponent<PlayerMovement>(); // Hämta referensen till PlayerMovement-komponenten på samma GameObject.
 
-        StartCoroutine(PlayFootSteps());
+        StartCoroutine(PlayFootSteps()); 
 
     }
 
     IEnumerator PlayFootSteps()
     {
+        // Denna coroutine kommer att fortsätta så länge spelet körs, och den kommer att spela fotstegsljudet när spelaren rör sig.
         while (true)
         {
             if (movement.currentInput.magnitude > 0.1f)
@@ -28,6 +29,7 @@ public class PlayerFootsteps : MonoBehaviour
                 yield return new WaitForSeconds(0.45f);
 
             }
+            // Om spelaren inte rör sig, vänta en kort stund innan nästa kontroll för att undvika att spamma ljudet när spelaren börjar röra sig igen.
             else
             {
                 yield return null;

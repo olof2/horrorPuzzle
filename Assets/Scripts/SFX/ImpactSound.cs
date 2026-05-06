@@ -7,13 +7,16 @@ public class ImpactSound : MonoBehaviour
 
     public void Start()
     {
-                audioSource = GetComponent<AudioSource>();
+         audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayImpact()
     {
         Debug.Log("Playing impact sound");
-        audioSource.Play(); 
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
    
 

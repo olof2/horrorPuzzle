@@ -4,9 +4,14 @@ using UnityEngine;
 public class AmbienceSound : MonoBehaviour
 {
     private AudioSource audioSource;
-    public Collider Area;
-    public GameObject Player;
+  
 
+    public float fadeSpeed = 0.05f;
+
+    private bool fadeOut = false;
+    private bool hasStarted = false;
+
+    // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -15,27 +20,56 @@ public class AmbienceSound : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.loop = true;
 
-        //audioSource.Play();
+        audioSource.Play();
+        audioSource.Stop();
 
     }
 
-    void OnTriggerEnter(Collider other)
+    public void StartAmbience()
     {
-        Debug.Log("Something entered:" + other.name);
-       if(other.CompareTag("Player"))
+        if(!hasStarted)
         {
-            if(!audioSource.isPlaying)
-                audioSource.Play();
+            audioSource.Play();
+            hasStarted = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            audioSource.Stop();
-        }
 
+
+
+
+     void Update()
+    {
+        if(SanityMeter.Instance != null)
+        {
+            float current = SanityMeter.Instance.sanityLevel;
+            float max = SanityMeter.Instance.maxSanityLevel;
+
+            if(current >= max *0.5f)
+            {
+                fadeOut = true;
+            }
+        }
+      
+        if(fadeOut)
+        {
+            if(audioSource.volume > 0)
+            {
+                audioSource.volume -=Time.deltaTime * fadeSpeed;
+            }
+            else
+            {
+                audioSource.Stop();
+                fadeOut =false;
+            }
+            
+        }
+     
+        
     }
+
+
+
+
 
 }

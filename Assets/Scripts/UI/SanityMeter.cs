@@ -64,29 +64,31 @@ public class SanityMeter : Singleton<SanityMeter>
         //    gameOverScript.GameOver();  
         //    Debug.Log("Sanity is at maximum!");
         //}
-        if(sanityLevel >= 25f && !hasPlayed25)
+        if(sanityLevel >= maxSanityLevel * 0.25f && !hasPlayed25)
         {
             audioSource.PlayOneShot(sanitySound25);
             hasPlayed25 = true; // 
         }
 
-        if(sanityLevel >= 50f && !hasPlayed50)
+        if(sanityLevel >= maxSanityLevel * 0.50f && !hasPlayed50)
         {
             audioSource.PlayOneShot(sanitySound50);
             hasPlayed50 = true; 
         }
 
-        if (sanityLevel >= 75f && !hasPlayed75)
+        if (sanityLevel >= maxSanityLevel * 0.75f && !hasPlayed75)
         {
             audioSource.PlayOneShot(sanitySound75);
             hasPlayed75 = true; 
         }
 
-        if(sanityLevel >= 100f && !hasPlayed100)
+        if(sanityLevel >= maxSanityLevel && !hasPlayed100)
         {
             audioSource.PlayOneShot(increaseSound100);
             hasPlayed100 = true; 
         }
+
+
 
         if (!sent25 && sanityLevel >= maxSanityLevel * 0.25f)
         {

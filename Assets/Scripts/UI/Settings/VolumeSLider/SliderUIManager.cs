@@ -15,10 +15,10 @@ public class SliderUIManager : MonoBehaviour
 
     private void Awake()
     {
-        //volumeSliderDocument = GetComponent<UIDocument>();
+        volumeSliderDocument = GetComponent<UIDocument>();
         volumeSliderDocument.rootVisualElement.style.display = DisplayStyle.None;
 
-       // sfxSliderDoc = GetComponent<UIDocument>();
+        sfxSliderDoc = GetComponent<UIDocument>();
         sfxSliderDoc.rootVisualElement.style.display = DisplayStyle.None;
 
         //volumeSlider.value = MusicSystem.Instance.GetVolume();
@@ -33,21 +33,13 @@ public class SliderUIManager : MonoBehaviour
         if (volumeSlider != null)
         {
             volumeSlider.value = 1f;
-            volumeSlider.RegisterValueChangedCallback(evt => {SetVolume(evt.newValue);});
 
         }
 
-        var sftRoot = sfxSliderDoc.rootVisualElement;
-        sfxSlider = sftRoot.Q("SfxSlider") as Slider;
+        //var sftRoot = sfxSliderDoc.rootVisualElement;
+       // sfxSlider = sftRoot.Q("SfxSlider") as Slider;
     }
 
-    private void SetVolume(float value)
-    {
-        SFXmixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20); // Omvandlar volymen till en logaritmisk skala
-    }
-
-  
-   
     public void ShowUI()
     {
         // Positioner för volymreglaget så att det visas på rätt plats i förhållande till inställningsmenyn.
