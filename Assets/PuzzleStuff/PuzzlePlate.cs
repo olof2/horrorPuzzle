@@ -21,6 +21,9 @@ public class PuzzlePlate : MonoBehaviour, I_Interactable
 
     Quaternion targetRotation = Quaternion.identity;
 
+   // public Transform UIAnchor { get; set; }
+
+
     void Start()
     {
         if (plateTransform == null) plateTransform = this.transform;

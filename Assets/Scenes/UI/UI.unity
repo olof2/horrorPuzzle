@@ -1551,6 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableHud: {fileID: 1822541300}
   playerCameraLook: {fileID: 0}
+  target: {fileID: 0}
   interactDistance: 3
   isPaused: 0
 --- !u!43 &197551657
@@ -3386,7 +3387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeSliderDocument: {fileID: 427150871}
   sfxSliderDoc: {fileID: 1835195766}
-  SFXmixer: {fileID: 0}
+  SFXmixer: {fileID: 24100000, guid: 35e021c7c00db484f94284b85737cb98, type: 2}
 --- !u!114 &427150874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7657,6 +7658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableHud: {fileID: 0}
   playerCameraLook: {fileID: 0}
+  target: {fileID: 0}
   interactDistance: 3
   isPaused: 0
 --- !u!114 &665325374
@@ -9202,6 +9204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableHud: {fileID: 0}
   playerCameraLook: {fileID: 0}
+  target: {fileID: 0}
   interactDistance: 3
   isPaused: 0
 --- !u!43 &925411565
@@ -18509,6 +18512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableHud: {fileID: 1822541300}
   playerCameraLook: {fileID: 0}
+  target: {fileID: 0}
   interactDistance: 0
   isPaused: 0
 --- !u!1 &1835195765
@@ -18591,7 +18595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeSliderDocument: {fileID: 427150871}
   sfxSliderDoc: {fileID: 1835195766}
-  SFXmixer: {fileID: 0}
+  SFXmixer: {fileID: 24100000, guid: 35e021c7c00db484f94284b85737cb98, type: 2}
 --- !u!1 &1890374293
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,4 +6,7 @@ public class InteractDEBUG : MonoBehaviour, I_Interactable
     {
         Debug.Log("Object interacted!");
     }
+
+    public Transform UIAnchor { get; set; }
+
 }

@@ -9,7 +9,9 @@ public class InteractableHud : Singleton<InteractableHud>
     public PlayerCameraLook playerCameraLook;
     private Camera cam;
     private Door door;
+    public IPanel panel;
 
+    [SerializeField]
     private Transform target;
     //public Transform UIAnchor;
 
@@ -103,7 +105,7 @@ public class InteractableHud : Singleton<InteractableHud>
             if (interactable != null)
             {
 
-               // target = interactable.UIAnchor;
+              // target = interactable.UIAnchor;
 
                 ShowUI();
 
@@ -139,20 +141,29 @@ public class InteractableHud : Singleton<InteractableHud>
     }
     public void ShowUI()
     {
+        //if (panel == null)
+        //    Debug.LogError("PANEL är null");
 
-        var panel = interactableHud.rootVisualElement.panel;
+        //if (cam == null)
+        //    Debug.LogError("Cam är null");
+
+        //if (target == null)
+        //    Debug.LogError("Target är null");
+
+        panel = interactableHud.rootVisualElement.panel;
 
         if (visualElement != null)
         {
-            visualElement.style.display = DisplayStyle.Flex;
-            //visualElement.style.position = Position.Absolute;
             //visualElement.style.display = DisplayStyle.Flex;
-            //Vector2 pos = RuntimePanelUtils.CameraTransformWorldToPanel(panel, target.position, cam); // Gör UI pos till worldspace pos med hjälp av target pos och playerLookCamera cam
-            //float panelHeigth = panel.visualTree.layout.height;
-            //visualElement.style.left = pos.x;
-            //visualElement.style.top = panelHeigth - pos.y;
+            //visualElement.style.position = Position.Absolute;
+            visualElement.style.display = DisplayStyle.Flex;
+            ////Vector2 pos = RuntimePanelUtils.CameraTransformWorldToPanel(panel, target.position, cam); // Gör UI pos till worldspace pos med hjälp av target pos och playerLookCamera cam
+            ////float panelHeigth = panel.visualTree.layout.height;
+            ////visualElement.style.left = pos.x;
+            ////visualElement.style.top = panelHeigth - pos.y;
 
-            //Debug.Log("World space pos = " + pos);
+          
+           // Debug.Log("World space pos = " + pos);
             return;
         }
 
