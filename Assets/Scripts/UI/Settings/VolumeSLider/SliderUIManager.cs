@@ -28,7 +28,7 @@ public class SliderUIManager : MonoBehaviour
     private void OnEnable()
     {
         var root = volumeSliderDocument.rootVisualElement;
-        volumeSlider = root.Q("VolumSlider") as Slider;
+        volumeSlider = root.Q("VolumeSlider") as Slider;
 
         if (volumeSlider != null)
         {

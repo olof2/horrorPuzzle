@@ -21,8 +21,13 @@ public class PuzzlePlate : MonoBehaviour, I_Interactable
 
     Quaternion targetRotation = Quaternion.identity;
 
-   // public Transform UIAnchor { get; set; }
-
+    [SerializeField]
+    private Transform uiAnchor;
+    public Transform UIAnchor
+    {
+        get { return uiAnchor; }
+        set { uiAnchor = value; }
+    }
 
     void Start()
     {

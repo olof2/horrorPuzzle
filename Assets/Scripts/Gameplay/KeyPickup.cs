@@ -11,4 +11,5 @@ public class KeyPickup : MonoBehaviour, I_Interactable
         Destroy(gameObject); 
     }
 
+    public Transform UIAnchor { get; set; }
 }

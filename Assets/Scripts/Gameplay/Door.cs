@@ -13,9 +13,15 @@ public class Door : MonoBehaviour, I_Interactable
     private Quaternion openRot;
     private Coroutine coroutine;
 
-    
 
-//    public Transform UIAnchor { get; set; }
+
+    [SerializeField]
+    private Transform uiAnchor;
+    public Transform UIAnchor
+    {
+        get { return uiAnchor; }
+        set { uiAnchor = value; }
+    }
 
     void Start()
     {
