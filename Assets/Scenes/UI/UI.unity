@@ -15574,7 +15574,7 @@ MonoBehaviour:
   playerCameraLook: {fileID: 482256232}
   playerMovement: {fileID: 482256233}
   volumeSlider: {fileID: 427150873}
-  sfxSlider: {fileID: 1835195769}
+  sfxSlider: {fileID: 0}
   settingsMenuEvents: {fileID: 948592564}
   currentSource: 2
 --- !u!114 &948592565
@@ -32219,7 +32219,7 @@ MonoBehaviour:
   - trackName: Test
     clip: {fileID: 8300000, guid: 68db7e507d525994b82c84af5d7e9311, type: 3}
     source: {fileID: 0}
-  volume: 0.141
+  volume: 0.562
 --- !u!4 &1941941594
 Transform:
   m_ObjectHideFlags: 0

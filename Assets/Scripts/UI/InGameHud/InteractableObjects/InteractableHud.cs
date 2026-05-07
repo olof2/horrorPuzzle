@@ -94,9 +94,10 @@ public class InteractableHud : Singleton<InteractableHud>
     //efter alla objects har uppdaterats
     // efter all fysik osv
     // Bra för UI för att kameran måste vara färdig flyttat innan man placerar WorldSpace UI, annars blir pos fel, UI "glider" osv;
+    // 
      void LateUpdate()
     {
-        //Om layour, ui inte visiable osv returnera o glr inget
+        //Om layour, ui inte visiable osv returnera o gör inget
         if (!layoutReady || !uiVisiable || visualElement == null || target == null)
             return;
 
