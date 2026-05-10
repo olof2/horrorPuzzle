@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Script för animerade events som kan triggas.
@@ -6,6 +7,8 @@ using UnityEngine;
 public class AnimEventScript : MonoBehaviour
 {
     private Animator anim;
+    private AudioSource audioSource;
+
 
     //public triggerName för vilken isTrigger animation objektet här
     //skriver namnet i Inspect ("isFalling" är default)
@@ -14,6 +17,7 @@ public class AnimEventScript : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         Debug.Log($"{gameObject.name} Animator found? {anim != null}");
     }
@@ -31,6 +35,7 @@ public class AnimEventScript : MonoBehaviour
         }
 
         anim.SetTrigger(triggerName);
+        audioSource.Play();
 
         Debug.Log($"Trigger sent to Animator");
     }
