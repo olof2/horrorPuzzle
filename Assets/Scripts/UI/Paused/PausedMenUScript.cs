@@ -17,7 +17,7 @@ public class PausedMenUScript : MonoBehaviour
     public PlayerMovement playerMovement;
     public SanityMeter sanityMeter;
     public SettingsMenuEvents settingsMenuEvents;
-    public InteractableHud interactableHud;
+    //public InteractableHud interactableHud;
     public SanityMeterUI sanityMeterUI;
     public MusicSystem musicSystem;
 
@@ -68,7 +68,8 @@ public class PausedMenUScript : MonoBehaviour
     public void Paused()
     {
         //
-        interactableHud.isPaused = true;
+       // interactableHud.isPaused = true;
+       InteractableHud.Instance.isPaused = true;
 
         //Visa pausmenyn UI och gömmer setttings UI
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
@@ -87,8 +88,12 @@ public class PausedMenUScript : MonoBehaviour
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
         sanityMeterElement.style.display = DisplayStyle.None;
          
-        var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
-        interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
+        
+        //    var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
+        //if (interactableHudDocument != null)
+        //    interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
+
+        InteractableHud.Instance.HideUI();
 
         MusicSystem.Instance.Pause("Test");
 
@@ -103,7 +108,8 @@ public class PausedMenUScript : MonoBehaviour
     public void UnPaused()
     {
         // Disablear pausmenyn och enablear allt annat
-         interactableHud.isPaused = false;
+        //interactableHud.isPaused = false;
+        InteractableHud.Instance.isPaused = false;
         pausedDocument.rootVisualElement.style.display = DisplayStyle.None;
         
 
@@ -114,13 +120,18 @@ public class PausedMenUScript : MonoBehaviour
             sanityMeter.enabled = true;
         settingsMenuEvents.enabled = true;
        
-        var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
-        interactableHudDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+        //var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
+        //if (interactableHudDocument != null)
+        //    interactableHudDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+        //InteractableHud.Instance.ShowUI();
 
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
         sanityMeterElement.style.display = DisplayStyle.Flex;
 
         MusicSystem.Instance.Play("Test");
+
+        FindFirstObjectByType<AmbienceSound>()?.StartAmbience();   //SFX RainSound 
+        
 
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;

@@ -1,7 +1,7 @@
 .header {
     font-size: 40px;
     color: rgb(0, 0, 0);
-    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    background-image: none;
     -unity-background-image-tint-color: rgb(255, 255, 255);
 }
 
@@ -18,17 +18,20 @@
     -unity-background-image-tint-color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0);
     -unity-font-style: italic;
-    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
+    background-image: none;
     background-size: 100% 100%;
+    margin-right: 1215px;
+    color: rgb(255, 255, 255);
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%204%2064px.png?fileID=2800000&guid=c37a3cd6aac5ac24d90f974c7e86407a&type=3#Cursor 4 64px");
 }
 
 .button:hover {
     scale: 1.1 1.1;
     -unity-background-image-tint-color: rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
-    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/darkHorrorButtonTex.png?fileID=2800000&guid=d7cf8fd201e40164dacbd09e6abfe9d9&type=3#darkHorrorButtonTex");
-    cursor: initial;
-    rotate: 8deg;
+    background-image: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Buttons/Button%20Frame%20Hover%20256px.png?fileID=2800000&guid=a4fde6e0b21dc224d813ee493157874f&type=3#Button Frame Hover 256px");
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+    rotate: 0;
     text-shadow: 0 0 0 rgba(0, 0, 0, 0);
     background-size: 100% 100%;
     -unity-text-outline-color: rgba(0, 0, 0, 0);
@@ -45,4 +48,11 @@
     -unity-slice-top: 17;
     -unity-slice-right: 17;
     -unity-slice-bottom: 17;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    -unity-font-style: bold-and-italic;
+    color: rgba(255, 255, 255, 0);
+    translate: 40px 0;
 }

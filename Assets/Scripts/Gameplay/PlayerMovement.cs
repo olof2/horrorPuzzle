@@ -2,7 +2,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public class PlayerMovement : MonoBehaviour
+//public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     Transform playerTransform;
     CharacterController chara;
