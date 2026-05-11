@@ -1,0 +1,66 @@
+Slider Label {
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
+    background-image: none;
+    font-size: 25px;
+    -unity-font-style: bold-and-italic;
+    margin-top: 33px;
+    color: rgb(255, 255, 255);
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}
+
+Slider #unity-drag-container {
+    font-size: 22px;
+    background-image: none;
+    background-size: 98% 100%;
+    min-width: auto;
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}
+
+Slider #unity-tracker {
+    background-size: 100% 100%;
+    scale: 1 1;
+    transform-origin: center;
+    margin-top: 0;
+    width: auto;
+    height: 26px;
+    background-image: none;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    -unity-background-scale-mode: scale-and-crop;
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}
+
+Slider #unity-dragger {
+    opacity: 0;
+    background-image: url("project://database/Assets/MenuButtonsHorrorAssets/Dark%20Buttons/buttonTexHorror.png?fileID=2800000&guid=026ee93613041c04ea6fc6ebd16590f5&type=3#buttonTexHorror");
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}
+
+Slider #unity-fill {
+    background-image: url("project://database/Assets/Dark%20UI/Free/Divider.png?fileID=2800000&guid=3e33bda025a5e1d4eae51ae3933d9954&type=3#Divider");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: left 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    background-position-y: top 0;
+    background-size: 100% 100%;
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}
+
+Slider #unity-text-input {
+    background-image: url("project://database/Assets/Dark%20UI/Free/128%20Light.png?fileID=2800000&guid=240ae01ad665c6d4798249cbec763ce8&type=3#128 Light");
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-bottom-left-radius: 22px;
+    font-size: 19px;
+    opacity: 0;
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}

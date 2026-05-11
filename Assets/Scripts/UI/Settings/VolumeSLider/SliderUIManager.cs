@@ -11,8 +11,6 @@ public class SliderUIManager : MonoBehaviour
     private MusicSystem musicSystem;
     private float volume;
 
-    public float CurrentSFXVolume { get; private set; } = 1f;
-
     public AudioMixer SFXmixer;
 
     private void Awake()
@@ -27,28 +25,23 @@ public class SliderUIManager : MonoBehaviour
         
     }
 
-    private void SetVolume(float value)
-    {
-        CurrentSFXVolume = value;
-
-        SFXmixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20);
-        
-    }
-
     private void OnEnable()
     {
         var root = volumeSliderDocument.rootVisualElement;
-        volumeSlider = root.Q("VolumSlider") as Slider;
+        var _root = volumeSliderDocument.rootVisualElement;
 
-        if (volumeSlider != null)
-        {
-            volumeSlider.value = 1f;
+        volumeSlider = root.Q("VolumeSlider") as Slider;
+        volumeSlider = _root.Q("SfxSlider") as Slider;
 
-            volumeSlider.RegisterValueChangedCallback(evt => SetVolume(evt.newValue));
-        }
+
+        //if (volumeSlider != null)
+        //{
+        //    volumeSlider.value = 1f;
+
+        //}
 
         //var sftRoot = sfxSliderDoc.rootVisualElement;
-       // sfxSlider = sftRoot.Q("SfxSlider") as Slider;
+        // sfxSlider = sftRoot.Q("SfxSlider") as Slider;
     }
 
     public void ShowUI()
@@ -57,11 +50,20 @@ public class SliderUIManager : MonoBehaviour
         var root = volumeSliderDocument.rootVisualElement;
         root.style.position = Position.Absolute;
         root.style.top = 400;
-        root.style.left = 100;
+        root.style.left = 300;
         root.style.right = 0;
         root.style.bottom = 0;
 
         root.style.display = DisplayStyle.Flex;
+
+        var _root = volumeSliderDocument.rootVisualElement;
+        _root.style.position = Position.Absolute;
+        _root.style.top = 400;
+        _root.style.left = 300;
+        _root.style.right = 0;
+        _root.style.bottom = 0;
+
+        _root.style.display = DisplayStyle.Flex;
 
     }
 

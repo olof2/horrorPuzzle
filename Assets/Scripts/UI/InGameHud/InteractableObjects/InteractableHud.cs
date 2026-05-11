@@ -9,7 +9,10 @@ public class InteractableHud : Singleton<InteractableHud>
     public PlayerCameraLook playerCameraLook;
     private Camera cam;
     private Door door;
+    public IPanel panel;
+    I_Interactable currentInteractable = null;
 
+    [SerializeField]
     private Transform target;
     //public Transform UIAnchor;
 
@@ -17,8 +20,11 @@ public class InteractableHud : Singleton<InteractableHud>
     private float interactDistance = 3f;
     public bool isPaused;
 
+    bool layoutReady = false;
+    bool uiVisiable = false;
 
-   
+
+
 
     protected override void Awake()
     {
@@ -60,16 +66,20 @@ public class InteractableHud : Singleton<InteractableHud>
         if (interactableHud == null)
             interactableHud = GetComponent<UIDocument>();
         var root = interactableHud.rootVisualElement;
-        visualElement = root.Q<VisualElement>("Container");
+        visualElement = root.Q<VisualElement>("E");
 
         ButtonE = visualElement.Q<Button>("E");
 
        if (visualElement != null)
             visualElement.style.display = DisplayStyle.None;
 
+        panel = interactableHud.rootVisualElement.panel;
+
+
 
     }
 
+    //
     void Update()
     {
       
@@ -78,7 +88,23 @@ public class InteractableHud : Singleton<InteractableHud>
 
   
     }
-    
+
+    //Körs efter alla UPDATE varje frame
+    //Körs efter att kameran har flyttat sig
+    //efter alla objects har uppdaterats
+    // efter all fysik osv
+    // Bra för UI för att kameran måste vara färdig flyttat innan man placerar WorldSpace UI, annars blir pos fel, UI "glider" osv;
+    // 
+     void LateUpdate()
+    {
+        //Om layour, ui inte visiable osv returnera o gör inget
+        if (!layoutReady || !uiVisiable || visualElement == null || target == null)
+            return;
+
+        //Kallar på metoden och placerar ut UI;
+        UpdateUIPos();
+    }
+
 
     //Denna metod kollar om spelaren tittar på ett interagerbart objekt inom en viss räckvidd, och visar eller döljer interaktions-HUD:en baserat på det.
     public void ToggleInteractableHud()
@@ -103,9 +129,16 @@ public class InteractableHud : Singleton<InteractableHud>
             if (interactable != null)
             {
 
-               // target = interactable.UIAnchor;
 
-                ShowUI();
+                if (currentInteractable != interactable)
+                {   
+                    currentInteractable = interactable;
+                    target = interactable.UIAnchor;
+
+                    uiVisiable = true;
+                    ShowUI();
+
+                }
 
 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -117,13 +150,20 @@ public class InteractableHud : Singleton<InteractableHud>
 
                 return;
             }
-            else
-                HideUI();
+            //else
+              //  HideUI();
             
 
 
         }
-        HideUI();
+
+        if (currentInteractable != null)
+        {
+            currentInteractable = null;
+            HideUI();
+
+        }
+        //HideUI();
     }
 
     public void HideUI()
@@ -132,30 +172,67 @@ public class InteractableHud : Singleton<InteractableHud>
         if (visualElement != null)
         {
             visualElement.style.display = DisplayStyle.None;
+            layoutReady = false; // layout blir false
+            uiVisiable = false; // Så att UI inte uppdateras i lateUpdate
             return;
         }
 
        
     }
+
+   
     public void ShowUI()
     {
+        if (panel == null)
+            Debug.LogError("PANEL är null");
 
-        var panel = interactableHud.rootVisualElement.panel;
+        if (cam == null)
+            Debug.LogError("Cam är null");
+
+        if (target == null)
+            Debug.LogError("Target är null");
+
 
         if (visualElement != null)
         {
-            visualElement.style.display = DisplayStyle.Flex;
-            //visualElement.style.position = Position.Absolute;
-            //visualElement.style.display = DisplayStyle.Flex;
-            //Vector2 pos = RuntimePanelUtils.CameraTransformWorldToPanel(panel, target.position, cam); // Gör UI pos till worldspace pos med hjälp av target pos och playerLookCamera cam
-            //float panelHeigth = panel.visualTree.layout.height;
-            //visualElement.style.left = pos.x;
-            //visualElement.style.top = panelHeigth - pos.y;
+            // UI är synligt men layout är inte klar än
+            uiVisiable = true;
+            layoutReady = false;
 
-            //Debug.Log("World space pos = " + pos);
+            //Visar UI:n
+            visualElement.style.display = DisplayStyle.Flex;
+
+            // Sätter absolut pos så att left/top avgör pos, inte vart det ligger i panelen i UI Toolkit
+            visualElement.style.position = Position.Absolute;
+
+            //Körs nästa frame, så att layouten hinner regristreras så att UI:n inte får 0,0 dimensioner
+            visualElement.schedule.Execute(() =>
+            {
+                layoutReady = true;
+            });
+
+            Debug.Log($"UI size: {visualElement.layout.width} x {visualElement.layout.height}");
+           // Debug.Log("World space pos = " + pos);
             return;
         }
 
+
+    }
+
+    public void UpdateUIPos()
+    {
+        // Hämmtar world pos för target. Target har ett empty gameObject UIAnchor på sig
+        Vector3 worldPos = target.position;
+     
+        // Gör om world pos till panel-kordinater, UI Toolkits kordinatsystem.
+        Vector2 pos = RuntimePanelUtils.CameraTransformWorldToPanel(panel, worldPos, cam); 
+        //Hämtar UI:s width och heigth
+        float w = visualElement.layout.width;
+        float h = visualElement.layout.height;
+        //Tvingar UI Toolkit att placera ut UIs mittpunkt i worldspace.
+        visualElement.style.left = pos.x - w * 0.5f;
+        visualElement.style.top = pos.y - h * 0.5f;
+        Debug.Log($"UI size: {visualElement.layout.width} x {visualElement.layout.height}");
 
     }
 }
