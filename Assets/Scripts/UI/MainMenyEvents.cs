@@ -42,7 +42,7 @@ public class MainMenyEvents : MonoBehaviour
             pausedMenUScript.enabled = false;
         if (gameOverScript != null)
             gameOverScript.enabled = false;
-        if (settingsMenuEvents != null) settingsMenuEvents.enabled = false;
+        if (settingsMenuEvents != null) settingsMenuEvents.enabled = true;
         
         //if (interactableHud != null)
         // interactableHud.enabled = false;
@@ -199,7 +199,7 @@ public class MainMenyEvents : MonoBehaviour
         settingsMenuEvents.Open(SettingsMenuEvents.Source.mainMenu);
 
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
-       // settingsDocument.enabled = true;
+        //settingsDocument.enabled = true;
         var root = settingsDocument.rootVisualElement;
         if (root != null)
             root.style.display = DisplayStyle.Flex;
