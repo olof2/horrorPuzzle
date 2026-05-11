@@ -11,6 +11,8 @@ public class SliderUIManager : MonoBehaviour
     private MusicSystem musicSystem;
     private float volume;
 
+    public float CurrentSFXVolume { get; private set; } = 1f;
+
     public AudioMixer SFXmixer;
 
     private void Awake()
@@ -25,6 +27,14 @@ public class SliderUIManager : MonoBehaviour
         
     }
 
+    private void SetVolume(float value)
+    {
+        CurrentSFXVolume = value;
+
+        SFXmixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20);
+        
+    }
+
     private void OnEnable()
     {
         var root = volumeSliderDocument.rootVisualElement;
@@ -34,6 +44,7 @@ public class SliderUIManager : MonoBehaviour
         {
             volumeSlider.value = 1f;
 
+            volumeSlider.RegisterValueChangedCallback(evt => SetVolume(evt.newValue));
         }
 
         //var sftRoot = sfxSliderDoc.rootVisualElement;

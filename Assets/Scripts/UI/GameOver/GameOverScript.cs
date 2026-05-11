@@ -79,7 +79,7 @@ public class GameOverScript : MonoBehaviour
             Debug.Log("Game Over! Sanity is at maximum!");
         }
 
-        Debug.Log("Update körs");
+        //Debug.Log("Update körs");
     }
 
 
