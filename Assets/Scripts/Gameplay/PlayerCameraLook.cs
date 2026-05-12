@@ -81,8 +81,8 @@ public class PlayerCameraLook : MonoBehaviour
             RaycastHit hit;
 
             //Debug stråle
-            Debug.DrawRay(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward) * interactDistance, Color.red, 2f);
-
+            //Debug.DrawRay(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward) * interactDistance, Color.red, 2f);
+            
             if (Physics.Raycast(cameraTransform.position, cameraTransform.TransformDirection(Vector3.forward), out hit, interactDistance))
             {
                 I_Interactable interactable = hit.collider.GetComponent<I_Interactable>() ?? hit.collider.GetComponentInParent<I_Interactable>();

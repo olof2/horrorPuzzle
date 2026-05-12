@@ -4,11 +4,14 @@ using UnityEngine;
 public class PlayerFootsteps : MonoBehaviour
 {
     public AudioClip footStepSFX;
+    public AudioSource audioSource;
 
     private PlayerMovement movement;
+    private CharacterController controller;
     void Start()
     {
         movement = GetComponent<PlayerMovement>(); // Hämta referensen till PlayerMovement-komponenten på samma GameObject.
+        controller = GetComponent<CharacterController>(); // Hämta referensen till CharacterContro
 
         StartCoroutine(PlayFootSteps()); 
 
@@ -19,7 +22,7 @@ public class PlayerFootsteps : MonoBehaviour
         // Denna coroutine kommer att fortsätta så länge spelet körs, och den kommer att spela fotstegsljudet när spelaren rör sig.
         while (true)
         {
-            if (movement.currentInput.magnitude > 0.1f)
+            if (movement.enabled && movement.canMove && controller.isGrounded && controller.velocity.magnitude > 0.1f)
             {
                 if (AudioManager.instance != null)
                 {

@@ -5,5 +5,5 @@
             <ui:DataBinding property="value" data-source-path="volume" data-source-type="MusicSystem, Assembly-CSharp" binding-mode="TwoWay" />
         </Bindings>
     </ui:Slider>
-    <ui:Slider label="SFX" value="0.61" high-value="1" name="SfxSlider" data-source-type="MusicSystem, Assembly-CSharp" data-source-path="volume" fill="true" show-input-field="true" inverted="false" style="padding-top: 38px; padding-right: 300px; padding-left: 300px; padding-bottom: 108px; background-image: none;" />
+    <ui:Slider label="SFX" value="0.61" high-value="1" name="SfxSlider" data-source-type="MusicSystem, Assembly-CSharp" fill="true" show-input-field="true" inverted="false" style="padding-top: 38px; padding-right: 300px; padding-left: 300px; padding-bottom: 108px; background-image: none;" />
 </ui:UXML>

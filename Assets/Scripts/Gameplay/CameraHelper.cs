@@ -21,10 +21,12 @@ public class CameraHelper : MonoBehaviour
     void Shaking()
     {
         float insanityPercent = SanityMeter.Instance.sanityLevel / SanityMeter.Instance.maxSanityLevel;
-        float intensity = insanityPercent;
+        float intensity = insanityPercent - 0.5f; // Startar bara när sanity är under 50%
+        if(intensity < 0 ) intensity = 0f; //om den är negativ så sätt den till 0
 
-        float x = Random.Range(-0.1f, 0.1f) * intensity;
-        float y = Random.Range(-0.1f, 0.1f) * intensity;
+
+        float x = Random.Range(-0.02f, 0.02f) * intensity;
+        float y = Random.Range(-0.02f, 0.02f) * intensity;
 
         cameraTransform.localPosition = baseLocalposition + new Vector3(x, y, 0f);
     }
