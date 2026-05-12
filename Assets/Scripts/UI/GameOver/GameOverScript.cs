@@ -58,7 +58,7 @@ public class GameOverScript : MonoBehaviour
 
         
 
-         
+        InteractableHud.Instance.gameObject.SetActive(false);
         InteractableHud.Instance.enabled = false;
         
 
