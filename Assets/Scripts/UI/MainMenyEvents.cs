@@ -110,7 +110,7 @@ public class MainMenyEvents : MonoBehaviour
         Debug.Log("You pressed the Start Button");
 
        
-      
+        if (gameOverScript != null)
         gameOverScript.enabled = true;
         if (playerMovement != null)
         playerMovement.enabled = true;

@@ -56,8 +56,11 @@ public class GameOverScript : MonoBehaviour
         playerCameraLook.enabled = false;
         sanityMeter.enabled = false;
 
+        
+
          
         InteractableHud.Instance.enabled = false;
+        
 
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
