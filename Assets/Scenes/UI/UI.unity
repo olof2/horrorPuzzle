@@ -18674,7 +18674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sanityLevel: 0
-  maxSanityLevel: 100
+  maxSanityLevel: 50
   increaseRate: 1
   sanitySound25: {fileID: 0}
   sanitySound50: {fileID: 0}
@@ -18854,6 +18854,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 780d4d521510f084ba478a54e3a5d355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1170926951 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 610726042631394914, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+  m_PrefabInstance: {fileID: 154026062497495825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!43 &1176427536
@@ -32219,7 +32230,7 @@ MonoBehaviour:
   - trackName: Test
     clip: {fileID: 8300000, guid: 68db7e507d525994b82c84af5d7e9311, type: 3}
     source: {fileID: 0}
-  volume: 0.562
+  volume: 0
 --- !u!4 &1941941594
 Transform:
   m_ObjectHideFlags: 0
@@ -35988,6 +35999,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: sanityMeter
+      value: 
+      objectReference: {fileID: 1158758980}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: hudSanityMeter
+      value: 
+      objectReference: {fileID: 1158758977}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: mainMenyEvents
+      value: 
+      objectReference: {fileID: 2050248568}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 482256233}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: gameoverDocument
+      value: 
+      objectReference: {fileID: 1170926951}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: pausedMenUScript
+      value: 
+      objectReference: {fileID: 689401402}
+    - target: {fileID: 3353768859073806288, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
+      propertyPath: playerCameraLook
+      value: 
+      objectReference: {fileID: 482256232}
     - target: {fileID: 6295046824974933621, guid: a023418d669bfbb4f81821b38249a8d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

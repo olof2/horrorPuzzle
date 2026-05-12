@@ -9,6 +9,7 @@ public class InteractableHud : Singleton<InteractableHud>
     public PlayerCameraLook playerCameraLook;
     private Camera cam;
     private Door door;
+    private GameOverScript gameOverScript;
     public IPanel panel;
     I_Interactable currentInteractable = null;
 
@@ -95,7 +96,7 @@ public class InteractableHud : Singleton<InteractableHud>
     // efter all fysik osv
     // Bra för UI för att kameran måste vara färdig flyttat innan man placerar WorldSpace UI, annars blir pos fel, UI "glider" osv;
     // 
-     void LateUpdate()
+    void LateUpdate()
     {
         //Om layour, ui inte visiable osv returnera o gör inget
         if (!layoutReady || !uiVisiable || visualElement == null || target == null)
