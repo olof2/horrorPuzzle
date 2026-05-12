@@ -19,7 +19,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     {
         playerTransform = GetComponent<Transform>();
         chara = GetComponent<CharacterController>();
-        speed = 5f;
+        speed = 3.5f;
     }
 
     
