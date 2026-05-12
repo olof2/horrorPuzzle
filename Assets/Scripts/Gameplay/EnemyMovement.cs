@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (SanityMeter.Instance != null)
         {
-            SanityMeter.Instance.OnReached25 += StartMoving;// Start moving when sanity reaches 25
+            SanityMeter.Instance.OnReached95 += StartMoving;// Start moving when sanity reaches 95
         }
         else
         {
@@ -53,7 +53,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (SanityMeter.Instance != null)
         {
-            SanityMeter.Instance.OnReached25 -= StartMoving; // Unsubscribe from the event when the enemy is destroyed
+            SanityMeter.Instance.OnReached95 -= StartMoving; // Unsubscribe from the event when the enemy is destroyed
         }
     }
 }

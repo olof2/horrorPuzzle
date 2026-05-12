@@ -17,24 +17,28 @@ public class SanityMeter : Singleton<SanityMeter>
     public AudioClip sanitySound25;
     public AudioClip sanitySound50;
     public AudioClip sanitySound75;
+    public AudioClip sanitySound95;
     public AudioClip increaseSound100;
 
     //Event Action för varje threashold (25 -> 50 -> 75 -> 100)
     public event Action OnReached25;
     public event Action OnReached50;
     public event Action OnReached75;
+    public event Action OnReached95;
     public event Action OnReached100;
 
     
     private bool hasPlayed25 = false; // Så det bara spelas en gång
     private bool hasPlayed50 = false;
     private bool hasPlayed75 = false;
+    private bool hasPlayed95 = false;
     private bool hasPlayed100 = false;
 
     // bool för om event Action är skickat än eller inte
     private bool sent25;
     private bool sent50;
     private bool sent75;
+    private bool sent95;
     private bool sent100;
 
     void Start()
@@ -82,6 +86,12 @@ public class SanityMeter : Singleton<SanityMeter>
             hasPlayed75 = true; 
         }
 
+        //if (sanityLevel >= maxSanityLevel * 0.95f && !hasPlayed95)
+        //{
+        //    audioSource.PlayOneShot(sanitySound95);
+        //    hasPlayed95 = true; 
+        //}
+
         if(sanityLevel >= maxSanityLevel && !hasPlayed100)
         {
             audioSource.PlayOneShot(increaseSound100);
@@ -110,6 +120,13 @@ public class SanityMeter : Singleton<SanityMeter>
             OnReached75?.Invoke();
 
             Debug.Log("OnRechead75 succes");
+        }
+        if (!sent95 && sanityLevel >= maxSanityLevel * 0.95f)
+        {
+            sent95 = true;
+            OnReached95?.Invoke();
+
+            Debug.Log("OnRechead95 succes");
         }
         if (!sent100 && sanityLevel >= maxSanityLevel)
         {
