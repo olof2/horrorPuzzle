@@ -87,8 +87,7 @@ public class PausedMenUScript : MonoBehaviour
 
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
         sanityMeterElement.style.display = DisplayStyle.None;
-         
-        
+
         //    var interactableHudDocument = interactableHud.GetComponent<UIDocument>();
         //if (interactableHudDocument != null)
         //    interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
@@ -96,6 +95,9 @@ public class PausedMenUScript : MonoBehaviour
         InteractableHud.Instance.HideUI();
 
         MusicSystem.Instance.Pause("Test");
+        FindObjectOfType<AmbienceSound>()?.PauseAmbience();   //SFX RainSound
+        FindAnyObjectByType<ShowerSound>()?.PauseSound(); 
+
 
         // Låser inte musen och gör den synlig så att det är möjligt att klicka på knapparna i pausmenyn
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -130,8 +132,10 @@ public class PausedMenUScript : MonoBehaviour
 
         MusicSystem.Instance.Play("Test");
 
-        FindFirstObjectByType<AmbienceSound>()?.StartAmbience();   //SFX RainSound 
-        
+
+        FindFirstObjectByType<AmbienceSound>()?.ResumeAmbience();   //SFX RainSound 
+        FindAnyObjectByType<ShowerSound>()?.ResumeSound();
+
 
         // Låser musen och gör den osynlig så att det är möjligt att spela spelet
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;

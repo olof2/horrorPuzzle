@@ -56,8 +56,11 @@ public class GameOverScript : MonoBehaviour
         playerCameraLook.enabled = false;
         sanityMeter.enabled = false;
 
+        
+
          
         InteractableHud.Instance.enabled = false;
+        
 
 
         UnityEngine.Cursor.lockState = CursorLockMode.None;
@@ -79,7 +82,7 @@ public class GameOverScript : MonoBehaviour
             Debug.Log("Game Over! Sanity is at maximum!");
         }
 
-        Debug.Log("Update körs");
+        //Debug.Log("Update körs");
     }
 
 

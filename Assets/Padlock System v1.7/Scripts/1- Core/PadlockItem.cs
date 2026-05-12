@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 namespace PadlockSystem
 {
     public class PadlockItem : MonoBehaviour
     {
         [SerializeField] private PadlockController _padlockController = null;   // Reference to the padlock controller this item triggers
+
+      
 
         public void ShowPadlock()
         {

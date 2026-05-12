@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/InteractHudStyle.uss?fileID=7433441132597879392&amp;guid=ac339c1a53c5fe546bd18d5af468c788&amp;type=3#InteractHudStyle" />
     <ui:VisualElement name="Container" style="flex-grow: 1;">
-        <ui:Button text="E" name="E" class="button" style="align-self: center; width: 50px; height: 50px; font-size: 39px; background-image: url(&quot;project://database/Assets/Dark%20UI/Free/128.png?fileID=2800000&amp;guid=87ea2079a91b3e74f84b5cb700abb4d6&amp;type=3#128&quot;); top: -2px; left: 373px;" />
+        <ui:Button text="[E]" name="E" class="button" style="align-self: center; width: 50px; height: 50px; font-size: 39px; background-image: url(&quot;project://database/Assets/Dark%20UI/Free/128.png?fileID=2800000&amp;guid=87ea2079a91b3e74f84b5cb700abb4d6&amp;type=3#128&quot;); top: -2px; left: 373px; -unity-background-image-tint-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255);" />
     </ui:VisualElement>
 </ui:UXML>

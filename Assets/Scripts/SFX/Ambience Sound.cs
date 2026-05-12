@@ -20,8 +20,9 @@ public class AmbienceSound : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.loop = true;
 
-        audioSource.Play();
-        audioSource.Stop();
+        //audioSource.Play();
+        hasStarted = false;
+        //audioSource.Stop();
 
     }
 
@@ -31,6 +32,22 @@ public class AmbienceSound : MonoBehaviour
         {
             audioSource.Play();
             hasStarted = true;
+        }
+    }
+
+    public void PauseAmbience()
+    {
+        if(audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Pause();
+        }
+    }
+
+    public void ResumeAmbience()
+    {
+        if(audioSource != null)
+        {
+            audioSource.UnPause();
         }
     }
 
