@@ -35,7 +35,6 @@ public class AnimEventScript : MonoBehaviour
         }
 
         anim.SetTrigger(triggerName);
-        audioSource.Play();
 
         Debug.Log($"Trigger sent to Animator");
     }
