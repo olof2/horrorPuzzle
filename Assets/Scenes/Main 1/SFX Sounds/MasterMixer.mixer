@@ -153,6 +153,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-5364808733335029982
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: (Moderate) Toilet door
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 2eb6463b8e48a2347abd50b134ccf387
+  m_Children: []
+  m_Volume: 336606811a35e9f46a5c442ba67e5604
+  m_Pitch: 6e6896cc7bc4de64ab757ca370351a20
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -3568540034180158846}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-5325507051883397853
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -234,6 +253,20 @@ AudioMixerEffectController:
   m_EffectID: 05cb1ce350d5aef48b4790f2158f04ed
   m_EffectName: Attenuation
   m_MixLevel: 5101a0c3861da5640b6fd6c1de870593
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-3568540034180158846
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b36778c34aa27dc448011d90a25965d9
+  m_EffectName: Attenuation
+  m_MixLevel: 6e32f5a076aa6d14cbe7e23df9501563
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -477,6 +510,7 @@ AudioMixerController:
     - 72849ba1353b90340bf138ca06734006
     - a2046abb11249824b913e855f7fdbdaf
     - cf4199484514fdb4f80f5b7ea492c803
+    - 2eb6463b8e48a2347abd50b134ccf387
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -654,6 +688,7 @@ AudioMixerGroupController:
   - {fileID: 8248242354215964663}
   - {fileID: 6865805232428018725}
   - {fileID: -7206172456144108301}
+  - {fileID: -5364808733335029982}
   m_Volume: f0e13356383c5ab43b6d74cacdc91604
   m_Pitch: 8a49f087cd5d09043a5764a53abd1f63
   m_Send: 00000000000000000000000000000000
