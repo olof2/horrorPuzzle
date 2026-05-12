@@ -31,7 +31,7 @@ public class SliderUIManager : MonoBehaviour
         var _root = volumeSliderDocument.rootVisualElement;
 
         volumeSlider = root.Q("VolumeSlider") as Slider;
-        volumeSlider = _root.Q("SfxSlider") as Slider;
+        sfxSlider = _root.Q("SfxSlider") as Slider;
 
 
         //if (volumeSlider != null)
@@ -86,6 +86,17 @@ public class SliderUIManager : MonoBehaviour
             volume = volumeSlider.value;
             // Här kan du implementera logiken för att uppdatera volymen i ditt ljud
         }
+
+        // Uppdatera SFX-volymen i AudioMixern baserat på sfxSlider-värdet
+        if(sfxSlider != null && SFXmixer != null)
+        {
+            //float sfxVolume = sfxSlider.value;
+            float sfxVolume = Mathf.Clamp(sfxSlider.value, 0.0001f, 1f); // Förhindra log10(0) genom att sätta en minimal volym     
+            SFXmixer.SetFloat("SFXVolume", Mathf.Log10(sfxVolume) * 20); // Omvandla till decibel
+
+        }
+       
+        
     }
 
     private void ChangeVolume()

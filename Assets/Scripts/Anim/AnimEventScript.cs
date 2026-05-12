@@ -19,14 +19,14 @@ public class AnimEventScript : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
-        Debug.Log($"{gameObject.name} Animator found? {anim != null}");
+        //Debug.Log($"{gameObject.name} Animator found? {anim != null}");
     }
 
     //När "TriggerEvent" anropas så startar metoden SetTrigger
     //med triggerName stringen som skrivs i Inspect
     public void TriggerEvent()
     {
-        Debug.Log($"TriggerEvent on: {gameObject.name} | ID: {GetInstanceID()}");
+        //Debug.Log($"TriggerEvent on: {gameObject.name} | ID: {GetInstanceID()}");
 
         if (anim == null)
         {
