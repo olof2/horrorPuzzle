@@ -14,7 +14,7 @@ public class GameOverScript : MonoBehaviour
     private MainMenyEvents mainMenyEvents;
     private PausedMenUScript pausedMenUScript;
 
-
+    public EnemyMovement enemyMovement;
 
     private void Awake()
     {
@@ -75,12 +75,17 @@ public class GameOverScript : MonoBehaviour
 
      void Update()
     {
-        sanityMeter = FindFirstObjectByType<SanityMeter>();
-        if ( sanityMeter.sanityLevel >= sanityMeter.maxSanityLevel)
+        if (enemyMovement.Game_Over)
         {
             GameOver();
-            Debug.Log("Game Over! Sanity is at maximum!");
         }
+
+        //sanityMeter = FindFirstObjectByType<SanityMeter>();
+        //if ( sanityMeter.sanityLevel >= sanityMeter.maxSanityLevel)
+        //{
+        //    GameOver();
+        //    Debug.Log("Game Over! Sanity is at maximum!");
+        //}
 
         //Debug.Log("Update körs");
     }

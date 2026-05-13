@@ -73,7 +73,7 @@ namespace PadlockSystem
         {
             // Update UI crosshair highlight
             //PLUIManager.instance.HighlightCrosshair(on);
-            InteractableHud.Instance.ShowUI();
+            //InteractableHud.Instance.ShowUI();
         }
     }
 }

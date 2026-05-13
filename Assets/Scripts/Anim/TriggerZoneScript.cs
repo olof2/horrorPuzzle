@@ -89,10 +89,10 @@ public class TriggerZonePlaceholder : MonoBehaviour
     //storleken på min och max float i Random.Range är baserat på event nivå
     private float GetCooldown()
     {
-        if (overtimeUnlocked) return Random.Range(4f, 6f);
-        else if (majorEventUnlocked) return Random.Range(5f, 10f);
-        else if (moderateEventUnlocked) return Random.Range(6f, 12f);
-        else if (minorEventUnlocked) return Random.Range(6f, 16f);
+        if (overtimeUnlocked) return Random.Range(3f, 5f);
+        else if (majorEventUnlocked) return Random.Range(3f, 6f);
+        else if (moderateEventUnlocked) return Random.Range(5f, 8f);
+        else if (minorEventUnlocked) return Random.Range(8f, 10f);
 
         return Random.Range(minCooldownTime, maxCooldownTime);
     }

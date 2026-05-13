@@ -128,7 +128,7 @@ public class PausedMenUScript : MonoBehaviour
         //InteractableHud.Instance.ShowUI();
 
         var sanityMeterElement = hudSanityMeter.rootVisualElement.Q<VisualElement>("SanityMeterUI");
-        sanityMeterElement.style.display = DisplayStyle.Flex;
+        sanityMeterElement.style.display = DisplayStyle.None;
 
         MusicSystem.Instance.Play("Test");
 

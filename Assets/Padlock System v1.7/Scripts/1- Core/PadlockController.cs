@@ -84,6 +84,8 @@ namespace PadlockSystem
             // Disable player controller
             PLDisableManager.instance.DisablePlayer(true);
 
+            InteractableHud.Instance.gameObject.SetActive(false);
+
             // Spawn padlock in front of camera
             SpawnPadlock(distanceFromCamera);
 
@@ -135,6 +137,8 @@ namespace PadlockSystem
 
             // Re-enable player
             PLDisableManager.instance.DisablePlayer(false);
+
+            InteractableHud.Instance.gameObject.SetActive(true);
 
             // Remove padlock instance
             Destroy(instantiatedPadlock);

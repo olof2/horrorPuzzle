@@ -7,6 +7,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool isMoving = false;
     private Vector3 direction;
 
+    private GameOverScript gameOverScript;
+
+    private bool gameOver = false;
+    public bool Game_Over {  get { return gameOver; } }
+
 
     void Start()
     {
@@ -39,6 +44,8 @@ public class EnemyMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isMoving = false; // Stop moving when colliding with the player
+            gameOver = true;
+
             Debug.Log("Enemy collided with the player and stopped moving.");
         }
     }

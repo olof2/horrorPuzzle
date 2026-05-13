@@ -138,7 +138,7 @@ public class MainMenyEvents : MonoBehaviour
             sanityMeter.enabled = true;
         //Enable sanity metern UI
         SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
-        sanityMeterUI.style.display = DisplayStyle.Flex;
+        sanityMeterUI.style.display = DisplayStyle.None;
        
 
         //if (document != null)
