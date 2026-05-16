@@ -14,6 +14,7 @@ public class SanityMeter : Singleton<SanityMeter>
     [SerializeField] public float increaseRate = 0f; // Rate at which sanity decreases per second
 
     private AudioSource audioSource;
+    public AudioClip sanitySound10;
     public AudioClip sanitySound25;
     public AudioClip sanitySound50;
     public AudioClip sanitySound75;
@@ -21,20 +22,23 @@ public class SanityMeter : Singleton<SanityMeter>
     public AudioClip increaseSound100;
 
     //Event Action för varje threashold (25 -> 50 -> 75 -> 100)
+    public event Action OnReached10;
     public event Action OnReached25;
     public event Action OnReached50;
     public event Action OnReached75;
     public event Action OnReached95;
     public event Action OnReached100;
 
-    
-    private bool hasPlayed25 = false; // Så det bara spelas en gång
+    // Så det bara spelas en gång
+    private bool hasPlayed10 = false;
+    private bool hasPlayed25 = false;
     private bool hasPlayed50 = false;
     private bool hasPlayed75 = false;
     private bool hasPlayed95 = false;
     private bool hasPlayed100 = false;
 
     // bool för om event Action är skickat än eller inte
+    private bool sent10;
     private bool sent25;
     private bool sent50;
     private bool sent75;
@@ -68,7 +72,13 @@ public class SanityMeter : Singleton<SanityMeter>
         //    gameOverScript.GameOver();  
         //    Debug.Log("Sanity is at maximum!");
         //}
-        if(sanityLevel >= maxSanityLevel * 0.25f && !hasPlayed25)
+        if (sanityLevel >= maxSanityLevel * 0.1f && !hasPlayed10)
+        {
+            audioSource.PlayOneShot(sanitySound10);
+            hasPlayed10 = true; 
+        }
+
+        if (sanityLevel >= maxSanityLevel * 0.25f && !hasPlayed25)
         {
             audioSource.PlayOneShot(sanitySound25);
             hasPlayed25 = true; // 
@@ -99,7 +109,13 @@ public class SanityMeter : Singleton<SanityMeter>
         }
 
 
+        if (!sent10 && sanityLevel >= maxSanityLevel * 0.1f)
+        {
+            sent10 = true;
+            OnReached10?.Invoke();
 
+            Debug.Log("OnRechead10 succes");
+        }
         if (!sent25 && sanityLevel >= maxSanityLevel * 0.25f)
         {
             sent25 = true;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 //Script för TriggerZones, Zones i spelet där events som Animationer
 //kan triggas. Zonen är en empty game objects och när playern går in i en zone
 //så registerar zonen att en player har entered, sen om requirements för en
-//event kan triggas (sanity meter = 25,50,75%) och player är i zonen då
+//event kan triggas (sanity meter = 10,50,75%) och player är i zonen då
 //väljs en random animation från listorna av animerade objekt och startar animationen
 public class TriggerZonePlaceholder : MonoBehaviour
 {
@@ -23,20 +23,27 @@ public class TriggerZonePlaceholder : MonoBehaviour
     public List<AnimEventScript> moderateEvents;
     public List<AnimEventScript> majorEvents;
 
-    //cooldown timer för events + min och max cooldown time (6 - 16 som default)
+    //cooldown timer för events + min och max cooldown time för alla "event tiers"
     //efter event triggas (animation spelas) så startas en cooldown
     private float eventCooldownTimer = 0f;
-    public float minCooldownTime = 6f;
-    public float maxCooldownTime = 16f;
+
+    public float minMinorCooldown = 8f;
+    public float maxMinorCooldown = 10f;
+    public float minModerateCooldown = 5f;
+    public float maxModerateCooldown = 8f;
+    public float minMajorCooldown = 3f;
+    public float maxMajorCooldown = 6f;
+    public float minOvertimeCooldown = 3f;
+    public float maxOvertimeCooldown = 5f;
 
     //vid start av spelet, "subscribe" till de event Actions från SanityMeter
-    //scriptet som TriggerZone scriptet ska använda (onReached25/50/75/100)
+    //scriptet som TriggerZone scriptet ska använda (onReached10/50/75/100)
     private void Start()
     {
         //failsafe
         if (SanityMeter.Instance == null) return;
 
-        SanityMeter.Instance.OnReached25 += UnlockMinorEvents;
+        SanityMeter.Instance.OnReached10 += UnlockMinorEvents;
         SanityMeter.Instance.OnReached50 += UnlockModerateEvents;
         SanityMeter.Instance.OnReached75 += UnlockMajorEvents;
         SanityMeter.Instance.OnReached100 += UnlockOvertime;
@@ -89,12 +96,12 @@ public class TriggerZonePlaceholder : MonoBehaviour
     //storleken på min och max float i Random.Range är baserat på event nivå
     private float GetCooldown()
     {
-        if (overtimeUnlocked) return Random.Range(3f, 5f);
-        else if (majorEventUnlocked) return Random.Range(3f, 6f);
-        else if (moderateEventUnlocked) return Random.Range(5f, 8f);
-        else if (minorEventUnlocked) return Random.Range(8f, 10f);
+        if (overtimeUnlocked) return Random.Range(minOvertimeCooldown, maxOvertimeCooldown);
+        else if (majorEventUnlocked) return Random.Range(minMajorCooldown, maxMajorCooldown);
+        else if (moderateEventUnlocked) return Random.Range(minModerateCooldown, maxModerateCooldown);
+        else if (minorEventUnlocked) return Random.Range(minMinorCooldown, maxMinorCooldown);
 
-        return Random.Range(minCooldownTime, maxCooldownTime);
+        return Random.Range(minMinorCooldown, maxMinorCooldown); //default
     }
 
     //Bool metod som randomly väljer ett animerad objekt från en eller flera listor av
@@ -167,7 +174,7 @@ public class TriggerZonePlaceholder : MonoBehaviour
         //failsafe
         if (SanityMeter.Instance == null) return;
 
-        SanityMeter.Instance.OnReached25 -= UnlockMinorEvents;
+        SanityMeter.Instance.OnReached10 -= UnlockMinorEvents;
         SanityMeter.Instance.OnReached50 -= UnlockModerateEvents;
         SanityMeter.Instance.OnReached75 -= UnlockMajorEvents;
         SanityMeter.Instance.OnReached100 -= UnlockOvertime;

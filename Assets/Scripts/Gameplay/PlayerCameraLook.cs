@@ -189,4 +189,11 @@ public class PlayerCameraLook : MonoBehaviour
     {
         flash.enabled = 0 < SanityMeter.Instance.sanityLevel; //0 ska vara hälften av sanitylevel
     }
+
+    //metod som anropas i EnemeyMovement scriptet
+    //får player kameran till att kolla på spöket vid death animation
+    public void LookAtTarget(Transform target)
+    {
+        cameraTransform.LookAt(target);
+    }
 }
