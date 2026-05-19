@@ -148,7 +148,7 @@ public class MainMenyEvents : MonoBehaviour
            
 
         if (MusicSystem.Instance != null)
-            MusicSystem.Instance.Play("Test");
+            MusicSystem.Instance.Play("Intro");
 
         FindObjectOfType<AmbienceSound>()?.StartAmbience();
         FindAnyObjectByType<ShowerSound>()?.StartSound();

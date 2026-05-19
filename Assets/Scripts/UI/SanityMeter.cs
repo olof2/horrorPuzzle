@@ -10,6 +10,7 @@ public class SanityMeter : Singleton<SanityMeter>
     private GameOverScript gameOverScript;
 
     public float sanityLevel = 0f;
+    public float endMusicStartThreshold = 550f;
     [SerializeField] public float maxSanityLevel = 100f;
     [SerializeField] public float increaseRate = 0f; // Rate at which sanity decreases per second
 
@@ -36,6 +37,7 @@ public class SanityMeter : Singleton<SanityMeter>
     private bool hasPlayed75 = false;
     private bool hasPlayed95 = false;
     private bool hasPlayed100 = false;
+    private bool hasPlayedEndMusic = false;
 
     // bool för om event Action är skickat än eller inte
     private bool sent10;
@@ -72,6 +74,16 @@ public class SanityMeter : Singleton<SanityMeter>
         //    gameOverScript.GameOver();  
         //    Debug.Log("Sanity is at maximum!");
         //}
+
+        if (sanityLevel >= endMusicStartThreshold && !hasPlayedEndMusic)
+        {
+            if (MusicSystem.Instance != null)
+            {
+                MusicSystem.Instance.Play("Intro");
+                hasPlayedEndMusic = true;
+            }    
+        }
+
         if (sanityLevel >= maxSanityLevel * 0.1f && !hasPlayed10)
         {
             audioSource.PlayOneShot(sanitySound10);
