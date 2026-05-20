@@ -4,6 +4,7 @@ public class TeleporterScript : MonoBehaviour
 {
     [SerializeField] private Transform launchZone;      //fält för att sätta en launchzone i inspektorn, tar dess positon
     [SerializeField] private Transform destinationZone;     ////fält för att sätta en destinationzone i inspektorn, tar dess positon
+    [SerializeField] private bool isActive = true; //fält för att aktivera eller inaktivera teleportern
 
     private Vector3 teleportDestination = new Vector3(0f, 0f, 0f);
 
