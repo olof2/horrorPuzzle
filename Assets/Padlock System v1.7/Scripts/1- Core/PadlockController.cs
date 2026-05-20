@@ -74,7 +74,7 @@ namespace PadlockSystem
                 //kollar kombinationen som sänder event som påverkar världen
                 CheckCombination();
 
-                //startar unlock process oavseet vad det är för kombination
+                // tillagtstartar unlock process oavseet vad det är för kombination
                 StartCoroutine(CorrectCombination());
                 hasUnlocked = true;
 
@@ -175,6 +175,7 @@ namespace PadlockSystem
             // Check if correct and hasn't already unlocked
             if (playerCombi == yourCombination)
             {
+                //tidigare kod nedan. kanske ska hasUnlocked ändras i båda fall, flyttad till längre upp
                 //if (!hasUnlocked)
                 //{
                 //    StartCoroutine(CorrectCombination());

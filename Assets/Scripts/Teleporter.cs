@@ -68,6 +68,7 @@ public class TeleporterScript : MonoBehaviour
     private void ActivateWrongCode()
     {
         //isActive = !isActive;
+        //används inte just nu
         Debug.Log("Wrong code triggered. no switching");
     }
 
