@@ -34,7 +34,7 @@ public class MusicSystem : Singleton<MusicSystem>
         {
             AudioSource newSource = gameObject.AddComponent<AudioSource>();
             newSource.clip = tracks[i].clip;
-            newSource.loop = true;
+            newSource.loop = false;
             newSource.playOnAwake = false;
             newSource.volume = volume;
 
