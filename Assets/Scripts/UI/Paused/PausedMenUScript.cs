@@ -92,7 +92,7 @@ public class PausedMenUScript : MonoBehaviour
         //if (interactableHudDocument != null)
         //    interactableHudDocument.rootVisualElement.style.display = DisplayStyle.None;
 
-        InteractableHud.Instance.HideUI();
+        InteractableHud.Instance.HideAllUI();
 
         MusicSystem.Instance.Pause("Test");
         FindObjectOfType<AmbienceSound>()?.PauseAmbience();   //SFX RainSound
