@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -48,6 +49,9 @@ namespace PadlockSystem
         private Animator lockAnim;                                    // Animator on spawned padlock
         private GameObject instantiatedPadlock;                       // Spawned padlock reference
 
+        public event Action CorrectCode;
+        public event Action WrongCode;
+
         void Awake()
         {
             // Cache main camera
@@ -65,7 +69,15 @@ namespace PadlockSystem
             // Prevent closing unless padlock is visible
             if (isShowing && Input.GetKeyDown(closeKey))
             {
-                DisablePadlock();
+                //DisablePadlock();
+
+                //kollar kombinationen som sänder event som påverkar världen
+                CheckCombination();
+
+                //startar unlock process oavseet vad det är för kombination
+                StartCoroutine(CorrectCombination());
+                hasUnlocked = true;
+
             }
         }
 
@@ -163,11 +175,17 @@ namespace PadlockSystem
             // Check if correct and hasn't already unlocked
             if (playerCombi == yourCombination)
             {
-                if (!hasUnlocked)
-                {
-                    StartCoroutine(CorrectCombination());
-                    hasUnlocked = true;
-                }
+                //if (!hasUnlocked)
+                //{
+                //    StartCoroutine(CorrectCombination());
+                //    hasUnlocked = true;
+                //}
+
+                CorrectCode?.Invoke();
+            }
+            else
+            {
+                WrongCode?.Invoke();
             }
         }
 
