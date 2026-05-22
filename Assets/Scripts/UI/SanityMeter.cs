@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class SanityMeter : Singleton<SanityMeter>
 {
-    private SanityMeterUI sanityMeterUI;
+    //private SanityMeterUI sanityMeterUI;
     private GameOverScript gameOverScript;
 
     public float sanityLevel = 0f;
@@ -51,11 +51,11 @@ public class SanityMeter : Singleton<SanityMeter>
     {
         // Find the UIDocument in the scene and get the SanityMeterUI component
         var uiDocument = FindFirstObjectByType<UIDocument>();
-        sanityMeterUI = uiDocument.rootVisualElement.Q<SanityMeterUI>();
+        //sanityMeterUI = uiDocument.rootVisualElement.Q<SanityMeterUI>();
         
 
-        if (sanityMeterUI != null)
-        sanityMeterUI.sanityLevel = sanityLevel; // Initialize the UI with the starting sanity level
+        //if (sanityMeterUI != null)
+        //sanityMeterUI.sanityLevel = sanityLevel; // Initialize the UI with the starting sanity level
         
 
         sanityLevel = Mathf.Clamp(sanityLevel, 0f, maxSanityLevel); // Ensure sanity level starts within bounds
