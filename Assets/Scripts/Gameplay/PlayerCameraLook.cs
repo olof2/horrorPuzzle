@@ -23,6 +23,8 @@ public class PlayerCameraLook : MonoBehaviour
 
     private bool canLookAround = true;
 
+    public bool pickedUp = false; // En bool För UI för att checka om spelaren håller i objectet eller inte för att visa UI
+
     //Flashlight under
     [SerializeField] private Light flash;
 
@@ -91,6 +93,7 @@ public class PlayerCameraLook : MonoBehaviour
                     //heldObject == null är för att se till så att man icke håller något
                 {
                     PickUpObject(hit.transform.gameObject);
+
                 }
                 else if(interactable != null && heldObject == null) //Om den inte har pickup taggen, men fortfarande kan interactas, så kallar man på interact funktionen
                 {
@@ -112,12 +115,15 @@ public class PlayerCameraLook : MonoBehaviour
 
     void HoldingObject()
     {
+        pickedUp = true;
         MoveObject();
         RotateObject();
+
         if(Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true)
         {
             AvoidClipping();
             ThrowObject();
+            pickedUp = false;
         }
     }
 

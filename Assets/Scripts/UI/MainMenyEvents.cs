@@ -173,6 +173,7 @@ public class MainMenyEvents : MonoBehaviour
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
         settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
 
+        if (playerMovement != null)
         playerMovement.enabled = false;
         playerCameraLook.enabled = false;
         sanityMeter.enabled = false;

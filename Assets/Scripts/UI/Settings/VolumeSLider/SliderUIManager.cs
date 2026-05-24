@@ -44,21 +44,22 @@ public class SliderUIManager : MonoBehaviour
         // sfxSlider = sftRoot.Q("SfxSlider") as Slider;
     }
 
-    public void ShowUI()
+    public void ShowAllUI()
     {
         // Positioner för volymreglaget så att det visas på rätt plats i förhållande till inställningsmenyn.
         var root = volumeSliderDocument.rootVisualElement;
         root.style.position = Position.Absolute;
-        root.style.top = 400;
+        root.style.top = 600;
         root.style.left = 300;
         root.style.right = 0;
         root.style.bottom = 0;
 
         root.style.display = DisplayStyle.Flex;
 
+        // Positioner för SFX-reglaget så att det visas på rätt plats i förhållande till inställningsmenyn.
         var _root = volumeSliderDocument.rootVisualElement;
         _root.style.position = Position.Absolute;
-        _root.style.top = 400;
+        _root.style.top = 200; // För tillfället ändrar denna båda reglagen, har nog glömt att seperera VisualTree för båda reglagen. Denna skriver över båda.
         _root.style.left = 300;
         _root.style.right = 0;
         _root.style.bottom = 0;
