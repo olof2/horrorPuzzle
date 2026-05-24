@@ -39,10 +39,10 @@ namespace PadlockSystem
             ApplyValueToController();
 
             // Ask controller to check if combination is now correct (guarded)
-            if (_padlockController != null)
-                _padlockController.CheckCombination();
-            else
-                Debug.LogWarning($"{nameof(PadlockNumberSelector)}: _padlockController is null on click for {gameObject.name}");
+            //if (_padlockController != null)
+            //    _padlockController.CheckCombination();
+            //else
+            //    Debug.LogWarning($"{nameof(PadlockNumberSelector)}: _padlockController is null on click for {gameObject.name}");
         }
 
         void RotateSpinner()
