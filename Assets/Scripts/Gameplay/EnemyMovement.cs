@@ -3,7 +3,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform target; // The target the enemy will move towards
-    [SerializeField] private float speed = 2f; // The speed at which the enemy moves
+    [SerializeField] private float speed = 0.2f; // The speed at which the enemy moves
+    [SerializeField] private float acceleration = 0.1f; // speed increase each deltatime
     [SerializeField] private bool isMoving = false;
     private Vector3 direction;
 
@@ -53,6 +54,10 @@ public class EnemyMovement : MonoBehaviour
 
         if (isMoving && PlayerMovement.Instance.enabled)
         {
+            //speed increase
+            speed += acceleration * Time.deltaTime;
+
+            //movement
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
@@ -114,7 +119,7 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("Enemy started moving towards the player.");
     }
 
-    //flyttar fram spöket 4f för varje "MoveForward" metod
+    //flyttar fram spöket för varje "MoveForward" metod
     //"back" eftersom det går egentligen ner i Z position
     private void MoveForward25()
     {
