@@ -40,6 +40,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &-8226211277123248498
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Din Doors
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e8aa189add676d74eb6dff1d05659a00
+  m_Children: []
+  m_Volume: f38df5c54a526234e9ae2a41ebd5ca2f
+  m_Pitch: 7f0f046c2dc5f3b40989f8cbdf0424b9
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -247553732719718718}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-8212927691613210013
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -50,6 +69,20 @@ AudioMixerEffectController:
   m_EffectID: 7572f9af1d4132b4d922d566e2ff51bc
   m_EffectName: Attenuation
   m_MixLevel: b099703304c7b0543b9832ee80cbe689
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-8072574964739646773
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: a96d75f5d1576304b88333753ad57b89
+  m_EffectName: Attenuation
+  m_MixLevel: c02e6e0ec53b3ee47b2e8787df0841ff
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
@@ -444,6 +477,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-247553732719718718
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 738405956c88405479eb4e9112f9e733
+  m_EffectName: Attenuation
+  m_MixLevel: 2c411f3cbbf5be042a4f2e26cda7907b
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-103453302196702073
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -526,6 +573,9 @@ AudioMixerController:
     - cf4199484514fdb4f80f5b7ea492c803
     - 2eb6463b8e48a2347abd50b134ccf387
     - 4bf17ea82063e9141abf6012424276ff
+    - 32c6a18178c9b124888f0df9f58007fb
+    - 2aa482af22afef64d8501d1fa4fedd2c
+    - e8aa189add676d74eb6dff1d05659a00
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -649,6 +699,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &2070335033047053186
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 991634a4015e23c4ca647a7d3880a296
+  m_EffectName: Attenuation
+  m_MixLevel: 12fdfddf3bfdb6e43a3205068771a971
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &2886798379840374527
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -664,6 +728,25 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -262977258930550223}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &3932818550088930643
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kithcen Door
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 2aa482af22afef64d8501d1fa4fedd2c
+  m_Children: []
+  m_Volume: 95dd6a850fa3f834b80b40a18fabe6bf
+  m_Pitch: 18c7425e2f8351c46a0d69fb3e0c9dc8
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -8072574964739646773}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -861,6 +944,8 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 8459954250020017818}
   - {fileID: -103453302196702073}
+  - {fileID: 3932818550088930643}
+  - {fileID: -8226211277123248498}
   m_Volume: a6737a0ad6ceac04bac882bcb7b3c2d0
   m_Pitch: eb89b71d792948a4bbfc2881d0ed4af7
   m_Send: 00000000000000000000000000000000
@@ -956,6 +1041,25 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 6873850885376789855}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &7391716271149900056
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Chandelier
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 32c6a18178c9b124888f0df9f58007fb
+  m_Children: []
+  m_Volume: b972b5df08349be4881bac1702f4a580
+  m_Pitch: 4b0d5399550e4bf4d8d03055661b5c80
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 2070335033047053186}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -1129,6 +1233,7 @@ AudioMixerGroupController:
   - {fileID: -8556066066319870491}
   - {fileID: -5325507051883397853}
   - {fileID: 8927411270628966097}
+  - {fileID: 7391716271149900056}
   m_Volume: ba6e7e93731ed3d4ab34c02402490396
   m_Pitch: 69b9cd66b14fe7f4cadc79692ccae22b
   m_Send: 00000000000000000000000000000000
