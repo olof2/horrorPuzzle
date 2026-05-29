@@ -23,6 +23,8 @@ public class PlayerCameraLook : MonoBehaviour
 
     private bool canLookAround = true;
 
+    public PlayerMovement movement;
+
     //Flashlight under
     [SerializeField] private Light flash;
 
@@ -50,6 +52,7 @@ public class PlayerCameraLook : MonoBehaviour
         }
         SendInteractRay();
         if (heldObject != null) HoldingObject();
+        else movement.canMove = true;
 
         FlashLight();
     }
@@ -112,6 +115,7 @@ public class PlayerCameraLook : MonoBehaviour
 
     void HoldingObject()
     {
+        movement.canMove = false;
         MoveObject();
         RotateObject();
         if(Input.GetKeyDown(KeyCode.Mouse0) && canDrop == true)
