@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Door : MonoBehaviour, I_Interactable
@@ -9,11 +8,15 @@ public class Door : MonoBehaviour, I_Interactable
     public float speedMult = 6f;
     public bool isOpen = false;
 
+    public bool isLocked = true;
+    public bool openOnUnlock = true;
+    
+
     private Quaternion closedRot;
     private Quaternion openRot;
     private Coroutine coroutine;
 
-
+    public Door anotherDoorToOpen; //Används bara av dubbel dörrarna
 
     [SerializeField]
     private Transform uiAnchor;
@@ -35,9 +38,26 @@ public class Door : MonoBehaviour, I_Interactable
         
     }
 
+    public void Unlock()
+    {
+        isLocked = false;
+        Debug.Log("Door unlocked!");
+
+        anotherDoorToOpen?.Unlock();
+
+        if (openOnUnlock)
+            Interact();
+    }
+
     public void Interact()
     {
-        if(coroutine != null)
+        if (isLocked)
+        {
+            Debug.Log("This door is locked");
+            return;
+        }
+
+        if (coroutine != null)
         {
             StopCoroutine(coroutine);
         }

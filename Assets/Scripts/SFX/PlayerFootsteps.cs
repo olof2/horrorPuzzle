@@ -3,43 +3,58 @@ using UnityEngine;
 
 public class PlayerFootsteps : MonoBehaviour
 {
-    public AudioClip footStepSFX;
-    public AudioSource audioSource;
+    public AudioClip[] footStepSFX;
 
     private PlayerMovement movement;
     private CharacterController controller;
+
     void Start()
     {
-        movement = GetComponent<PlayerMovement>(); // Hämta referensen till PlayerMovement-komponenten på samma GameObject.
-        controller = GetComponent<CharacterController>(); // Hämta referensen till CharacterContro
+        movement = GetComponent<PlayerMovement>();
+        controller = GetComponent<CharacterController>();
 
-        StartCoroutine(PlayFootSteps()); 
-
+        StartCoroutine(PlayFootSteps());
     }
 
     IEnumerator PlayFootSteps()
     {
-        // Denna coroutine kommer att fortsätta så länge spelet körs, och den kommer att spela fotstegsljudet när spelaren rör sig.
         while (true)
         {
-            if (movement.enabled && movement.canMove && controller.isGrounded && controller.velocity.magnitude > 0.1f)
+
+            Vector3 horizontalVelocity = controller.velocity;
+            horizontalVelocity.y = 0f;
+
+            if (movement.enabled &&
+                movement.canMove &&
+                controller.isGrounded &&
+                movement.currentInput.magnitude > 0.1f &&
+                horizontalVelocity.magnitude > 0.15f &&
+                footStepSFX.Length > 0 &&
+                AudioManager.instance != null)
             {
-                if (AudioManager.instance != null)
+                AudioClip clip = footStepSFX[Random.Range(0, footStepSFX.Length)];
+
+                if (clip != null)
                 {
-                    AudioManager.instance.PlaySFX(footStepSFX, 0.2f);
+                    float volume = Random.Range(0.18f, 0.23f);
+                    AudioManager.instance.PlaySFX(clip, volume);
+
                 }
 
-                yield return new WaitForSeconds(0.45f);
+                float stepDelay = 0.65f;
 
+                /*Mathf.Lerp(
+                    0.9f,
+                    0.55f,
+                    movement.currentInput.magnitude
+                );*/
+
+                yield return new WaitForSeconds(stepDelay);
             }
-            // Om spelaren inte rör sig, vänta en kort stund innan nästa kontroll för att undvika att spamma ljudet när spelaren börjar röra sig igen.
             else
             {
-                yield return null;
-
+                yield return new WaitForSeconds(0.1f);
             }
-
-
         }
     }
 }

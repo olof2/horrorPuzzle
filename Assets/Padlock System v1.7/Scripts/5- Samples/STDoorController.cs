@@ -34,7 +34,7 @@ namespace PadlockSystem
         private Animator doorAnim;
         private Quaternion initialRotation;
         private Quaternion targetRotation;
-        private bool isOpen = false;
+        public bool isOpen = false;
         private Transform targetTransform; // The actual transform that will rotate
 
         private void Awake()
@@ -80,11 +80,12 @@ namespace PadlockSystem
         }
 
         // Plays door open animation and sound
-        private void PlayAnimation()
+        public void PlayAnimation()
         {
             PLAudioManager.instance.Play(soundClip);
             doorAnim.Play(animationName, 0, 0.0f); // Play from the start
         }
+
 
         // Smoothly rotates the door over time
         private IEnumerator RotateDoor()
@@ -111,6 +112,23 @@ namespace PadlockSystem
             // Ensure exact final rotation and toggle state
             targetTransform.rotation = targetRotation;
             isOpen = !isOpen;
+        }
+
+        public void Reset()
+        {
+
+            // Auto-assign doorObject if not set and there's a child named "Door"
+            if (doorObject == null)
+            {
+                StopAllCoroutines(); // Stop any rotation in progress
+
+                // Reset to closed state
+                if (doorType == DoorType.CodeDriven)
+                {
+                    targetTransform.rotation = initialRotation;
+                }
+                isOpen = false;
+            }
         }
     }
 }

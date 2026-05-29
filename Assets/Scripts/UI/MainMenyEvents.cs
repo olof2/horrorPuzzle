@@ -138,8 +138,8 @@ public class MainMenyEvents : MonoBehaviour
         if (sanityMeter != null)
             sanityMeter.enabled = true;
         //Enable sanity metern UI
-        SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
-        sanityMeterUI.style.display = DisplayStyle.None;
+        //SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
+        //sanityMeterUI.style.display = DisplayStyle.None;
        
 
         //if (document != null)
@@ -255,8 +255,11 @@ public class MainMenyEvents : MonoBehaviour
 
     private void OnExitClick(ClickEvent clickEvent)
     {
-        Application.Quit();
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#else
+				Application.Quit();
+#endif
     }
 
     private void Update()

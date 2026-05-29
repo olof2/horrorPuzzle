@@ -34,14 +34,18 @@ public class GameOverScript : MonoBehaviour
     }
 
     private void OnExitGameClick(ClickEvent evt)
-    { 
+    {
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#else
+				Application.Quit();
+#endif
     }
 
     public void GameOver()
     {
-        //SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
-        //sanityMeterUI.style.display = DisplayStyle.None;
+        SanityMeterUI sanityMeterUI = hudSanityMeter.rootVisualElement.Q<SanityMeterUI>("SanityMeterUI");
+        sanityMeterUI.style.display = DisplayStyle.None;
 
         gameoverDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         playerMovement = FindFirstObjectByType<PlayerMovement>();

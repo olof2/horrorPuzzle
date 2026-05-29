@@ -1,42 +1,26 @@
 using UnityEngine;
-using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-
     public static AudioManager instance;
 
     public AudioMixerGroup sfxGroup;
 
-    private void Awake()
+    private AudioSource sfxSource;
+
+    void Awake()
     {
         instance = this;
-        
+
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        sfxSource.outputAudioMixerGroup = sfxGroup;
     }
 
-    public void PlaySFX(AudioClip audioClip, float volume = 1f)
+    public void PlaySFX(AudioClip clip, float volume = 1f)
     {
-        StartCoroutine(PlaySFXCoroutine(audioClip, volume)) ;
+        sfxSource.pitch = Random.Range(0.92f, 1.08f);
+
+        sfxSource.PlayOneShot(clip, volume);
     }
-
-    IEnumerator PlaySFXCoroutine(AudioClip audioClip, float volume = 1f)
-    {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = audioClip;
-        audioSource.volume = volume;
-
-
-        audioSource.outputAudioMixerGroup = sfxGroup;
-
-
-        audioSource.Play();
-
-        yield return  new WaitForSeconds(audioSource.clip.length * 2);
-
-        Destroy(audioSource);
-        
-    }
-
 }

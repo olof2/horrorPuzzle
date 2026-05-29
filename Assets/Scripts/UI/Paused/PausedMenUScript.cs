@@ -1,5 +1,4 @@
 using System.Xml.Linq;
-using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +17,7 @@ public class PausedMenUScript : MonoBehaviour
     public SanityMeter sanityMeter;
     public SettingsMenuEvents settingsMenuEvents;
     //public InteractableHud interactableHud;
-    public SanityMeterUI sanityMeterUI;
+    //public SanityMeterUI sanityMeterUI;
     public MusicSystem musicSystem;
 
 
@@ -182,7 +181,10 @@ public class PausedMenUScript : MonoBehaviour
     void OnExitGameClick(ClickEvent clickEvent)
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false; // För att stoppa spelet i editorn
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
         Debug.Log("Tröck på Exit");
     }
 
