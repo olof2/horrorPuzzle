@@ -86,11 +86,6 @@ namespace PadlockSystem
             doorAnim.Play(animationName, 0, 0.0f); // Play from the start
         }
 
-        public void PlayAnimationReverse()
-        {
-            PLAudioManager.instance.Play(soundClip);
-            doorAnim.Play(animationName, 0, 1.0f); // Play from the end
-        }
 
         // Smoothly rotates the door over time
         private IEnumerator RotateDoor()
@@ -117,6 +112,23 @@ namespace PadlockSystem
             // Ensure exact final rotation and toggle state
             targetTransform.rotation = targetRotation;
             isOpen = !isOpen;
+        }
+
+        public void Reset()
+        {
+
+            // Auto-assign doorObject if not set and there's a child named "Door"
+            if (doorObject == null)
+            {
+                StopAllCoroutines(); // Stop any rotation in progress
+
+                // Reset to closed state
+                if (doorType == DoorType.CodeDriven)
+                {
+                    targetTransform.rotation = initialRotation;
+                }
+                isOpen = false;
+            }
         }
     }
 }
