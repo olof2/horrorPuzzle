@@ -22,6 +22,7 @@ public class PlayerCameraLook : MonoBehaviour
     private int LayerNumber; //Layer index där objekt vi håller i renderas
 
     private bool canLookAround = true;
+    public bool pickedUp = false;
 
     public PlayerMovement movement;
 
@@ -115,6 +116,7 @@ public class PlayerCameraLook : MonoBehaviour
 
     void HoldingObject()
     {
+        pickedUp = true;
         movement.canMove = false;
         MoveObject();
         RotateObject();
@@ -122,6 +124,7 @@ public class PlayerCameraLook : MonoBehaviour
         {
             AvoidClipping();
             ThrowObject();
+            
         }
     }
 
@@ -146,6 +149,7 @@ public class PlayerCameraLook : MonoBehaviour
         heldObjectRgb.isKinematic = false;
         heldObject.transform.parent = null; //tar bort parent
         heldObject = null; // släpp gameobject
+        
     }
     void MoveObject()
     {
@@ -178,6 +182,7 @@ public class PlayerCameraLook : MonoBehaviour
         heldObject.transform.parent = null;
         heldObjectRgb.AddForce(transform.forward * throwForce);
         heldObject = null;
+        pickedUp = false;
     }
     void AvoidClipping() //Används så att saker inte fastnar
     {
