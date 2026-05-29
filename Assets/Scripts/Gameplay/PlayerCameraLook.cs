@@ -131,6 +131,8 @@ public class PlayerCameraLook : MonoBehaviour
             heldObjectRgb.transform.parent = holdPos.transform;
             heldObject.layer = LayerNumber;
             Physics.IgnoreCollision(heldObject.GetComponent<Collider>(), player.GetComponent<Collider>(), true); // så att spelaren inte collide'ar med objektet
+
+            pickUpObject.GetComponent<PuzzlePickup>()?.OnPickedUp(); 
         }
     }
     void DropObject()

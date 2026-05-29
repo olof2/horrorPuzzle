@@ -39,7 +39,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     }
 
 
-
+    
     void Update()
     {
         if (chara.isGrounded && velocityY < 0)
