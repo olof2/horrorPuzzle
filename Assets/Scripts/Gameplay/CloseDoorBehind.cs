@@ -1,5 +1,6 @@
 using PadlockSystem;
 using UnityEngine;
+using System.Collections;
 
 public class closedoorbehindtrigger : MonoBehaviour
 {

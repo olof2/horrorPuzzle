@@ -52,6 +52,9 @@ namespace PadlockSystem
         public event Action CorrectCode;
         public event Action WrongCode;
 
+        private float timeSinceShown = 0f;
+        private const float inputDelay = 0.3f;
+
         void Awake()
         {
             // Cache main camera
@@ -67,28 +70,24 @@ namespace PadlockSystem
         void Update()
         {
             // Prevent closing unless padlock is visible
-            if (isShowing && Input.GetKeyDown(closeKey))
+            if (isShowing)
             {
 
-                Debug.Log("KEY PRESSED - hasUnlocked: " + hasUnlocked);
-
-                //kollar kombinationen som sänder event som påverkar världen
-                CheckCombination();
-
-                if (!hasUnlocked)
+                timeSinceShown += Time.deltaTime;
+                if (timeSinceShown > inputDelay && Input.GetKeyDown(closeKey))
                 {
-                    Debug.Log("STARTING COROUTINE");
+                    
+                    //kollar kombinationen som sänder event som påverkar världen
+                    CheckCombination();
 
-                    // tillagtstartar unlock process oavseet vad det är för kombination
-                    StartCoroutine(CorrectCombination());
-                    hasUnlocked = true;
+                    if (!hasUnlocked)
+                    {
+                        // tillagtstartar unlock process oavseet vad det är för kombination
+                        StartCoroutine(CorrectCombination());
+                        hasUnlocked = true;
 
+                    }
                 }
-                else
-                {
-                    Debug.Log("COROUTINE ALREADY RUN - NOT STARTING AGAIN");
-                }
-
             }
         }
 
@@ -103,6 +102,7 @@ namespace PadlockSystem
         {
             // Mark padlock UI as active
             isShowing = true;
+            timeSinceShown = 0f;
 
             // Disable player controller
             PLDisableManager.instance.DisablePlayer(true);
