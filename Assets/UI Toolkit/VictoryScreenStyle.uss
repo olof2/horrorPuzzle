@@ -1,0 +1,26 @@
+.Button {
+    font-size: 30px;
+    align-self: center;
+    top: -425px;
+    margin-bottom: 0;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
+    -unity-text-outline-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    transition-property: all, ignored;
+    transition-duration: 0s, 0s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+}
+
+.Button:hover {
+    scale: 1.1 1.1;
+    -unity-font-style: bold;
+    transform-origin: bottom;
+    transition-duration: 0.3s;
+    cursor: url("project://database/Assets/SlimUI/Modern%20Menu%201/Graphics/Cursors/Cursor%206%2064px.png?fileID=2800000&guid=e4e13a8e226be7c40a05c1b444b03d01&type=3#Cursor 6 64px");
+}

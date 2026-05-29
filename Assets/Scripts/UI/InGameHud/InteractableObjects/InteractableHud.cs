@@ -5,11 +5,17 @@ public class InteractableHud : Singleton<InteractableHud>
 {
     public UIDocument interactableHud;
     private Button ButtonE;
-    public VisualElement visualElement;
+    private Button Button_E_PickUp;
+    public VisualElement rootVisual;
+    private VisualElement openElement;
+    private VisualElement closeElement;
+    private VisualElement pickUpElement;
+    private VisualElement rotateElement;
     public PlayerCameraLook playerCameraLook;
     private Camera cam;
     private Door door;
     private GameOverScript gameOverScript;
+    KeyPickup keyPickup;
     public IPanel panel;
     I_Interactable currentInteractable = null;
 
@@ -21,8 +27,8 @@ public class InteractableHud : Singleton<InteractableHud>
     private float interactDistance = 3f;
     public bool isPaused;
 
-    bool layoutReady = false;
-    bool uiVisiable = false;
+    bool layoutReady = false; // Bool för att kolla om layouten är klar, så att vi inte försöker placera UI innan den har fått sina dimensioner osv, vilket gör att den hamnar fel, i 0,0 osv;
+    bool uiVisiable = false; //Bool för att kolla om UI är synligt
 
 
 
@@ -42,12 +48,9 @@ public class InteractableHud : Singleton<InteractableHud>
         
         // Hämtar playerCameraLook camera
         cam = playerCameraLook.GetComponentInChildren<Camera>();
-        //HideUI();
-        //playerCameraLook = FindAnyObjectByType<PlayerCameraLook>();
 
-        //    if (interactableHud != null)
-        //        interactableHud.rootVisualElement.style.display = DisplayStyle.None;
-        //    interactDistance = 3f;
+        door = FindAnyObjectByType<Door>();
+
     }
 
     private void OnEnable()
@@ -66,13 +69,22 @@ public class InteractableHud : Singleton<InteractableHud>
 
         if (interactableHud == null)
             interactableHud = GetComponent<UIDocument>();
-        var root = interactableHud.rootVisualElement;
-        visualElement = root.Q<VisualElement>("E");
+        rootVisual = interactableHud.rootVisualElement;
+        openElement = rootVisual.Q<VisualElement>("Open");
+        pickUpElement = rootVisual.Q<VisualElement>("PickUp");
+        rotateElement = rootVisual.Q<VisualElement>("Rotate");
+        closeElement = rootVisual.Q<VisualElement>("Close");
 
-        ButtonE = visualElement.Q<Button>("E");
-
-       if (visualElement != null)
-            visualElement.style.display = DisplayStyle.None;
+        ButtonE = openElement.Q<Button>("E");
+        Button_E_PickUp = pickUpElement.Q<Button>("E_PickUp");
+        if (openElement != null)
+            openElement.style.display = DisplayStyle.None;
+        if (pickUpElement != null)
+            pickUpElement.style.display = DisplayStyle.None;
+        if (rotateElement != null)
+            rotateElement.style.display = DisplayStyle.None;
+        if (closeElement != null)
+            closeElement.style.display = DisplayStyle.None;
 
         panel = interactableHud.rootVisualElement.panel;
 
@@ -99,7 +111,7 @@ public class InteractableHud : Singleton<InteractableHud>
     void LateUpdate()
     {
         //Om layour, ui inte visiable osv returnera o gör inget
-        if (!layoutReady || !uiVisiable || visualElement == null || target == null)
+        if (!layoutReady || !uiVisiable || openElement == null || pickUpElement == null || target == null)
             return;
 
         //Kallar på metoden och placerar ut UI;
@@ -112,7 +124,7 @@ public class InteractableHud : Singleton<InteractableHud>
     {
         if (isPaused)
         {
-            HideUI();
+            HideAllUI();
             return;
         }
 
@@ -130,21 +142,54 @@ public class InteractableHud : Singleton<InteractableHud>
             if (interactable != null)
             {
 
-
+                // OM det inte är samma interagerbara objekt som förra frame, så uppdatera currentInteractable, target och visa UI:n
                 if (currentInteractable != interactable)
-                {   
+                {
+                    // Sätter currentInteractable till det nya objektet som spelaren tittar på.
+                    //target = interactable.UIAnchor;
                     currentInteractable = interactable;
-                    target = interactable.UIAnchor;
+                    target = interactable.UIAnchor; // Sätter target till det nya objektets UIAnchor, så att UI:n kommer att placeras vid det objektet
+                    // Kollar om det är en door, puzzle, pick up etc och kallar då på rätt UI metod
+                    if (currentInteractable is InteractDEBUG)
+                    {
 
-                    uiVisiable = true;
-                    ShowUI();
+                        
+                        ShowPickUpUI();
+                        
+                        //keyPickup = interactable as KeyPickup;
+                    }
+                    else if (currentInteractable is Door)
+                    {
+                        //uiVisiable = true;
+
+                        if (door.isOpen) // Kollar om dörren är öppen
+                        {
+                            ShowCloseUI();
+                        }
+                        else
+                        {
+                            ShowOpenUI();
+                        } 
+
+                        //door = interactable as Door;
+                    }
+                   else  if (currentInteractable is PuzzlePlate)
+                    {
+                        // target = interactable.UIAnchor; // Sätter target till det nya objektets UIAnchor, så att UI:n kommer att placeras vid det objektet
+                        //uiVisiable = true;
+                        ShowRotateUI();
+                        // return;
+                    }
+
+                    //uiVisiable = true;
+                    //ShowUI();
 
                 }
 
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    HideUI();
+                    //HideUI();
                     // interactableHud.rootVisualElement.style.display = DisplayStyle.None;
                     Debug.Log("E key pressed från InteractableScript");
                 }
@@ -157,32 +202,46 @@ public class InteractableHud : Singleton<InteractableHud>
 
 
         }
-
+        // OM Raycasten inte träffa någt objekt man kan interacta med, sett den till null och dölj UI:n
         if (currentInteractable != null)
         {
             currentInteractable = null;
-            HideUI();
+            HideAllUI();
+
 
         }
         //HideUI();
     }
 
-    public void HideUI()
+    // Metoden döljer all UI
+    public void HideAllUI()
     {
       
-        if (visualElement != null)
+        if (rootVisual != null)
         {
-            visualElement.style.display = DisplayStyle.None;
+            rootVisual.style.display = DisplayStyle.None;
             layoutReady = false; // layout blir false
             uiVisiable = false; // Så att UI inte uppdateras i lateUpdate
+            if (openElement != null)
+                openElement.style.display = DisplayStyle.None;
+            if (pickUpElement != null)
+                pickUpElement.style.display = DisplayStyle.None;
+            if (rootVisual != null)
+                rootVisual.style.display = DisplayStyle.None;
+            if (rotateElement != null)
+                rotateElement.style.display = DisplayStyle.None;
+            if (closeElement != null)
+                closeElement.style.display = DisplayStyle.None;
+
+
             return;
         }
 
        
     }
 
-   
-    public void ShowUI()
+     //Metoden gör så att Open UI elelemnt visas
+    public void ShowOpenUI()
     {
         if (panel == null)
             Debug.LogError("PANEL är null");
@@ -194,25 +253,33 @@ public class InteractableHud : Singleton<InteractableHud>
             Debug.LogError("Target är null");
 
 
-        if (visualElement != null)
+        if (rootVisual != null)
         {
             // UI är synligt men layout är inte klar än
             uiVisiable = true;
             layoutReady = false;
-
+            //var root = interactableHud.rootVisualElement;
+             //visualElement = root.Q<VisualElement>("E");
             //Visar UI:n
-            visualElement.style.display = DisplayStyle.Flex;
+            rootVisual.style.display = DisplayStyle.Flex;
+
+            if (pickUpElement != null)
+                pickUpElement.style.display = DisplayStyle.None; // Döljer PickUp UI
+            if (rotateElement != null)
+                rotateElement.style.display = DisplayStyle.None; // Döljer Rotate UI
+            if (openElement != null)
+                openElement.style.display = DisplayStyle.Flex; //Visar Open UI
 
             // Sätter absolut pos så att left/top avgör pos, inte vart det ligger i panelen i UI Toolkit
-            visualElement.style.position = Position.Absolute;
+            rootVisual.style.position = Position.Absolute;
 
             //Körs nästa frame, så att layouten hinner regristreras så att UI:n inte får 0,0 dimensioner
-            visualElement.schedule.Execute(() =>
+            rootVisual.schedule.Execute(() =>
             {
                 layoutReady = true;
             });
 
-            Debug.Log($"UI size: {visualElement.layout.width} x {visualElement.layout.height}");
+            Debug.Log($"UI size: {rootVisual.layout.width} x {rootVisual.layout.height}");
            // Debug.Log("World space pos = " + pos);
             return;
         }
@@ -220,20 +287,152 @@ public class InteractableHud : Singleton<InteractableHud>
 
     }
 
+    //Metode gör så att Pick Up UI visas
+    public void ShowPickUpUI()
+    {
+        if (panel == null)
+            Debug.LogError("PANEL är null");
+        if (cam == null)
+            Debug.LogError("Cam är null");
+        if (target == null)
+            Debug.LogError("Target är null");
+
+        if (rootVisual != null)
+        {
+            uiVisiable = true; // UI är synligt
+            layoutReady = false; 
+
+           // var root = interactableHud.rootVisualElement;
+               // rootVisual = root.Q<VisualElement>("E_PickUp");
+    
+             rootVisual.style.display = DisplayStyle.Flex; // Visar VisualElementet som innehpller UI
+
+            if (openElement != null)
+                openElement.style.display= DisplayStyle.None; //Döljer Open UI
+            if (rotateElement != null)
+                rotateElement.style.display = DisplayStyle.None; // Döljer Rotate UI
+            if (pickUpElement != null)
+                pickUpElement.style.display = DisplayStyle.Flex; //Visar PickUp UI
+
+            // visualElement.style.display = DisplayStyle.Flex;
+
+            rootVisual.style.position = Position.Absolute; //Sätter absolut pos så att left/top avgör pos, inte vart det ligger i panelen i UI Toolkit
+
+            rootVisual.schedule.Execute(() =>
+            {
+                layoutReady = true;
+            });
+
+                Debug.Log($"UI size: {rootVisual.layout.width} x {rootVisual.layout.height}");
+                //Debug.Log("World space pos = " + pos);
+                return;
+
+        }
+    }
+
+    public void ShowRotateUI()
+    {
+        if (panel == null)
+            Debug.LogError("PANEL är null");
+        if (cam == null)
+            Debug.LogError("Cam är null");
+        if (target == null)
+            Debug.LogError("Target är null");
+        if (rootVisual != null)
+        {
+            uiVisiable = true; // UI är synligt
+            layoutReady = false;
+            rootVisual.style.display = DisplayStyle.Flex; // Visar VisualElementet som innehpller UI
+            if (openElement != null)
+                openElement.style.display = DisplayStyle.None; //Döljer Open UI
+            if (pickUpElement != null)
+                pickUpElement.style.display = DisplayStyle.None; // Döljer PickUp UI
+            if (rotateElement != null)
+                rotateElement.style.display = DisplayStyle.Flex; //Visar Rotate UI
+            rootVisual.style.position = Position.Absolute; //Sätter absolut pos så att left/top avgör pos, inte vart det ligger i panelen i UI Toolkit
+            rootVisual.schedule.Execute(() =>
+            {
+                layoutReady = true;
+            });
+            Debug.Log($"UI size: {rootVisual.layout.width} x {rootVisual.layout.height}");
+            //Debug.Log("World space pos = " + pos);
+            return;
+        }
+    }
+
+    public void ShowCloseUI()
+    {
+        if (panel == null)
+            Debug.LogError("PANEL är null");
+        if (cam == null)
+            Debug.LogError("Cam är null");
+        if (target == null)
+            Debug.LogError("Target är null");
+        if (rootVisual != null)
+        {
+            uiVisiable = true; // UI är synligt
+            layoutReady = false;
+            rootVisual.style.display = DisplayStyle.Flex; // Visar VisualElementet som innehpller UI
+            if (openElement != null)
+                openElement.style.display = DisplayStyle.None; //Döljer Open UI
+            if (pickUpElement != null)
+                pickUpElement.style.display = DisplayStyle.None; // Döljer PickUp UI
+            if (rotateElement != null)
+                rotateElement.style.display = DisplayStyle.None; //Visar Rotate UI
+            if (closeElement != null)
+                closeElement.style.display = DisplayStyle.Flex; //Visar Rotate UI
+
+            rootVisual.style.position = Position.Absolute; //Sätter absolut pos så att left/top avgör pos, inte vart det ligger i panelen i UI Toolkit
+            rootVisual.schedule.Execute(() =>
+            {
+                layoutReady = true;
+            });
+            Debug.Log($"UI size: {rootVisual.layout.width} x {rootVisual.layout.height}");
+            //Debug.Log("World space pos = " + pos);
+            return;
+        }
+    }
+
+    // Uppdaterar UI:s position varje frame i LateUpdate, så att den följer med objektet i worldspace
+    // Den gör om world pos till panel-kordinater, UI Toolkits kordinatsystem, och placerar ut UI:n där
     public void UpdateUIPos()
     {
         // Hämmtar world pos för target. Target har ett empty gameObject UIAnchor på sig
         Vector3 worldPos = target.position;
-     
+
+       
+
         // Gör om world pos till panel-kordinater, UI Toolkits kordinatsystem.
         Vector2 pos = RuntimePanelUtils.CameraTransformWorldToPanel(panel, worldPos, cam); 
         //Hämtar UI:s width och heigth
-        float w = visualElement.layout.width;
-        float h = visualElement.layout.height;
+        float w = openElement.layout.width;
+        float h = openElement.layout.height;
+        //Hämtar PuckUp UI width och height
+        float w2 = pickUpElement.layout.width;
+        float h2 = pickUpElement.layout.height;
+
+        float w3 = rotateElement.layout.width;
+        float h3 = rotateElement.layout.height;
+
+        float w4 = closeElement.layout.width;
+        float h4 = closeElement.layout.height;
         //Tvingar UI Toolkit att placera ut UIs mittpunkt i worldspace.
-        visualElement.style.left = pos.x - w * 0.5f;
-        visualElement.style.top = pos.y - h * 0.5f;
-        Debug.Log($"UI size: {visualElement.layout.width} x {visualElement.layout.height}");
+        // UI Toolkit placerar normalt utifrån vänster hörn, så vi måste dra av halva width och height för att få mittpunkten på rätt ställe.
+        openElement.style.left = pos.x - w * 0.5f;//Open UI
+        openElement.style.top = pos.y - h * 0.5f;//Open UI
+
+        pickUpElement.style.left = pos.x - w2 * 0.5f;//PickUp UI
+        pickUpElement.style.top = pos.y - h2 * 0.5f;//PickUp UI
+
+        rotateElement.style.left = pos.x - w3 * 0.5f;//Rotate UI
+        rotateElement.style.top = pos.y - h3 * 0.5f;//Roteate UI
+
+        closeElement.style.left = pos.x - w4 * 0.5f;//Rotate UI
+        closeElement.style.top = pos.y - h4 * 0.5f;//Roteate UI
+
+
+        Debug.Log($"UI size: {openElement.layout.width} x {openElement.layout.height}");
+        Debug.Log($"PickUp UI size: {pickUpElement.layout.width} x {pickUpElement.layout.height}");
 
     }
 }
