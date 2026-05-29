@@ -7,10 +7,11 @@ public class VictoryMenuScript : MonoBehaviour
 
     private UIDocument victoryMenuDoc;
     private VisualElement visualElement;
+    private PlayerCameraLook playerCameraLook;
 
-   
     private Door door;
-    
+    PadlockItem padlockItem;
+
 
     private void Awake()
     {
@@ -29,11 +30,17 @@ public class VictoryMenuScript : MonoBehaviour
     void Update()
     {
         //Nä slår in rätt kod och då kommer öppna "rätt" dörr, visa UI
+      
+        
+
+
+
     }
 
 
     public void ShowUI()
     {
+        
         if (visualElement != null)
             visualElement.style.display = DisplayStyle.Flex; // Sätter UI synlig
     }

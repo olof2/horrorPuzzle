@@ -8,6 +8,7 @@ public class Door : MonoBehaviour, I_Interactable
     public float speedMult = 6f;
     public bool isOpen = false;
 
+    
     public bool isLocked = true;
     public bool openOnUnlock = true;
     
