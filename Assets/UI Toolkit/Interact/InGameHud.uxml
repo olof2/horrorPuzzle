@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Interact/InGameHudStyle.uss?fileID=7433441132597879392&amp;guid=e006ffe193f8eab43bdd1f132ea668f2&amp;type=3#InGameHudStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:Label text="[R]-Rotate" name="R" style="height: 32px; justify-content: center; align-self: flex-start; align-content: flex-end; align-items: auto; top: 1008px; color: rgb(255, 255, 255); font-size: 30px;" />
+        <ui:Label text="[LeftClick]-Drop" name="LeftClick" style="font-size: 30px; color: rgb(255, 255, 255); top: 905px;" />
+    </ui:VisualElement>
+</ui:UXML>

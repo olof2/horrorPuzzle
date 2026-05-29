@@ -41,6 +41,7 @@ public class Door : MonoBehaviour, I_Interactable
     public void Unlock()
     {
         isLocked = false;
+        
         Debug.Log("Door unlocked!");
 
         anotherDoorToOpen?.Unlock();

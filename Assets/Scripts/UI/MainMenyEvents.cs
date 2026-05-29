@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UIElements.Experimental;
 public class MainMenyEvents : MonoBehaviour
 {
     private UIDocument document;
@@ -143,7 +144,8 @@ public class MainMenyEvents : MonoBehaviour
 
         //if (document != null)
         //    document.enabled = false;
-        document.rootVisualElement.style.display = DisplayStyle.None;
+        //document.rootVisualElement.style.display = DisplayStyle.None;
+        Transition();
     
            
 
@@ -172,7 +174,9 @@ public class MainMenyEvents : MonoBehaviour
 
         var settingsDocument = settingsMenuEvents.GetComponent<UIDocument>();
         settingsDocument.rootVisualElement.style.display = DisplayStyle.None;
+        
 
+        if (playerMovement != null)
         playerMovement.enabled = false;
         playerCameraLook.enabled = false;
         sanityMeter.enabled = false;
@@ -229,6 +233,16 @@ public class MainMenyEvents : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
 
+
+    }
+
+    public void Transition()
+    {
+      
+        document.rootVisualElement.experimental.animation.Start(new StyleValues { opacity = 0 }, 1000).OnCompleted(() =>
+        {
+            document.rootVisualElement.style.display = DisplayStyle.None;
+        });
 
     }
 
