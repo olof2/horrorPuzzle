@@ -69,14 +69,25 @@ namespace PadlockSystem
             // Prevent closing unless padlock is visible
             if (isShowing && Input.GetKeyDown(closeKey))
             {
-                //DisablePadlock();
+
+                Debug.Log("KEY PRESSED - hasUnlocked: " + hasUnlocked);
 
                 //kollar kombinationen som sänder event som påverkar världen
                 CheckCombination();
 
-                // tillagtstartar unlock process oavseet vad det är för kombination
-                StartCoroutine(CorrectCombination());
-                hasUnlocked = true;
+                if (!hasUnlocked)
+                {
+                    Debug.Log("STARTING COROUTINE");
+
+                    // tillagtstartar unlock process oavseet vad det är för kombination
+                    StartCoroutine(CorrectCombination());
+                    hasUnlocked = true;
+
+                }
+                else
+                {
+                    Debug.Log("COROUTINE ALREADY RUN - NOT STARTING AGAIN");
+                }
 
             }
         }
@@ -192,6 +203,8 @@ namespace PadlockSystem
 
         IEnumerator CorrectCombination()
         {
+            Debug.Log("COROUTINE STARTED - lockAnim is null: " + (lockAnim == null));
+
             // Play unlocking animation
             lockAnim.Play(lockOpen);
 
@@ -202,9 +215,12 @@ namespace PadlockSystem
             const float waitDuration = 1.2f;
             yield return new WaitForSeconds(waitDuration);
 
+
+            Debug.Log("DESTROYING PADLOCK");
             // Clean up padlock UI
             Destroy(instantiatedPadlock);
 
+            Debug.Log("DISABLING DOOR - interactableLock: " + interactableLock.name);
             // Disable world lock object
             interactableLock.SetActive(false);
 
@@ -217,6 +233,9 @@ namespace PadlockSystem
                 PLUIManager.instance.ShowUIPrompt(false);
                 triggerObject.SetActive(false);
             }
+
+            isShowing = false;
+            InteractableHud.Instance.gameObject.SetActive(true);
 
             // Restore player movement
             PLDisableManager.instance.DisablePlayer(false);
@@ -241,6 +260,44 @@ namespace PadlockSystem
         {
             // Play padlock unlock sound
             PLAudioManager.instance.Play(padlockUnlockSound);
+        }
+
+        public void Reset()
+        {
+            StopAllCoroutines(); // Stop any ongoing unlock process
+
+            if (instantiatedPadlock != null)
+            {
+                Destroy(instantiatedPadlock);
+            }
+
+            // Reset all dials to 1
+            combinationRow1 = 1;
+            combinationRow2 = 1;
+            combinationRow3 = 1;
+            combinationRow4 = 1;
+
+            // Clear player combination string
+            playerCombi = string.Empty;
+
+
+            // Reset unlocked state
+            hasUnlocked = false;
+
+            //reset showing state
+            isShowing = false;
+
+            // Re-enable world lock object
+            interactableLock.SetActive(true);
+
+            gameObject.SetActive(true); //so it can be interacted with again
+
+            // If using trigger, restore prompt and trigger object
+            if (isPadlockTrigger)
+            {
+                PLUIManager.instance.ShowUIPrompt(true);
+                triggerObject.SetActive(true);
+            }
         }
     }
 }
