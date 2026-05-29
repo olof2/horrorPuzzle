@@ -41,6 +41,8 @@ namespace PadlockSystem
         public int combinationRow3 { get; set; }                      // Dial 3 value
         public int combinationRow4 { get; set; }                      // Dial 4 value
 
+        
+
         private string playerCombi;                                   // Combined player input
         private bool hasUnlocked;                                     // Prevents multiple triggers
         private bool isShowing;                                       // True when padlock UI is visible
