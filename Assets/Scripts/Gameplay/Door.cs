@@ -11,6 +11,8 @@ public class Door : MonoBehaviour, I_Interactable
     
     public bool isLocked = true;
     public bool openOnUnlock = true;
+
+    public bool victoryDoor = false;
     
 
     private Quaternion closedRot;

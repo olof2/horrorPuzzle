@@ -9,6 +9,7 @@ public class VictoryMenuScript : MonoBehaviour
     private VisualElement visualElement;
     private PlayerCameraLook playerCameraLook;
 
+    private PadlockController padlockController;
     private Door door;
     PadlockItem padlockItem;
 
@@ -17,6 +18,7 @@ public class VictoryMenuScript : MonoBehaviour
     {
         victoryMenuDoc = GetComponent<UIDocument>(); // Hämtar UI Dokumentet
         door = FindAnyObjectByType<Door>(); // Hittar dörren i scenen
+        padlockController = FindAnyObjectByType<PadlockController>(); // Hittar padlockController i scenen
         visualElement.style.display = DisplayStyle.None; // gömmer UI i awake
     }
 
@@ -29,10 +31,18 @@ public class VictoryMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Nä slår in rätt kod och då kommer öppna "rätt" dörr, visa UI
-      
-        
+        ////Nä slår in rätt kod och då kommer öppna "rätt" dörr, visa UI
+        //var correctDoor = door.GetInstanceID();
 
+        //if (correctDoor == )
+        //{
+        //    ShowUI();
+        //}
+
+        if (door.victoryDoor)
+        {
+            ShowUI();
+        }
 
 
     }

@@ -14,6 +14,8 @@ public class InteractableHud : Singleton<InteractableHud>
     private VisualElement rotateElement;
     private VisualElement lockedElement;
 
+    public VictoryMenuScript victoryMenuScript;
+
     public PlayerCameraLook playerCameraLook;
 
     private Camera cam;
@@ -56,6 +58,8 @@ public class InteractableHud : Singleton<InteractableHud>
         
         // Hämtar playerCameraLook camera
         cam = playerCameraLook.GetComponentInChildren<Camera>();
+
+        victoryMenuScript = GetComponent<VictoryMenuScript>();
 
        // door = FindAnyObjectByType<Door>();
 
@@ -182,12 +186,16 @@ public class InteractableHud : Singleton<InteractableHud>
                             ShowLockedUI();
 
                         }
-                        else if(door.isOpen) // Kollar om dörren är öppen
+
+                        else if (door.isOpen) // Kollar om dörren är öppen
                         {
                             //door.isLocked = false;
                             ShowCloseUI();
                         }
-                        else 
+                        
+
+
+                        else
                             ShowOpenUI();
                         // Om den inte är öppen eller låst, så måste den vara st
 
