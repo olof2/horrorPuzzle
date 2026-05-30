@@ -26,7 +26,7 @@ public class AnimEventScript : MonoBehaviour
     //med triggerName stringen som skrivs i Inspect
     public void TriggerEvent()
     {
-        //Debug.Log($"TriggerEvent on: {gameObject.name} | ID: {GetInstanceID()}");
+        Debug.Log($"TriggerEvent on: {gameObject.name} | ID: {GetInstanceID()}");
 
         if (anim == null)
         {

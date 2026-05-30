@@ -4,7 +4,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform target; // The target the enemy will move towards
     [SerializeField] private float speed = 0.2f; // The speed at which the enemy moves
-    [SerializeField] private float acceleration = 0.1f; // speed increase each deltatime
+    [SerializeField] private float acceleration = 0.2f; // speed increase each deltatime
     [SerializeField] private bool isMoving = false;
     private Vector3 direction;
 
