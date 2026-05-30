@@ -193,11 +193,14 @@ public class InteractableHud : Singleton<InteractableHud>
                             //door.isLocked = false;
                             ShowCloseUI();
                         }
-                        else if (door.victoryDoor)
-                        {
-                            if (door.isOpen)
-                            victoryMenuScript.ShowUI();
-                        }
+                        //else if (door.victoryDoor)
+                        //{
+                        //    if (Input.GetKeyDown(KeyCode.F))
+                        //        victoryMenuScript.ShowUI();
+
+
+
+                        //}
 
 
                         else
@@ -217,14 +220,26 @@ public class InteractableHud : Singleton<InteractableHud>
                         // return;
                     }
 
+
+
                     //uiVisiable = true;
                     //ShowUI();
 
                 }
 
+                if (currentInteractable is Door currentDoor)
+                {
+                    VictoryMenuScript victoryMenuScript = FindAnyObjectByType<VictoryMenuScript>(); // Hämtar scriptets referens
+
+                    if (currentDoor.victoryDoor && Input.GetKeyDown(KeyCode.E))
+                        victoryMenuScript.ShowUI();
+                }
+
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+
+                    
                     //HideUI();
                     // interactableHud.rootVisualElement.style.display = DisplayStyle.None;
                     Debug.Log("E key pressed från InteractableScript");

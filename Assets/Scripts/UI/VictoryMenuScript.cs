@@ -12,6 +12,9 @@ public class VictoryMenuScript : MonoBehaviour
     public PlayerCameraLook playerCameraLook;
     public PlayerMovement playerMovement;
 
+    private Button exitButton;
+    private Button returnMainMenuButton;
+
     private PadlockController padlockController;
     private Door door;
     PadlockItem padlockItem;
@@ -23,7 +26,7 @@ public class VictoryMenuScript : MonoBehaviour
        
         door = FindAnyObjectByType<Door>(); // Hittar dörren i scenen
         padlockController = FindAnyObjectByType<PadlockController>(); // Hittar padlockController i scenen
-        
+
     }
 
     private void OnEnable()
@@ -31,17 +34,35 @@ public class VictoryMenuScript : MonoBehaviour
         var root = victoryMenuDoc.rootVisualElement;
         visualElement = root.Q<VisualElement>("Container");
         visualElement.style.display = DisplayStyle.None; // gömmer UI i awake
+
+
+        exitButton = root.Q<Button>("ExitGame");
+        returnMainMenuButton = root.Q<Button>("Restart");
+
+        
+        returnMainMenuButton.RegisterCallback<ClickEvent>(ReturnToMainMenu);
+        exitButton.RegisterCallback<ClickEvent>(CloseGame);
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-
-
+        
     }
 
+    void ReturnToMainMenu(ClickEvent evt)
+    {
+        MainMenyEvents mainMenu = FindAnyObjectByType<MainMenyEvents>();
+        mainMenu.OpenMainMenu();
+    }
 
+    void CloseGame(ClickEvent evt)
+    {
+        Application.Quit();
+    }
     public void ShowUI()
     {
 
