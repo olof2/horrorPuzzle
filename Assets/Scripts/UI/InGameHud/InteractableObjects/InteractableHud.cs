@@ -14,7 +14,7 @@ public class InteractableHud : Singleton<InteractableHud>
     private VisualElement rotateElement;
     private VisualElement lockedElement;
 
-    public VictoryMenuScript victoryMenuScript;
+    private VictoryMenuScript victoryMenuScript;
 
     public PlayerCameraLook playerCameraLook;
 
@@ -180,6 +180,7 @@ public class InteractableHud : Singleton<InteractableHud>
                     {
                         //uiVisiable = true;
                         Door door = currentInteractable as Door; // Hämta specifika dörren som spelaren tittar på 
+                        VictoryMenuScript victoryMenuScript = FindAnyObjectByType<VictoryMenuScript>(); // Hämtar scriptets referens
 
                         if (door.isLocked) // Kollar om dörren är låst
                         {
@@ -192,7 +193,11 @@ public class InteractableHud : Singleton<InteractableHud>
                             //door.isLocked = false;
                             ShowCloseUI();
                         }
-                        
+                        else if (door.victoryDoor)
+                        {
+                            if (door.isOpen)
+                            victoryMenuScript.ShowUI();
+                        }
 
 
                         else

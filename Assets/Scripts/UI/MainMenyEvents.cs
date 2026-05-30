@@ -17,7 +17,8 @@ public class MainMenyEvents : MonoBehaviour
     public GameOverScript gameOverScript;
     public SettingsMenuEvents settingsMenuEvents;
     public MusicSystem musicSystem;
-   // public InteractableHud interactableHud;
+    public VictoryMenuScript victoryMenuScript;
+    // public InteractableHud interactableHud;
     public SliderUIManager volumeSlider;
 
     public SanityMeter sanityMeter;
@@ -38,6 +39,7 @@ public class MainMenyEvents : MonoBehaviour
         playerMovement.enabled = false;
         playerCameraLook.enabled = false;
         sanityMeter.enabled = false;
+        victoryMenuScript.enabled = false;
 
         if (pausedMenUScript != null)
             pausedMenUScript.enabled = false;
@@ -119,6 +121,8 @@ public class MainMenyEvents : MonoBehaviour
         playerCameraLook.enabled = true;
         if (pausedMenUScript  != null)
         pausedMenUScript.enabled = true;
+        if (victoryMenuScript != null)
+            victoryMenuScript.enabled = true;
 
         if (settingsMenuEvents != null)
             settingsMenuEvents.enabled = true;
@@ -187,6 +191,8 @@ public class MainMenyEvents : MonoBehaviour
             gameOverScript.enabled = false;
         if (settingsMenuEvents != null) 
             settingsMenuEvents.enabled = false;
+        if (victoryMenuScript != null)
+            victoryMenuScript.enabled = false;
 
         //if (interactableHud != null)
         //    interactableHud.enabled = false;

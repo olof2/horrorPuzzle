@@ -1,13 +1,16 @@
+using Mono.Cecil.Cil;
 using PadlockSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UIElements.Experimental;
 
 public class VictoryMenuScript : MonoBehaviour
 {
 
     private UIDocument victoryMenuDoc;
     private VisualElement visualElement;
-    private PlayerCameraLook playerCameraLook;
+    public PlayerCameraLook playerCameraLook;
+    public PlayerMovement playerMovement;
 
     private PadlockController padlockController;
     private Door door;
@@ -17,32 +20,23 @@ public class VictoryMenuScript : MonoBehaviour
     private void Awake()
     {
         victoryMenuDoc = GetComponent<UIDocument>(); // Hämtar UI Dokumentet
+       
         door = FindAnyObjectByType<Door>(); // Hittar dörren i scenen
         padlockController = FindAnyObjectByType<PadlockController>(); // Hittar padlockController i scenen
-        visualElement.style.display = DisplayStyle.None; // gömmer UI i awake
+        
     }
 
     private void OnEnable()
     {
         var root = victoryMenuDoc.rootVisualElement;
         visualElement = root.Q<VisualElement>("Container");
+        visualElement.style.display = DisplayStyle.None; // gömmer UI i awake
     }
 
     // Update is called once per frame
     void Update()
     {
-        ////Nä slår in rätt kod och då kommer öppna "rätt" dörr, visa UI
-        //var correctDoor = door.GetInstanceID();
-
-        //if (correctDoor == )
-        //{
-        //    ShowUI();
-        //}
-
-        if (door.victoryDoor)
-        {
-            ShowUI();
-        }
+      
 
 
     }
@@ -50,9 +44,16 @@ public class VictoryMenuScript : MonoBehaviour
 
     public void ShowUI()
     {
-        
-        if (visualElement != null)
-            visualElement.style.display = DisplayStyle.Flex; // Sätter UI synlig
+
+        //if (visualElement != null)
+        //    visualElement.style.display = DisplayStyle.Flex; // Sätter UI synlig
+        Transition();
+
+        playerCameraLook.enabled = false;
+        playerMovement.enabled = false;
+
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
     }
 
     public void HideUI()
@@ -60,4 +61,20 @@ public class VictoryMenuScript : MonoBehaviour
         if (visualElement != null)
             visualElement.style.display = DisplayStyle.None; // Gömmer UI
     }
+
+    public void Transition()
+    {
+        var root = victoryMenuDoc.rootVisualElement;
+        root.style.display = DisplayStyle.Flex;
+        visualElement.style.display = DisplayStyle.Flex;
+
+        root.style.opacity = 0;
+
+        root.experimental.animation.Start(new StyleValues { opacity = 1 }, 4000).OnCompleted(() =>
+        {
+                root.style.display = DisplayStyle.Flex;
+        });
+
+    }
+
 }
