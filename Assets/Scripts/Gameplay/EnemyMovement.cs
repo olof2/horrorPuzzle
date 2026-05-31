@@ -17,9 +17,14 @@ public class EnemyMovement : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip jumpScare;
 
+    public AudioClip ghostMoveSound;
+
     //jumpscare sequence timer
     private bool deathSequenceStarted = false;
     private float deathTimer = 5f;
+
+    [SerializeField] private AudioSource ghostMoveAudioSource;
+    [SerializeField] private AudioSource jumpScareAudioSource;
 
     private bool gameOver = false;
     public bool Game_Over {  get { return gameOver; } }
@@ -107,7 +112,10 @@ public class EnemyMovement : MonoBehaviour
             cameraHelper.SetJumpscareShake(true);
 
             //Jumpscare audio spelas vid collision
-            audioSource.PlayOneShot(jumpScare);
+            //audioSource.PlayOneShot(jumpScare);
+
+            ghostMoveAudioSource.Stop();
+            jumpScareAudioSource.PlayOneShot(jumpScare);
 
             Debug.Log("Enemy collided with the player and stopped moving.");
         }
@@ -116,6 +124,12 @@ public class EnemyMovement : MonoBehaviour
     private void StartMoving()
     {
         isMoving = true; // Start moving when sanity reaches 25
+
+        ghostMoveAudioSource.clip = ghostMoveSound;
+
+        ghostMoveAudioSource.loop = true;
+        ghostMoveAudioSource.Play();
+
         Debug.Log("Enemy started moving towards the player.");
     }
 
