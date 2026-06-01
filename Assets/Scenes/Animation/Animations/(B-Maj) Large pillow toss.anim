@@ -108,25 +108,25 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.15
-        value: {x: -14, y: 6.4, z: 16.64274}
-        inSlope: {x: -20, y: 3.9999962, z: 0}
-        outSlope: {x: -20, y: 3.9999962, z: 0}
+        value: {x: -14, y: 6.4, z: 16.553364}
+        inSlope: {x: -20, y: 3.9999962, z: -3.064359}
+        outSlope: {x: -20, y: 3.9999962, z: -3.064359}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.2
-        value: {x: -15, y: 6.5, z: 16.64274}
-        inSlope: {x: -25.000002, y: 0, z: 0}
-        outSlope: {x: -25.000002, y: 0, z: 0}
+        value: {x: -15, y: 6.5, z: 16.387379}
+        inSlope: {x: -24.29001, y: 0, z: -3.0643656}
+        outSlope: {x: -24.29001, y: 0, z: -3.0643656}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.25
-        value: {x: -16.5, y: 3.85, z: 16.64274}
+        value: {x: -16.429, y: 3.85, z: 16.298}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -135,7 +135,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.28333333
-        value: {x: -16.5, y: 4, z: 16.64274}
+        value: {x: -16.429, y: 3.9, z: 16.298}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -144,7 +144,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.31666666
-        value: {x: -16.5, y: 3.85, z: 16.64274}
+        value: {x: -16.429, y: 3.85, z: 16.298}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -437,15 +437,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.2
         value: -15
-        inSlope: -25.000002
-        outSlope: -25.000002
+        inSlope: -24.29001
+        outSlope: -24.29001
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: -16.5
+        value: -16.429
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -454,7 +454,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.28333333
-        value: -16.5
+        value: -16.429
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -463,7 +463,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.31666666
-        value: -16.5
+        value: -16.429
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -538,7 +538,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.28333333
-        value: 4
+        value: 3.9
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -586,7 +586,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 16.64274
+        value: 16.298
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -595,7 +595,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.28333333
-        value: 16.64274
+        value: 16.298
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -604,7 +604,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.31666666
-        value: 16.64274
+        value: 16.298
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -659,7 +659,7 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.083333336
     functionName: PlayImpact
     data: 
     objectReferenceParameter: {fileID: 0}
